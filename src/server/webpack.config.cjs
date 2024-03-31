@@ -1,22 +1,27 @@
 const path = require("path");
 
 module.exports = {
-  target: "node", // Set target to 'node' for server-side bundle,
+  target: "node",
   mode:"development",
   
 
   entry: {
-    server: "./src/server/index.js", // Entry point for server-side bundle
+    server: "./src/server/index.tsx", 
   },
   output: {
-    filename: "index.cjs", // Use dynamic name for output file based on entry point
+    filename: "index.cjs",
     path: path.resolve(__dirname, "dist"), // Output directory
     libraryTarget: 'commonjs'
   },
+
+  resolve: {
+    extensions: ['.js', '.jsx', '.ts', '.tsx'],
+  },
+
   module: {
     rules: [
       {
-        test: /\.js$/, // Use Babel to transpile JavaScript files
+        test: /\.js$/,
         exclude: /node_modules/,
         use: {
           loader: "babel-loader",
@@ -25,6 +30,20 @@ module.exports = {
           },
         },
       },
+      {
+        test: /\.(js|jsx|ts|tsx)$/,
+        exclude: /node_modules/,
+        use: {
+          loader: 'babel-loader',
+          options: {
+            presets: [
+              ['@babel/preset-env', { targets: 'defaults' }],
+              '@babel/preset-react',
+              '@babel/preset-typescript'
+            ]
+          }
+        }
+      }
     ],
   },
   
