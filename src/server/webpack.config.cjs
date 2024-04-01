@@ -10,7 +10,7 @@ module.exports = {
   },
   output: {
     filename: "index.cjs",
-    path: path.resolve(__dirname, "dist"), // Output directory
+    path: path.resolve(__dirname, "public","dist"), // Output directory
     libraryTarget: 'commonjs'
   },
 
@@ -43,6 +43,15 @@ module.exports = {
             ]
           }
         }
+      },
+      {
+        test: /\.less$/i,
+        use: [
+          // compiles Less to CSS
+          "style-loader",
+          "css-loader",
+          "less-loader",
+        ],
       }
     ],
   },

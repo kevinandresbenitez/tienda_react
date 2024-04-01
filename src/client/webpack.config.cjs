@@ -3,7 +3,7 @@ module.exports = {
   entry: './src/client/app.js',
   mode:"development",
   output: {
-    path: path.resolve(__dirname,'dist'),
+    path: path.resolve(__dirname,'public','dist'),
     filename: 'bundle.js',
   },
   module: {
@@ -18,6 +18,14 @@ module.exports = {
           },
         },
       },
+      {
+        test: /\.less$/i,
+        use: [
+          "style-loader",
+          "css-loader",
+          "less-loader",
+        ],
+      }
     ],
   },
 
