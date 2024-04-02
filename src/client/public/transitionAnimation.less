@@ -1,0 +1,27 @@
+.fullscreen-container {
+    position: fixed;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    background-color: #ffffff;
+    opacity: 0;
+  }
+  
+  /* Estilos para la animación de desvanecimiento */
+  .fade-enter {
+    opacity: 1;
+  }
+  
+  .fade-enter-active {
+    opacity: 0;
+    transition: opacity 500ms ease-in-out; /* Animación de desvanecimiento suave */
+  }
+  
+  .fade-exit {
+    opacity: 0;
+  }
+  
+  .fade-exit-active {
+    opacity: 0;
+    transition: opacity 300ms ease-in-out; /* Animación de desvanecimiento suave */
+  }
