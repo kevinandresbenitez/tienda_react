@@ -40,6 +40,7 @@
 }
 
 .navbar__links{
+    background-color:#ffffff;
     a{
         margin: 10px;        
     }
@@ -48,5 +49,31 @@
 .navbar__actions{
     a{
         margin: 10px;        
+    }
+}
+
+@media(max-width:800px){
+
+    #hamburger__check:checked ~ .navbar__links{
+        left:0%;
+    }
+
+    .navbar__links{
+        top: 100%;
+        left:-100%;
+        position:absolute;
+        width:40vw;
+        height:100vw;
+        display:flex;
+        flex-flow:column nowrap;
+        z-index: 1;
+        box-shadow: 2px 0px 4px rgba(0, 0, 0, 0.1);
+        transition: all 0.3s;
+    }
+}
+
+@media(max-width:500px){
+    .navbar__links{
+        width:50vw;
     }
 }

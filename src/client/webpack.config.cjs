@@ -1,11 +1,28 @@
 const path = require('path');
+const MiniCssExtractPlugin = require('mini-css-extract-plugin');
+
 module.exports = {
-  entry: './src/client/app.js',
-  mode:"development",
+  entry:{
+    main:{
+      import:'./src/client/app.tsx',
+      dependOn:'shared'
+    },
+    shared:['react',"@fortawesome/fontawesome-svg-core","@fortawesome/free-solid-svg-icons","@fortawesome/react-fontawesome"]
+  },
+
+
+  optimization: {
+    runtimeChunk: 'single',
+  },
+
+
+
+  mode:"production",
   output: {
     path: path.resolve(__dirname,'public','dist'),
-    filename: 'bundle.js',
+    filename: '[name].bundle.js',
   },
+
   module: {
     rules: [
       {
@@ -19,9 +36,23 @@ module.exports = {
         },
       },
       {
+        test: /\.(js|jsx|ts|tsx)$/,
+        exclude: /node_modules/,
+        use: {
+          loader: 'babel-loader',
+          options: {
+            presets: [
+              ['@babel/preset-env', { targets: 'defaults' }],
+              '@babel/preset-react',
+              '@babel/preset-typescript'
+            ]
+          }
+        }
+      },
+      {
         test: /\.less$/i,
         use: [
-          "style-loader",
+          MiniCssExtractPlugin.loader,
           "css-loader",
           "less-loader",
         ],
@@ -29,4 +60,10 @@ module.exports = {
     ],
   },
 
+
+  plugins: [
+    new MiniCssExtractPlugin({
+      filename: 'styles.css', // Nombre del archivo CSS separado
+    }),
+  ],
 };
