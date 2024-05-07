@@ -7,7 +7,9 @@ export class Product{
     imgTexture:string;
     versions:SubProducts[];
 
-
+    getStock():number{
+        return this.versions.reduce((a,b)=>(a + b.stock),0)
+    }
     
     static getProducts():Product[]{
         const product1 = new Product()

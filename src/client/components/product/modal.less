@@ -22,6 +22,7 @@
         .modal__imgs{
             width: 55%;
             height: 100%;
+            overflow: hidden;
         }
         .modal__content{
             width: 45%;
@@ -79,5 +80,15 @@
     to{
         transform: translateX(20px);
         opacity: 0;
+    }
+}
+
+
+@media(max-width:1200px){
+    .modal-overlay {
+        .modal{
+            width: 90%;
+            height: 85%;
+        }
     }
 }
