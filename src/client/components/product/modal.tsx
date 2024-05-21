@@ -3,6 +3,7 @@ import PropTypes from 'prop-types';
 import { Product } from "../../models/product/index.tsx";
 import './modal.less';
 import Carrusel from "../carrusel/index.tsx";
+import ColorPickerButtonGroup from "../colorPickerButtonGroup/index.tsx";
 
 export default function Modal({children,disableModal}:{children:Product,disableModal:Function}){
     // Html elements
@@ -11,11 +12,13 @@ export default function Modal({children,disableModal}:{children:Product,disableM
 
     // Info elements
     const product:Product = children;
-    const [focusedProduct,setFocusedProduct] = useState(null);
+    const [indexColorSelected,setIndexColorSelected] = useState<number | null>(null);
     const [productsImgs,setProductsImgs] = useState(getImgsProducts());
 
     function getImgsProducts():string[]{
-        return [product.imgTexture,...product.versions.map((obj)=>obj.img)]
+        const products = product.versions.map((obj)=>obj.img);
+        products.splice(1,0,product.imgTexture);
+        return products;
     }    
     function hiddeModal(){
         if(modalOverlay.current && modal.current){
@@ -34,7 +37,10 @@ export default function Modal({children,disableModal}:{children:Product,disableM
                 <div className="modal__imgs">
                     <Carrusel imgs={productsImgs} />
                 </div>
-                <div className="modal__content"></div>
+                <div className="modal__content">
+                    Esto es el texto
+                    <ColorPickerButtonGroup onColorSelect={setIndexColorSelected} colors={product.getColors()} />
+                </div>
             </div>
         </div>
     )

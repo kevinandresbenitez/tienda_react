@@ -35,7 +35,6 @@ export default function Card({children}:{children:Product}){
             </div>
             
             <div className="card__buttons">
-                {/* <button className="card__buttons__button">Agregar al carrito</button> */}
                 <a  href="/" className="card__buttons__button">Detalles</a>
             </div>
         </div>
