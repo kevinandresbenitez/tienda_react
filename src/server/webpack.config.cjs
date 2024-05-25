@@ -21,16 +21,6 @@ module.exports = {
   module: {
     rules: [
       {
-        test: /\.js$/,
-        exclude: /node_modules/,
-        use: {
-          loader: "babel-loader",
-          options: {
-            presets: ["@babel/preset-env", "@babel/preset-react"],
-          },
-        },
-      },
-      {
         test: /\.(js|jsx|ts|tsx)$/,
         exclude: /node_modules/,
         use: {
@@ -47,7 +37,6 @@ module.exports = {
       {
         test: /\.less$/i,
         use: [
-          // compiles Less to CSS
           "style-loader",
           "css-loader",
           "less-loader",
