@@ -23,7 +23,7 @@ export default function NavBar(){
             <Link to="/contact">Contacto</Link>
         </nav>
         <div className="navbar__actions">
-            <Link to="/about"> <FontAwesomeIcon icon={faUser} />  Iniciar Sesion</Link>
+            <Link to="/about"> <FontAwesomeIcon icon={faUser} /><p>Iniciar Sesion</p></Link>
             <Link to="/about" ><FontAwesomeIcon icon={faCartShopping} /></Link>
         </div>
         

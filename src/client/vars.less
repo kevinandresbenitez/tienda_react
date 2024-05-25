@@ -1,17 +1,33 @@
-@import url('https://fonts.googleapis.com/css2?family=Inter:wght@100..900&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400..900;1,400..900&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Quicksand:wght@300..700&display=swap');
 
-//Vars
+// Vars
 @color-black: rgba(18,18,18);
+@color-black-hover: #999997;
 @color-black-ligth: rgb(40,40,40);
-@color-hover: #999997;
 
-.font-face-bold_2{
-    font-family: "Inter", sans-serif;
-    font-optical-sizing: auto;
-    font-weight: 600;
-    font-style: normal;
+@color-primary:#ffffff;
+@color-secondary:@color-primary;
+
+// Vars fonts
+@font-xs: 10px;        
+@font-small: 12px;     
+@font-medium: 16px;    
+@font-large: 18px;     
+@font-xl: 20px;        
+@font-xxl: 24px;       
+@font-xxxl: 30px; 
+
+
+
+.font-face-primary{
+  font-family: "Playfair Display", serif;
+  font-optical-sizing: auto;
+  font-style: normal;
 }
-.font-face-ligth{
-    .font-face-bold_2;
-    font-weight: 400;
+
+.font-face-secondary{
+  font-family: "Quicksand", sans-serif;
+  font-optical-sizing: auto;
+  font-style: normal;
 }

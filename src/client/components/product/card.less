@@ -6,6 +6,7 @@
     flex-flow: column;
     transition: all 0.3s;
     margin: 10px;
+    background-color:@color-secondary;
     &:hover{
         // box-shadow: 0 0 5px rgba(0, 0, 0, 0.5);
 
@@ -23,7 +24,6 @@
 .card .card__imgs{
     height: 65%;
     position: relative;
-
 
     &:hover{
         .card__img__container .card__img:nth-child(1){
@@ -64,7 +64,8 @@
         height: 54px;
         border: none;
         text-align: center;
-        font-size: 14px;
+        .font-face-secondary;
+        font-size: @font-small;
         position: absolute;
         top: 100%;
         left: 0%;
@@ -83,11 +84,10 @@
 .card .card__info{
     position: relative;
     z-index: 2;
-    background-color: #ffffff;
-    .font-face-bold_2;
+    .font-face-primary();
     font-weight: 500;
     text-align: center;
-
+    background-color:@color-secondary;
     
     .separator{
         width:20px;
@@ -102,6 +102,7 @@
     display: flex;
     flex-flow: column nowrap;
     gap: 5px;
+    padding:10px;
 
     .card__buttons__button{
         width: 80%;
@@ -121,11 +122,11 @@
         &:last-child{
             color: @color-black;
             border: 2px solid @color-black-ligth;
-            background-color: #ffffff;
+            background-color: @color-secondary;
         }
 
         &:first-child:hover{
-            background-color: @color-hover;
+            background-color: @color-black-hover;
         }
 
         &:last-child:hover{
