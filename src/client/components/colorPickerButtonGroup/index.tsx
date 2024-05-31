@@ -8,14 +8,20 @@ export default function ColorPickerButtonGroup({colors,onColorSelect}:
     {colors:string[],onColorSelect:OnColorSelectFunction}){
 
     function onClickSelectColor(buttonElement:HTMLButtonElement,key:number){
-        document.querySelectorAll(".colorPickerGroup.selected")[0].classList.remove("selected");
+        const selectedElement = document.querySelectorAll(".colorPickerGroup.selected")[0]
+        if(selectedElement){
+            selectedElement.classList.remove("selected");
+        }
+
+       
         buttonElement.classList.add("selected");
+        console.log(key)
         onColorSelect(key);
     }
 
     return(
         <div className="colorPickerGroup">
-            {colors.map((color,key)=><button onClick={(event)=>{onClickSelectColor(event.target as HTMLButtonElement,key)}} style={{ backgroundColor: color }} className={`colorPickerGroup ${key == 0 ? "selected":""}`}></button>)}
+            {colors.map((color,key)=><button key={key} onClick={(event)=>{onClickSelectColor(event.target as HTMLButtonElement,key)}} style={{ backgroundColor: color }} className={"colorPickerGroup"}></button>)}
         </div>
     )
 

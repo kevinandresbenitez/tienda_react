@@ -1,4 +1,4 @@
-import React, { useRef, useState } from "react";
+import React, { useRef, useState ,useEffect} from "react";
 import PropTypes from 'prop-types';
 import { Product } from "../../models/product/index.tsx";
 import './modal.less';
@@ -12,14 +12,30 @@ export default function Modal({children,disableModal}:{children:Product,disableM
 
     // Info elements
     const product:Product = children;
+    const [filterProduct,setfilterProductList] =  useState<Product | null>(product);
     const [indexColorSelected,setIndexColorSelected] = useState<number | null>(null);
-    const [productsImgs,setProductsImgs] = useState(getImgsProducts());
+    const [productsImgs,setProductsImgs] = useState(getImgsProducts(product));
 
-    function getImgsProducts():string[]{
-        const products = product.versions.map((obj)=>obj.img);
+
+    useEffect(()=>{
+        if(indexColorSelected != null ){
+            const productFilter:Product = {...product};
+            productFilter.versions = [productFilter.versions[indexColorSelected]];
+            setfilterProductList(productFilter);
+        }
+    },[indexColorSelected])
+
+    useEffect(()=>{
+        setProductsImgs(getImgsProducts(filterProduct));
+    },[filterProduct])
+
+
+    function getImgsProducts(newproduct:Product):string[]{       
+        const products = newproduct.versions.map((obj)=>obj.img);
         products.splice(1,0,product.imgTexture);
         return products;
     }    
+
     function hiddeModal(){
         if(modalOverlay.current && modal.current){
             modalOverlay.current.classList.add("hidde");
@@ -37,8 +53,7 @@ export default function Modal({children,disableModal}:{children:Product,disableM
                 <div className="modal__imgs">
                     <Carrusel imgs={productsImgs} />
                 </div>
-                <div className="modal__content">
-                    Esto es el texto
+                <div className="modal__content">                    
                     <ColorPickerButtonGroup onColorSelect={setIndexColorSelected} colors={product.getColors()} />
                 </div>
             </div>
