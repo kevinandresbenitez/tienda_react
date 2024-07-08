@@ -1,8 +1,8 @@
 import React, { useState } from "react";
 import PropTypes from 'prop-types';
-import { Product } from "../../models/product/index.tsx";
-import './card.less';
-import Modal from "./modal.tsx";
+import { Product } from "../../../models/product/index.tsx";
+import './index.less';
+import Modal from "../modal/index.tsx";
 export default function Card({children}:{children:Product}){
     const product:Product = children;
     const [isModalActive,setModalStatus] = useState(false);

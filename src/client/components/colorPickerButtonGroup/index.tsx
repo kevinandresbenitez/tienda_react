@@ -2,7 +2,7 @@ import React, { useRef, useState } from "react";
 import PropTypes from 'prop-types';
 import './index.less';
 
-type OnColorSelectFunction = (index: number) => void;
+type OnColorSelectFunction = (index: number | null) => void;
 
 export default function ColorPickerButtonGroup({colors,onColorSelect}:
     {colors:string[],onColorSelect:OnColorSelectFunction}){
@@ -12,10 +12,12 @@ export default function ColorPickerButtonGroup({colors,onColorSelect}:
         if(selectedElement){
             selectedElement.classList.remove("selected");
         }
-
+        if(selectedElement == buttonElement){
+            onColorSelect(null);
+            return true
+        }
        
         buttonElement.classList.add("selected");
-        console.log(key)
         onColorSelect(key);
     }
 

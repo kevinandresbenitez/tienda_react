@@ -1,9 +1,9 @@
 import React, { useRef, useState ,useEffect} from "react";
 import PropTypes from 'prop-types';
-import { Product } from "../../models/product/index.tsx";
-import './modal.less';
-import Carrusel from "../carrusel/index.tsx";
-import ColorPickerButtonGroup from "../colorPickerButtonGroup/index.tsx";
+import { Product } from "../../../models/product/index.tsx";
+import './index.less';
+import Carrusel from "../../carrusel/index.tsx";
+import ColorPickerButtonGroup from "../../colorPickerButtonGroup/index.tsx";
 
 export default function Modal({children,disableModal}:{children:Product,disableModal:Function}){
     // Html elements
@@ -19,14 +19,20 @@ export default function Modal({children,disableModal}:{children:Product,disableM
 
     useEffect(()=>{
         if(indexColorSelected != null ){
-            const productFilter:Product = {...product};
+            const productFilter:Product = Object.assign({},product);
             productFilter.versions = [productFilter.versions[indexColorSelected]];
             setfilterProductList(productFilter);
+        }else{
+            setfilterProductList(product)
         }
     },[indexColorSelected])
 
     useEffect(()=>{
-        setProductsImgs(getImgsProducts(filterProduct));
+        if(filterProduct != null){
+            setProductsImgs(getImgsProducts(filterProduct));
+        }else{
+            setProductsImgs(getImgsProducts(product));
+        }
     },[filterProduct])
 
 

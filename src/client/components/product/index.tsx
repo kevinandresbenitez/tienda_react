@@ -1,3 +1,3 @@
 
-export {default as Card} from './card.tsx';
-export {default as Modal} from './modal.tsx';
+export {default as Card} from './card/index.tsx';
+export {default as Modal} from './modal/index.tsx';
