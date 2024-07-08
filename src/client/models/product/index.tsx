@@ -15,6 +15,12 @@ export class Product{
         return this.versions.map((obj)=> obj.color);
     }
 
+    static getImgsFromProduct(product:Product):string[]{
+        const products = product.versions.map((obj)=>obj.img);
+        products.splice(1,0,product.imgTexture);
+        return products;
+    }
+
     static getProducts():Product[]{
         const product1 = new Product()
         product1.id = 1;
@@ -51,7 +57,7 @@ export class Product{
         ]
     }
 
-
+    
 }
 
 class SubProducts{
