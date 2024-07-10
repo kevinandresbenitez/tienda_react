@@ -15,10 +15,16 @@ export class Product{
         return this.versions.map((obj)=> obj.color);
     }
 
-    static getImgsFromProduct(product:Product):string[]{
-        const products = product.versions.map((obj)=>obj.img);
-        products.splice(1,0,product.imgTexture);
-        return products;
+    /**
+     * You get an array of images that includes an image of the first version of the product, 
+     * followed by the texture, 
+     * followed by more images of the different versions.
+     * @returns {string[]} Array of strings representing image paths.
+     */
+    getImgs():string[]{
+        const productsImgs = this.versions.map((obj)=>obj.img);
+        productsImgs.splice(1,0,this.imgTexture);
+        return productsImgs;
     }
 
     static getProducts():Product[]{
@@ -57,7 +63,20 @@ export class Product{
         ]
     }
 
-    
+    static copy(product:Product):Product{
+        const copy = new Product();
+        copy.id = product.id;
+        copy.name = product.name;
+        copy.description = product.description;
+        copy.info = product.info;
+        copy.price = product.price;
+        copy.imgTexture = product.imgTexture;
+        copy.versions = [];
+        product.versions.forEach((subProduct)=>{
+            copy.versions.push(subProduct);
+        })
+        return copy;
+    }
 }
 
 class SubProducts{
