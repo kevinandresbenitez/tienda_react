@@ -5,27 +5,19 @@ import './index.less';
 import Carrusel from "../../carrusel/index.tsx";
 import ColorPickerButtonGroup from "../../colorPickerButtonGroup/index.tsx";
 
-export default function Modal({children,disableModal}:{children:Product,disableModal:Function}){
+export default function Modal({children:product,disableModal}:{children:Product,disableModal:Function}){
     // Html elements
     const modalOverlay = useRef<HTMLDivElement>(null);
     const modal = useRef<HTMLDivElement>(null);
 
     // Info elements
-    const product:Product = children;
-    const [filterProduct,setfilterProductList] =  useState<Product>(product);
-    const [indexColorSelected,setIndexColorSelected] = useState<number | null>(null);
+    const [indexVersionSelected,setIndexVersionSelected] = useState<number | null>(null);
+    const productCopy = Product.copy(product);
 
-
-    useEffect(()=>{
-        if(indexColorSelected != null ){
-            // Copy object
-            const filterProduct:Product = Object.assign({},product);
-            filterProduct.versions = [filterProduct.versions[indexColorSelected]];            
-            setfilterProductList(filterProduct);
-        }else{
-            setfilterProductList(product)
-        }
-    },[indexColorSelected])
+    // Filter version if the index color is selected
+    if(indexVersionSelected != null ){
+        productCopy.versions = [productCopy.versions[indexVersionSelected]];            
+    }
 
     function hiddeModal(){
         if(modalOverlay.current && modal.current){
@@ -42,10 +34,10 @@ export default function Modal({children,disableModal}:{children:Product,disableM
         <div ref={modalOverlay} className="modal-overlay" onClick={()=>{hiddeModal()}}>
             <div ref={modal} className="modal" onClick={(event)=>{event.stopPropagation()}}>
                 <div className="modal__imgs">
-                    <Carrusel imgs={Product.getImgsFromProduct(filterProduct)} />
+                    <Carrusel imgs={productCopy.getImgs()} />
                 </div>
                 <div className="modal__content">                    
-                    <ColorPickerButtonGroup onColorSelect={setIndexColorSelected} colors={product.getColors()} />
+                    <ColorPickerButtonGroup onColorSelect={setIndexVersionSelected} colors={product.getColors()} />
                 </div>
             </div>
         </div>
