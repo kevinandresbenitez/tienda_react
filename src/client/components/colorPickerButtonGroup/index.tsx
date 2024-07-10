@@ -2,10 +2,13 @@ import React, { useRef, useState } from "react";
 import PropTypes from 'prop-types';
 import './index.less';
 
-type OnColorSelectFunction = (index: number | null) => void;
-
+/**
+ * Component for rendering a color picker button group.
+ * @param colors An array of color in hexadecimal.
+ * @param onColorSelect Callback function to handle color selection.
+ */
 export default function ColorPickerButtonGroup({colors,onColorSelect}:
-    {colors:string[],onColorSelect:OnColorSelectFunction}){
+    {colors:string[],onColorSelect:(index: number | null) => void}){
 
     function onClickSelectColor(buttonElement:HTMLButtonElement,key:number){
         const selectedElement = document.querySelectorAll(".colorPickerGroup.selected")[0]
