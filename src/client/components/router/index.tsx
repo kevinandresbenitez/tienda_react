@@ -18,7 +18,7 @@ export default function Router(){
 
     return(
         !isHidrated ? 
-        
+        /*For the client*/
         <TransitionGroup>     
             <CSSTransition key={location.key} classNames="fade" timeout={400}>
                 <div className="fullscreen-container"></div>  
@@ -34,7 +34,8 @@ export default function Router(){
             </Suspense>
         </TransitionGroup>
         :
-        <Suspense fallback={<div className="fullscreen-container"></div>  }>
+        /*For the server*/
+        <Suspense>
             <Routes location={location} >
                 <Route path="/" element={<Home/>} />
                 <Route path="/about" element={<About/>} />
