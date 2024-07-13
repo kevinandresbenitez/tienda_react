@@ -1,6 +1,7 @@
 import React, { useRef, useState } from "react";
 import PropTypes from 'prop-types';
 import './index.less';
+import RGBColor from "../../types/color.tsx";
 
 /**
  * Component for rendering a color picker button group.
@@ -8,7 +9,7 @@ import './index.less';
  * @param onColorSelect Callback function to handle color selection.
  */
 export default function ColorPickerButtonGroup({colors,onColorSelect}:
-    {colors:string[],onColorSelect:(index: number | null) => void}){
+    {colors:RGBColor[],onColorSelect:(index: number | null) => void}){
 
     function onClickSelectColor(buttonElement:HTMLButtonElement,key:number){
         const selectedElement = document.querySelectorAll(".colorPickerGroup.selected")[0]
@@ -26,7 +27,7 @@ export default function ColorPickerButtonGroup({colors,onColorSelect}:
 
     return(
         <div className="colorPickerGroup">
-            {colors.map((color,key)=><button key={key} onClick={(event)=>{onClickSelectColor(event.target as HTMLButtonElement,key)}} style={{ backgroundColor: color }} className={"colorPickerGroup"}></button>)}
+            {colors.map((color,key)=><button key={key} onClick={(event)=>{onClickSelectColor(event.target as HTMLButtonElement,key)}} style={{ backgroundColor: color.toHex() }} className={"colorPickerGroup"}></button>)}
         </div>
     )
 
