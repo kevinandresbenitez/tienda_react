@@ -10,7 +10,7 @@
     &:hover{
         // box-shadow: 0 0 5px rgba(0, 0, 0, 0.5);
 
-        .card__buttons .card__buttons__button{
+        .card__buttons .button{
             opacity: 1;
             transform: translateY(0);
         }
@@ -104,21 +104,9 @@
     gap: 5px;
     padding:10px;
 
-    .card__buttons__button{
-        width: 80%;
-        margin: auto;
-        padding: 7px 0px;
-        text-align: center;
-        border: none;
-        color: #ffffff;
-        background-color:@color-black-ligth;
-        cursor: pointer;
-        transition: all 0.5s;
-        text-decoration: none;
-        display: block;
+    .button{
         opacity: 0;
-        transform: translateY(10px);
-
+        
         &:last-child{
             color: @color-black;
             border: 2px solid @color-black-ligth;

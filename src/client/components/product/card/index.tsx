@@ -3,6 +3,7 @@ import PropTypes from 'prop-types';
 import { Product } from "../../../models/product/index.tsx";
 import './index.less';
 import Modal from "../modal/index.tsx";
+import { Button } from "../../button/index.tsx";
 export default function Card({children}:{children:Product}){
     const product:Product = children;
     const [isModalActive,setModalStatus] = useState(false);
@@ -35,7 +36,7 @@ export default function Card({children}:{children:Product}){
             </div>
             
             <div className="card__buttons">
-                <a  href="/" className="card__buttons__button">Detalles</a>
+                <Button onClick={enableModal}>Detalles</Button>
             </div>
         </div>
     )
