@@ -69,6 +69,11 @@ export class Product{
         ]
     }
 
+    /**
+     * 
+     * @param product 
+     * @returns a copy of the product
+     */
     static copy(product:Product):Product{
         const copy = new Product();
         copy.id = product.id;

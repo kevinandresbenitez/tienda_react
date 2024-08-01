@@ -4,8 +4,13 @@ import './index.less';
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faCartShopping, faUser } from "@fortawesome/free-solid-svg-icons";
 import Hamburger from "../hamburgerButton/index.tsx";
+import { useTrolley } from "../../contexts/TrolleyContext/index.tsx";
+import { useTrolleyType } from "../../types/useTrolleyType.tsx";
 
 export default function NavBar(){
+
+    const {productsInStorage}:useTrolleyType = useTrolley();
+    
     return(
     <div className="navbar">
 
@@ -25,6 +30,7 @@ export default function NavBar(){
         <div className="navbar__actions">
             <Link to="/about"> <FontAwesomeIcon icon={faUser} /><p>Iniciar Sesion</p></Link>
             <Link to="/about" ><FontAwesomeIcon icon={faCartShopping} /></Link>
+            {productsInStorage.length}
         </div>
         
         

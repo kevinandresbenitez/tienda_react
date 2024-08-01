@@ -8,6 +8,7 @@ import  Router  from "./components/router/index.tsx";
 import { BrowserRouter } from "react-router-dom";
 import PageLoader from "./components/pageLoader/index.tsx";
 import Home from "./pages/home/index.tsx";
+import { TrolleyContextProvider } from "./contexts/TrolleyContext/index.tsx";
 
 export function App(){
     return(
@@ -20,11 +21,13 @@ export function App(){
       </head>
       <body>
           
-        <NavBar/>
-        <PageLoader/>
-        <div className="main">
-          <Router />
-        </div>
+        <TrolleyContextProvider>
+          <NavBar/>
+          <PageLoader/>
+          <div className="main">
+            <Router />
+          </div>
+        </TrolleyContextProvider>
 
         
       </body>

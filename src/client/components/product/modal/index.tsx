@@ -5,6 +5,8 @@ import './index.less';
 import Carrusel from "../../carrusel/index.tsx";
 import ColorPickerButtonGroup from "../../colorPickerButtonGroup/index.tsx";
 import { Button } from "../../button/index.tsx";
+import { useTrolley} from "../../../contexts/TrolleyContext/index.tsx";
+import { useTrolleyType } from "../../../types/useTrolleyType.tsx";
 
 export default function Modal({children:product,disableModal}:{children:Product,disableModal:Function}){
     // Html elements
@@ -15,6 +17,10 @@ export default function Modal({children:product,disableModal}:{children:Product,
     // Info elements
     const [indexVersionSelected,setIndexVersionSelected] = useState<number | null>(null);
     const productCopy = Product.copy(product);
+
+
+    // Hooks
+    const {addProductToTrolley}:useTrolleyType = useTrolley();
 
     // Filter version if the index color is selected
     if(indexVersionSelected != null ){
@@ -66,7 +72,7 @@ export default function Modal({children:product,disableModal}:{children:Product,
                         </div>                   
 
                         <div className="modal__content_section_buttons">
-                            <Button onClick={()=>{}}>Agregar al carrito</Button>                        
+                            <Button onClick={()=>{addProductToTrolley(productCopy)}}>Agregar al carrito</Button>                    
                         </div> 
                     </div>
 
