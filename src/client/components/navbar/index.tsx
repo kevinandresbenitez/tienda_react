@@ -2,14 +2,14 @@ import React from "react";
 import { Link } from "react-router-dom";
 import './index.less';
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faCartShopping, faUser } from "@fortawesome/free-solid-svg-icons";
+import { faUser } from "@fortawesome/free-solid-svg-icons";
 import Hamburger from "../hamburgerButton/index.tsx";
-import { useTrolley } from "../../contexts/TrolleyContext/index.tsx";
-import { useTrolleyType } from "../../types/useTrolleyType.tsx";
+import { TrolleyButton } from "../trolley/trolleyButton/index.tsx";
+
 
 export default function NavBar(){
 
-    const {productsInStorage}:useTrolleyType = useTrolley();
+    
     
     return(
     <div className="navbar">
@@ -28,9 +28,8 @@ export default function NavBar(){
             <Link to="/contact">Contacto</Link>
         </nav>
         <div className="navbar__actions">
-            <Link to="/about"> <FontAwesomeIcon icon={faUser} /><p>Iniciar Sesion</p></Link>
-            <Link to="/about" ><FontAwesomeIcon icon={faCartShopping} /></Link>
-            {productsInStorage.length}
+            <Link to="/about" className="navbar__actions__link"> <FontAwesomeIcon icon={faUser} /><p>Iniciar Sesion</p></Link>
+            <TrolleyButton />
         </div>
         
         

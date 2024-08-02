@@ -3,7 +3,14 @@ import { Product } from "../../models/product/index.tsx";
 
 
 
-
+/**
+ * Hook that allows you to manage the shopping cart.
+ * @returns {{
+ *   productsInStorage: Product[],         
+ *   addProductToTrolley: Function,        
+ *   removeProductOnTrolley: Function      
+ * }}
+ */
 export default function TrolleyHook(){
 
     const [productsInStorage,setProductsOnStorage] = useState<Product[]>([]) 
@@ -12,19 +19,26 @@ export default function TrolleyHook(){
         setProductsOnStorage(getProductsFromLocalStorage())
     },[])
 
-
-    function addProductToStorage(product:Product){
+    /**
+     * add a product in local storage and update the array from products "productsInStorage"
+     * @param product 
+     */
+    function addProductToStorage(product:Product):void{
         addProductToLocalStorage(product);
         setProductsOnStorage([...productsInStorage,product]);
     }
 
-    function removeProductToStorage(product:Product){
-        removeProductOnLocalStorage(product);
-        setProductsOnStorage(productsInStorage.filter((obj:Product)=> obj !== product));
-    }
     /**
-     * 
-     * @returns obtains products from storage through an array of id
+     * remove a product in local storage and update the array from products "productsInStorage"
+     * @param product 
+     */
+    function removeProductToStorage(product:Product):void{
+        removeProductOnLocalStorage(product);
+        setProductsOnStorage(productsInStorage.filter((obj:Product)=> obj != product));
+    }
+
+    /**
+     * @param Product[] from local storage
      */
     function getProductsFromLocalStorage():Product[]{
         let products = localStorage.getItem("products");
@@ -35,31 +49,43 @@ export default function TrolleyHook(){
         return JSON.parse(products)
     }
 
+    /**
+     * 
+     * @param products[] are added in local storage 
+     */
+    function setProductsOnLocalStorage(products:Product[]):void{
+        localStorage.setItem("products",JSON.stringify(products));
+    }
+
+    /**
+     * 
+     * @param product is added in local storage 
+     */
     function addProductToLocalStorage(product:Product):void{
         let products = localStorage.getItem("products");
 
         if(products == null){
-            localStorage.setItem("products",JSON.stringify([product]))
+            setProductsOnLocalStorage([])
         }else{            
             let storage = getProductsFromLocalStorage();
             storage.push(product);
-            localStorage.setItem("products",JSON.stringify(storage))
+            setProductsOnLocalStorage(storage);
         }
     }
 
+
+    /**
+     * 
+     * @param product is remove from local storage 
+     */
     function removeProductOnLocalStorage(product:Product):void{
-        let products = localStorage.getItem("products");
-
-        if(products !== null){
-            let storage = getProductsFromLocalStorage();
-            localStorage.setItem("products",JSON.stringify(storage.filter((obj:Product)=> obj !== product)))
-        }
-
+        setProductsOnLocalStorage(productsInStorage.filter((obj:Product)=> obj != product))
     }
 
-
-
-
+    /**
+     * clean the local storage
+     * 
+     */
     function cleanStorage():void{
         localStorage.removeItem('products');
     }

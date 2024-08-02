@@ -9,6 +9,7 @@ import { BrowserRouter } from "react-router-dom";
 import PageLoader from "./components/pageLoader/index.tsx";
 import Home from "./pages/home/index.tsx";
 import { TrolleyContextProvider } from "./contexts/TrolleyContext/index.tsx";
+import { TrolleyDrawer } from "./components/trolley/trolleyDrawer/index.tsx";
 
 export function App(){
     return(
@@ -22,6 +23,7 @@ export function App(){
       <body>
           
         <TrolleyContextProvider>
+          <TrolleyDrawer />
           <NavBar/>
           <PageLoader/>
           <div className="main">
