@@ -11,7 +11,8 @@
     box-shadow: -4px 2px 4px rgba(0, 0, 0, 0.1);
     display: flex;
     flex-flow: column nowrap;
-    
+    transform: translateX(0);
+    transition: all 0.3s;
     .TrolleyDrawer__products{
         height: 80%;
         width: 100%;
@@ -37,3 +38,48 @@
 
 
 
+.TrolleyDrawer.hidde__Drawer{
+    transform: translateX(100%);
+}
+@media(max-width:1600px){
+    .TrolleyDrawer{
+        width: 30dvw;
+    }
+
+}
+
+@media(max-width:1200px){
+    .TrolleyDrawer{
+        width: 40dvw;
+    }
+
+}
+
+@media(max-width:800px){
+    .TrolleyDrawer{
+        width: 55dvw;
+    }
+
+}
+
+@media(max-width:600px){
+    .TrolleyDrawer{
+        width: 70dvw;
+    }
+
+}
+
+
+@media(max-width:500px){
+    .TrolleyDrawer{
+        width: 75dvw;
+    }
+
+}
+
+@media(max-width:350px){
+    .TrolleyDrawer{
+        width: 85dvw;
+    }
+
+}

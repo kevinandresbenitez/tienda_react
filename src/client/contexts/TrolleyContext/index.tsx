@@ -1,6 +1,7 @@
-import React from "react";
+import React, { useState } from "react";
 import TrolleyHook from "../../hooks/trolley/index.tsx"
 import { useTrolleyType } from "../../types/useTrolleyType.tsx";
+import { DrawerHook } from "../../hooks/drawer/index.tsx";
 
 const TrolleyContext = React.createContext<any>(1);
 
@@ -13,13 +14,17 @@ const TrolleyContext = React.createContext<any>(1);
 export const TrolleyContextProvider = ({children}:{children:any}) => {
 
     const { productsInStorage,addProductToTrolley,removeProductOnTrolley} = TrolleyHook();
+    const {isDrawerEnabled,enableDrawer,disableDrawer} = DrawerHook();
 
     return (
         <TrolleyContext.Provider
             value={{
                 productsInStorage,
                 addProductToTrolley,
-                removeProductOnTrolley
+                removeProductOnTrolley,
+                isDrawerEnabled,
+                enableDrawer,
+                disableDrawer
         }}
         >
             {children}

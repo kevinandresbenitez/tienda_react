@@ -12,10 +12,10 @@ import { TrolleyProduct } from "../trolleyProduct/index.tsx";
  * @returns component that allows you to view the shopping cart
  */
 export function TrolleyDrawer(){
-    const {productsInStorage}:useTrolleyType = useTrolley();
+    const {productsInStorage,isDrawerEnabled}:useTrolleyType = useTrolley();
 
     return (
-        <div className="TrolleyDrawer">
+        <div className ={`TrolleyDrawer ${!isDrawerEnabled && 'hidde__Drawer'}`} >
 
             <div className="TrolleyDrawer__products">
                 {productsInStorage.map((product:Product)=>{
