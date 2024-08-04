@@ -7,11 +7,28 @@
     text-align: center;
     border: none;
     color: #ffffff;
-    background-color:@color-black-ligth;
     cursor: pointer;
     transition: all 0.5s;
     text-decoration: none;
     display: block;
     transform: translateY(10px);
 
+    color: @color-black;
+    border: 2px solid @color-black-ligth;
+    background-color: @color-secondary;
+
+
+
+    &:hover{
+        background-color: @color-black-ligth;
+        color: #ffffff;
+    }
+
+    &:active{
+        transition: none;
+        background-color: @color-black-active;
+    }
+
+    
+    
 }

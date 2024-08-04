@@ -3,7 +3,6 @@ import './index.less';
 import { useTrolley } from "../../../contexts/TrolleyContext/index.tsx"; 
 import { Product } from "../../../models/product";
 import { useTrolleyType } from "../../../types/useTrolleyType.tsx";
-import { Link } from "react-router-dom";
 import { Button } from "../../button/index.tsx";
 import { TrolleyProduct } from "../trolleyProduct/index.tsx";
 
@@ -24,7 +23,6 @@ export function TrolleyDrawer(){
             </div>
 
             <div className="TrolleyDrawer__actions">
-                <Button onClick={()=>{}}>Ver mas Detalles</Button>
                 <Button onClick={()=>{}}>Comprar</Button>
             </div>
 
