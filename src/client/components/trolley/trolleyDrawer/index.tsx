@@ -1,8 +1,8 @@
 import React, { useEffect } from "react";
 import './index.less';
-import { useTrolley } from "../../../contexts/TrolleyContext/index.tsx"; 
+import { useTrolleyInContext, TrolleyContextProvider } from "../../../contexts/TrolleyContext/index.tsx"; 
 import { Product } from "../../../models/product";
-import { useTrolleyType } from "../../../types/useTrolleyType.tsx";
+import { useTrolleyInContextType } from "../../../types/useTrolleyType.tsx";
 import { Button } from "../../button/index.tsx";
 import { TrolleyProduct } from "../trolleyProduct/index.tsx";
 
@@ -11,7 +11,7 @@ import { TrolleyProduct } from "../trolleyProduct/index.tsx";
  * @returns component that allows you to view the shopping cart
  */
 export function TrolleyDrawer(){
-    const {productsInStorage,isDrawerEnabled}:useTrolleyType = useTrolley();
+    const {productsInStorage,isDrawerEnabled,isTrolleyEmpty}:useTrolleyInContextType = useTrolleyInContext();
 
     return (
         <div className ={`TrolleyDrawer ${!isDrawerEnabled && 'hidde__Drawer'}`} >
@@ -22,9 +22,12 @@ export function TrolleyDrawer(){
                 })}
             </div>
 
-            <div className="TrolleyDrawer__actions">
-                <Button onClick={()=>{}}>Comprar</Button>
-            </div>
+            {!isTrolleyEmpty() && (
+                <div className="TrolleyDrawer__actions">
+                    <Button onClick={()=>{}}>Comprar</Button>
+                </div>
+            )}
+            
 
         </div>
     )

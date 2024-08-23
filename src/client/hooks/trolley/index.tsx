@@ -8,7 +8,8 @@ import { Product } from "../../models/product/index.tsx";
  * @returns {{
  *   productsInStorage: Product[],         
  *   addProductToTrolley: Function,        
- *   removeProductOnTrolley: Function      
+ *   removeProductOnTrolley: Function,
+ *   trolleyIsEmpty:Function
  * }}
  */
 export default function TrolleyHook(){
@@ -26,6 +27,13 @@ export default function TrolleyHook(){
     function addProductToStorage(product:Product):void{
         addProductToLocalStorage(product);
         setProductsOnStorage([...productsInStorage,product]);
+    }
+
+    /**
+     * return boolean
+     */
+    function isTrolleyEmpty():boolean{
+        return (productsInStorage.length == 0 )
     }
 
     /**
@@ -91,7 +99,7 @@ export default function TrolleyHook(){
     }
 
 
-    return {productsInStorage,addProductToTrolley:addProductToStorage,removeProductOnTrolley:removeProductToStorage}
+    return {productsInStorage,addProductToTrolley:addProductToStorage,removeProductOnTrolley:removeProductToStorage,isTrolleyEmpty}
 
 
 

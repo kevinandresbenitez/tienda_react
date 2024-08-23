@@ -1,8 +1,8 @@
 import React from "react";
 import "./index.less"
 import { faCartShopping, faUser } from "@fortawesome/free-solid-svg-icons";
-import { useTrolley } from "../../../contexts/TrolleyContext/index.tsx";
-import { useTrolleyType } from "../../../types/useTrolleyType.tsx";
+import { useTrolleyInContext } from "../../../contexts/TrolleyContext/index.tsx";
+import { useTrolleyInContextType } from "../../../types/useTrolleyType.tsx";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 
 
@@ -11,7 +11,7 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
  * @returns A component with acces to the trolley
  */
 export function TrolleyButton(){
-    const {productsInStorage,isDrawerEnabled,enableDrawer,disableDrawer}:useTrolleyType = useTrolley();
+    const {productsInStorage,isDrawerEnabled,enableDrawer,disableDrawer}:useTrolleyInContextType = useTrolleyInContext();
 
 
     return(
