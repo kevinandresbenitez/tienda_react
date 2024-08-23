@@ -65,15 +65,28 @@ export default function Modal({children:product,disableModal}:{children:Product,
                             <strong>Stock Disponible</strong>
                             <p>{productCopy.getStock()}</p>
                         </div>        
-
+                        
+                        {indexVersionSelected != null && (
+                        <>
                         <div className="modal__content_section_stock">
                             <strong>Cantidad</strong>
                             <input type="number" defaultValue={1} ref={inputStock} min="1" max={productCopy.getStock()}/>
                         </div>                   
 
                         <div className="modal__content_section_buttons">
-                            <Button onClick={()=>{addProductToTrolley(productCopy)}}>Agregar al carrito</Button>                    
+
+                                <Button onClick={()=>{
+                                    let productToAdd = Product.copy(productCopy);
+                                    if(inputStock.current?.value){
+                                        productToAdd.versions[0].stock =  parseInt(inputStock.current?.value);
+                                    }
+                                    addProductToTrolley(productToAdd)}
+                                }>Agregar al carrito</Button>   
+
+                 
                         </div> 
+                        </>
+                        )}
                     </div>
 
                     

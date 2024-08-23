@@ -84,7 +84,7 @@ export class Product{
         copy.imgTexture = product.imgTexture;
         copy.versions = [];
         product.versions.forEach((subProduct)=>{
-            copy.versions.push(subProduct);
+            copy.versions.push(SubProducts.copy(subProduct));
         })
         return copy;
     }
@@ -96,4 +96,16 @@ class SubProducts{
     color:RGBColor;
     stock:number;
     img:string;
+
+    static copy(subProduct:SubProducts):SubProducts{
+        const copy = new SubProducts();
+        copy.id = subProduct.id;
+        copy.nameColor = subProduct.nameColor;
+        copy.color = subProduct.color;
+        copy.stock = subProduct.stock;
+        copy.img = subProduct.img;
+
+        return copy
+
+    }
 }

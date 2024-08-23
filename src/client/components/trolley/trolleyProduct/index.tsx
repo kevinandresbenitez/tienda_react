@@ -15,8 +15,10 @@ export function TrolleyProduct({children}:{children:Product}){
     
     return (
         <div className="TrolleyProduct">
-            <p>{children.name}</p>
-            <p>{children.id}</p>
+            <p><strong>Nombre: </strong>{children.name}</p>
+            <p><strong>Sku: </strong>{children.id}</p>
+            <p><strong>Color de version: </strong>{children.versions[0].nameColor}</p>
+            <p><strong>Cantidad: </strong>{children.getStock()}</p>
             <button className="TrolleyProduct__button__remove" onClick={()=>{removeProductOnTrolley(children)}}><FontAwesomeIcon icon={faTrash} /></button>
         </div>
     )
