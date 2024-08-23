@@ -54,7 +54,10 @@ export default function TrolleyHook(){
         if(products == null){
             return [];
         }
-        return JSON.parse(products)
+        // Parce to Products
+        let productsFromStorage = JSON.parse(products).map((product)=>{return Product.copy(product)})
+
+        return productsFromStorage
     }
 
     /**
