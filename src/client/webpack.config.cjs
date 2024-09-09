@@ -19,7 +19,7 @@ module.exports = {
 
   mode:"production",
   output: {
-    path: path.resolve(__dirname,'public','dist'),
+    path: path.join(process.cwd(), 'dist', 'client'),
     filename: '[name].bundle.js',
   },
 

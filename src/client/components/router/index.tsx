@@ -30,6 +30,7 @@ export default function Router(){
                     <Route path="/about" element={<About/>} />
                     <Route path="/faq" element={<Faq/>} />
                     <Route path="/contact" element={<Contact/>} />
+                    <Route path="*" element={<h1>No se encontro la pagina</h1>}  />
                 </Routes>   
             </Suspense>
         </TransitionGroup>
@@ -41,6 +42,7 @@ export default function Router(){
                 <Route path="/about" element={<About/>} />
                 <Route path="/faq" element={<Faq/>} />
                 <Route path="/contact" element={<Contact/>} />
+                <Route path="*" element={<h1>No se encontro la pagina</h1>}  />
             </Routes>   
         </Suspense>
 

@@ -10,7 +10,7 @@ module.exports = {
   },
   output: {
     filename: "index.cjs",
-    path: path.resolve(__dirname, "public","dist"), // Output directory
+    path: path.join(process.cwd(), 'dist', 'server'),
     libraryTarget: 'commonjs'
   },
 

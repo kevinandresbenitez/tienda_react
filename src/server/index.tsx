@@ -13,7 +13,7 @@ const app:express.Application = express();
 const PORT = process.env.PORT || 8080;
 
 //Configurando express
-app.use(express.static(path.join(process.cwd(), 'src/client/public')));
+app.use(express.static(path.join(process.cwd(), 'dist/client')));
 app.use(favicon(path.join(process.cwd(),'src/server/public/favicon.ico')) as RequestHandler);
 
 app.get("/*",async (req:any,res:any)=>{
@@ -23,7 +23,7 @@ app.get("/*",async (req:any,res:any)=>{
             <App />
         </StaticRouter>
       ,{
-        bootstrapScripts:["./dist/shared.bundle.js","./dist/runtime.bundle.js","./dist/main.bundle.js"],
+        bootstrapScripts:["/shared.bundle.js","/runtime.bundle.js","/main.bundle.js"],
         onShellReady(){
           res.setHeader("content-type","text/html");
           pipe(res)

@@ -1,3 +1,2 @@
 node_modules/
-src/server/public/dist/
-src/client/public/dist/
+dist/

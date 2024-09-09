@@ -39,13 +39,11 @@
   },
   "scripts": {
     "start": "webpack --config ./src/client/webpack.config.cjs & webpack --config ./src/server/webpack.config.cjs & node ./src/server/public/dist/index.cjs",
-    "dev": "npm-run-all clean:all --parallel dev:client dev:server dev:nodemon",
+    "dev": "npm-run-all clean --parallel dev:client dev:server dev:nodemon",
     "dev:client": "webpack --config ./src/client/webpack.config.cjs --watch",
     "dev:server": "webpack --config ./src/server/webpack.config.cjs --watch",
-    "dev:nodemon": "wait-on ./src/server/public/dist/index.cjs && nodemon ./src/server/public/dist/index.cjs",
-    "clean:all":" npm-run-all clean:server  clean:client",
-    "clean:server":"rimraf  ./src/server/public/dist/",
-    "clean:client":"rimraf  ./src/client/public/dist/"
+    "dev:nodemon": "wait-on ./dist/server/index.cjs && nodemon ./dist/server/index.cjs",
+    "clean":"rimraf  ./dist"
 
   }
 }
