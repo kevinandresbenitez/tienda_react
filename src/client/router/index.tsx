@@ -4,10 +4,10 @@ import React, { Suspense,lazy }  from "react";
 import { useState } from "react";
 import { useEffect } from "react";
 
-const Home = lazy(()=>{return import('../../pages/home/index.tsx')});
-const About = lazy(()=>{return import('../../pages/about/index.tsx')});
-const Faq = lazy(()=>{return import('../../pages/faq/index.tsx')});
-const Contact = lazy(()=>{return import('../../pages/contact/index.tsx')});
+const Home = lazy(()=>{return import('../pages/home/index.tsx')});
+const About = lazy(()=>{return import('../pages/about/index.tsx')});
+const Faq = lazy(()=>{return import('../pages/faq/index.tsx')});
+const Contact = lazy(()=>{return import('../pages/contact/index.tsx')});
 
 export default function Router(){
     const location = useLocation();
