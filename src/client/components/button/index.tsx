@@ -9,7 +9,7 @@ import './index.less'
  * @param {React.ReactNode} props.children - Contenido que se mostrará dentro del botón.
  * @returns {JSX.Element} - Un elemento de botón con las propiedades especificadas y la clase css "button"
  */
-export function Button({children,onClick}:{children:React.ReactNode,onClick:Function}){
+export default function Button({children,onClick}:{children:React.ReactNode,onClick:Function}){
     return(
         <button  className='button' onClick={()=>{onClick()}}>{children}</button>
     )

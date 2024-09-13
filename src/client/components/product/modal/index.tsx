@@ -4,9 +4,9 @@ import { Product} from "../../../models/product/index.tsx";
 import './index.less';
 import Carrusel from "../../carrusel/index.tsx";
 import ColorPickerButtonGroup from "../../colorPickerButtonGroup/index.tsx";
-import { Button } from "../../button/index.tsx";
-import { useTrolleyInContext} from "../../../contexts/TrolleyContext/index.tsx";
-import { useTrolleyInContextType } from "../../../types/useTrolleyType.tsx";
+import  Button  from "../../button/index.tsx";
+import { useTrolley} from "../../../contexts/trolley/useTrolley.tsx";
+import { TrolleyContextType } from "../../../types/trolley/trolleyContext.tsx";
 
 export default function Modal({children:product,disableModal}:{children:Product,disableModal:Function}){
     // Html elements
@@ -20,7 +20,7 @@ export default function Modal({children:product,disableModal}:{children:Product,
 
 
     // Hooks
-    const {addProductToTrolley}:useTrolleyInContextType = useTrolleyInContext();
+    const {addProductToTrolley}:TrolleyContextType = useTrolley();
 
     // Filter version if the index color is selected
     if(indexVersionSelected != null ){
