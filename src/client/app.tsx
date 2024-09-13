@@ -4,11 +4,11 @@ import { hydrateRoot } from 'react-dom/client';
 
 //Importaciones de css y less
 import './app.less';
-import  Router  from "./components/router/index.tsx";
+import  Router  from "./router/index.tsx";
 import { BrowserRouter } from "react-router-dom";
 import PageLoader from "./components/pageLoader/index.tsx";
-import Home from "./pages/home/index.tsx";
-import { TrolleyContextProvider } from "./contexts/TrolleyContext/index.tsx";
+
+import { TrolleyProvider } from "./contexts/trolley/index.tsx";
 import { TrolleyDrawer } from "./components/trolley/trolleyDrawer/index.tsx";
 
 export function App(){
@@ -22,14 +22,14 @@ export function App(){
       </head>
       <body>
           
-        <TrolleyContextProvider>
+        <TrolleyProvider>
           <TrolleyDrawer />
           <NavBar/>
           <PageLoader/>
           <div className="main">
             <Router />
           </div>
-        </TrolleyContextProvider>
+        </TrolleyProvider>
 
         
       </body>
