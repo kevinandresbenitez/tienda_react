@@ -54,7 +54,15 @@ module.exports = {
         use: [
           MiniCssExtractPlugin.loader,
           "css-loader",
-          "less-loader",
+          {
+            loader: 'less-loader',
+            options: {
+              lessOptions: {
+                javascriptEnabled: true,
+              },
+              additionalData: `@import "${path.resolve(__dirname, 'vars.less')}";`,
+            },
+          },
         ],
       }
     ],

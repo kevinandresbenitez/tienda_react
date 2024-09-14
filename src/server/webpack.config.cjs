@@ -1,4 +1,5 @@
 const path = require("path");
+const MiniCssExtractPlugin = require('mini-css-extract-plugin');
 
 module.exports = {
   target: "node",
@@ -33,14 +34,9 @@ module.exports = {
             ]
           }
         }
-      },
-      {
-        test: /\.less$/i,
-        use: [
-          "style-loader",
-          "css-loader",
-          "less-loader",
-        ],
+      },{
+        test: /\.(css|less)$/i,
+        use: 'null-loader',
       }
     ],
   },
