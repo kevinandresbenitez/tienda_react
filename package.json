@@ -43,7 +43,6 @@
     "dev:client": "webpack --config ./src/client/webpack.config.cjs --watch",
     "dev:server": "webpack --config ./src/server/webpack.config.cjs --watch",
     "dev:nodemon": "wait-on ./dist/server/index.cjs && nodemon ./dist/server/index.cjs",
-    "clean":"rimraf  ./dist"
-
+    "clean": "rimraf  ./dist"
   }
 }
