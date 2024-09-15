@@ -80,13 +80,17 @@
                 flex-flow: row wrap;
                 gap: 20px;
                 width: 100%;
-
+                transition: all 0.3s;
+                transform: translateY(5px);
+                
                     &.hidde{
                         opacity: 0;
+                        transform: translateY(5px);
                     }
 
                     &.show{
                         opacity: 1;
+                        transform: translateY(0);
                     }
 
                 .modal__content__actions__stock{
