@@ -63,36 +63,38 @@ export default function Modal({children:product,disableModal}:{children:Product,
                     <Carrusel imgs={productCopy.getImgs()} />
                 </div>
                 <div className="modal__content">
-                    <p className="modal__content_name">{product.name}</p>
-                    <p className="modal__content_price">${product.price}</p>   
-                    <p className="modal__content_sku">SKU: {product.id}</p> 
 
-                    <div className="modal__content_section">
-                        <div className="modal__content_section_color">
+                    <div className="modal__content__info">
+                        <p className="modal__content_name">{product.name}</p>
+                        <p className="modal__content_price">${product.price}</p>   
+                        <p className="modal__content_sku">SKU: {product.id}</p> 
+                    </div>
+
+
+                    <div className="modal__content__actions">
+                        <div className="modal__content__actions__colors">
                             <strong>Color</strong>
                             <ColorPickerButtonGroup onColorSelect={setIndexVersionSelected} colors={product.getColors()} />
                         </div>          
-                        <div className="modal__content_section_stock">
+                        <div className="modal__content__actions__stock">
                             <strong>Stock Disponible</strong>
                             <p>{productCopy.getStock()}</p>
                         </div>        
                         
-                        {indexVersionSelected != null && (
-                        <>
-                        <div className="modal__content_section_stock">
-                            <strong>Cantidad</strong>
-                            <input type="number" defaultValue={1} ref={inputStock} min="1" max={productCopy.getStock()}/>
-                        </div>                   
+                        <div className={'modal__content__actions__fade ' + (indexVersionSelected == null ? 'hidde':'show')}>
 
-                        <div className="modal__content_section_buttons">
+                            <div className='modal__content__actions__stock'>
+                                <strong>Cantidad</strong>
+                                <input type="number" defaultValue={1} ref={inputStock} min="1" max={productCopy.getStock()}/>
+                            </div>                   
 
-                                <Button onClick={handleAddProductToTrolley} >Agregar al carrito</Button>
-                                <Button style="filled" onClick={handleBuyProduct} >Comprar</Button>      
-
-                 
-                        </div> 
-                        </>
-                        )}
+                            <div className="modal__content__actions__buttons">
+                                    <Button onClick={handleAddProductToTrolley} >Agregar al carrito</Button>
+                                    <Button style="filled" onClick={handleBuyProduct} >Comprar</Button>                       
+                            </div> 
+  
+                        </div>
+                      
                     </div>
 
                     
