@@ -6,7 +6,7 @@ import Carrusel from "../../carrusel/index.tsx";
 import ColorPickerButtonGroup from "../../colorPickerButtonGroup/index.tsx";
 import  Button  from "../../button/index.tsx";
 import { useTrolley} from "../../../contexts/trolley/useTrolley.tsx";
-import { TrolleyContextType } from "../../../types/trolley/trolleyContext.tsx";
+import { useTrolleyType } from "../../../types/trolley/useTrolleyType.tsx";
 
 export default function Modal({children:product,disableModal}:{children:Product,disableModal:Function}){
     // Html elements
@@ -20,7 +20,7 @@ export default function Modal({children:product,disableModal}:{children:Product,
 
 
     // Hooks
-    const {addProductToTrolley}:TrolleyContextType = useTrolley();
+    const {addProductToTrolley}:useTrolleyType = useTrolley();
 
     // Filter version if the index color is selected
     if(indexVersionSelected != null ){
@@ -37,13 +37,24 @@ export default function Modal({children:product,disableModal}:{children:Product,
             })
         }
     };
-
+    function handleBuyProduct(){
+        
+    }
     // On change stock 
     useEffect(()=>{
         if(inputStock.current){
             inputStock.current.value = "1";
         }
     },[indexVersionSelected])
+
+    function handleAddProductToTrolley(){
+        let productToAdd = Product.copy(productCopy);
+        if(inputStock.current?.value){
+            productToAdd.versions[0].stock =  parseInt(inputStock.current?.value);
+        }
+        addProductToTrolley(productToAdd)
+    }
+
 
     return(
         <div ref={modalOverlay} className="modal-overlay" onClick={()=>{hiddeModal()}}>
@@ -75,13 +86,8 @@ export default function Modal({children:product,disableModal}:{children:Product,
 
                         <div className="modal__content_section_buttons">
 
-                                <Button onClick={()=>{
-                                    let productToAdd = Product.copy(productCopy);
-                                    if(inputStock.current?.value){
-                                        productToAdd.versions[0].stock =  parseInt(inputStock.current?.value);
-                                    }
-                                    addProductToTrolley(productToAdd)}
-                                }>Agregar al carrito</Button>   
+                                <Button onClick={handleAddProductToTrolley} >Agregar al carrito</Button>
+                                <Button style="filled" onClick={handleBuyProduct} >Comprar</Button>      
 
                  
                         </div> 

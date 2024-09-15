@@ -4,29 +4,42 @@
     padding: 7px 0px;
     text-align: center;
     border: none;
-    color: #ffffff;
     cursor: pointer;
     transition: all 0.5s;
     text-decoration: none;
     display: block;
-    transform: translateY(10px);
-
-    color: @color-black;
-    border: 2px solid @color-black-ligth;
-    background-color: @color-secondary;
+    // transform: translateY(10px);
 
 
 
-    &:hover{
+    &.default{
+        color: @color-black;
+        border: 2px solid @color-black-ligth;
+        background-color: @color-secondary;
+    
+        &:hover{
+            background-color: @color-black-ligth;
+            color: @color-primary;
+        }
+    
+        &:active{
+            transition: none;
+            background-color: @color-black-active;
+        }
+    }
+    
+
+    &.filled{
         background-color: @color-black-ligth;
-        color: #ffffff;
-    }
+        color: @color-primary;
 
-    &:active{
-        transition: none;
-        background-color: @color-black-active;
-    }
+        &:hover{
+            background-color: @color-black-hover;
+            color: @color-primary;
+        }
 
-    
-    
+        &:active{
+            background-color: @color-black-active;
+        }
+    }
 }
