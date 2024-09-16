@@ -27,9 +27,7 @@ export function App(){
           <NavBar/>
           <PageLoader/>
           <div className="main">
-          
             <Router />
-          
           </div>
         </TrolleyProvider>
       </NotificationProvider>

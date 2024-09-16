@@ -40,7 +40,7 @@ export const NotificationProvider = ({children}:{children:any}) => {
     return (
         <notificationContext.Provider value={{notifications,addNotification,deleteNotification}}>
             {children}
-            <NotificationDisplay notifications={notifications} />
+            <NotificationDisplay notifications={notifications} deleteNotification={deleteNotification} />
         </notificationContext.Provider>
     );
 };

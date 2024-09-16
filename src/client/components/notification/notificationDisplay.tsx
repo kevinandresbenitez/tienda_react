@@ -5,9 +5,8 @@ import Notification from './notification.tsx';
 import './notificationDisplay.less'
 
 
-export function NotificationDisplay({notifications}:{notifications:notificationType[]}){
+export function NotificationDisplay({notifications,deleteNotification}:{notifications:notificationType[],deleteNotification:(notification:notificationType)=>void}){
 
-    const {deleteNotification}  = useNotification();
 
     function closeNotificationHandle(notification:notificationType){
         deleteNotification(notification)
