@@ -1,7 +1,7 @@
 import { TrolleyContext } from "./trolleyContext.tsx";
 import React from "react";
 import {TrolleyHook,DrawerHook} from "./hooks/index.tsx";
-
+import {TrolleyDrawer} from '../../components/trolley/trolleyDrawer/index.tsx'
 
 
 /**
@@ -24,6 +24,7 @@ import {TrolleyHook,DrawerHook} from "./hooks/index.tsx";
  * function App() {
  *   return (
  *     <TrolleyProvider>
+ *       <TrolleyDrawer />
  *       <YourComponent />
  *     </TrolleyProvider>
  *   );
@@ -50,6 +51,7 @@ export const TrolleyProvider = ({children}:{children:any}) => {
                 ...DrawerHook()
         }}
         >
+        <TrolleyDrawer />
             {children}
         </TrolleyContext.Provider>
     );

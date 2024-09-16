@@ -1,0 +1,57 @@
+.notification{
+    border-radius: 7px;
+    width: 100%;
+    padding: 2px 4px;
+    border: 1px solid rgba(0, 0, 0, 0.125);
+    border-radius: 0.375rem; 
+    box-shadow: 0 0.125rem 0.25rem rgba(0, 0, 0, 0.2);
+    position: relative;
+    background-color: @color-primary;
+
+    animation: showNotification 1s;
+
+    p{
+        margin: 10px 12px;
+        .font-face-secondary
+    }
+
+    svg{
+        width: 20px;
+        height: 20px;
+        position: absolute;
+        right: 10px;
+        top: 50%;
+        transform: translateY(-50%);
+    }
+
+    &.hiddeNotification{
+        animation: hiddeNotification 1s;
+        opacity: 0;
+        transform: translateX(10px);
+    }
+}
+
+@keyframes showNotification{
+    from{
+        opacity: 0;
+        transform: translateX(10px);
+    }
+
+    to{
+        transform: translateX(0px);
+        opacity: 1;
+    }
+
+}
+
+@keyframes hiddeNotification{
+    from{
+        transform: translateX(0px);
+        opacity: 1;
+    }
+    to{
+        opacity: 0;
+        transform: translateX(10px);
+    }
+
+}

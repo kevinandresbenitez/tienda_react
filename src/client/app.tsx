@@ -9,7 +9,7 @@ import { BrowserRouter } from "react-router-dom";
 import PageLoader from "./components/pageLoader/index.tsx";
 
 import { TrolleyProvider } from "./contexts/trolley/index.tsx";
-import { TrolleyDrawer } from "./components/trolley/trolleyDrawer/index.tsx";
+import {NotificationProvider} from "./contexts/notification/index.tsx"
 
 export function App(){
     return(
@@ -21,16 +21,18 @@ export function App(){
         <link rel="stylesheet" href="/styles.css" />
       </head>
       <body>
-          
-        <TrolleyProvider>
-          <TrolleyDrawer />
+
+      <NotificationProvider>
+        <TrolleyProvider>  
           <NavBar/>
           <PageLoader/>
           <div className="main">
+          
             <Router />
+          
           </div>
         </TrolleyProvider>
-
+      </NotificationProvider>
         
       </body>
     </html>

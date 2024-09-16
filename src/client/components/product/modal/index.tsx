@@ -7,6 +7,8 @@ import ColorPickerButtonGroup from "../../colorPickerButtonGroup/index.tsx";
 import  Button  from "../../button/index.tsx";
 import { useTrolley} from "../../../contexts/trolley/useTrolley.tsx";
 import { useTrolleyType } from "../../../types/trolley/useTrolleyType.tsx";
+import { useNotificationType } from "../../../types/notification/useNotificationType.tsx";
+import {useNotification} from "../../../contexts/notification/index.tsx"
 
 export default function Modal({children:product,disableModal}:{children:Product,disableModal:Function}){
     // Html elements
@@ -21,6 +23,7 @@ export default function Modal({children:product,disableModal}:{children:Product,
 
     // Hooks
     const {addProductToTrolley}:useTrolleyType = useTrolley();
+    const {addNotification}:useNotificationType = useNotification();
 
     // Filter version if the index color is selected
     if(indexVersionSelected != null ){
@@ -40,6 +43,15 @@ export default function Modal({children:product,disableModal}:{children:Product,
     function handleBuyProduct(){
         
     }
+    function handleAddProductToTrolley(){
+        let productToAdd = Product.copy(productCopy);
+        if(inputStock.current?.value){
+            productToAdd.versions[0].stock =  parseInt(inputStock.current?.value);
+        }
+        addProductToTrolley(productToAdd)
+        addNotification({content:'Se ha agregado el producto al carrito',duration:2000,variant:'success'})
+    }
+    
     // On change stock 
     useEffect(()=>{
         if(inputStock.current){
@@ -47,13 +59,7 @@ export default function Modal({children:product,disableModal}:{children:Product,
         }
     },[indexVersionSelected])
 
-    function handleAddProductToTrolley(){
-        let productToAdd = Product.copy(productCopy);
-        if(inputStock.current?.value){
-            productToAdd.versions[0].stock =  parseInt(inputStock.current?.value);
-        }
-        addProductToTrolley(productToAdd)
-    }
+
 
 
     return(

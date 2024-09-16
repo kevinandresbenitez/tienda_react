@@ -5,7 +5,8 @@ import { useTrolleyType} from "../../../types/trolley/index.tsx";
 import { Product } from "../../../models/product";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faTrash } from "@fortawesome/free-solid-svg-icons/faTrash";
-
+import {useNotification} from "../../../contexts/notification/index.tsx"
+import {useNotificationType} from "../../../types/notification/index.tsx"
 
 
 /**
@@ -69,14 +70,21 @@ import { faTrash } from "@fortawesome/free-solid-svg-icons/faTrash";
  */
 export function TrolleyProduct({children}:{children:Product}){
     const {removeProductOnTrolley}:useTrolleyType = useTrolley();
+    const {addNotification}:useNotificationType = useNotification();
     
+
+    function removeProductHandle(product:Product){
+        removeProductOnTrolley(children)
+        addNotification({content:"Se ha eliminado el producto del carrito",duration:2000,variant:'trash'})
+    }
+
     return (
         <div className="TrolleyProduct">
             <p><strong>Nombre: </strong>{children.name}</p>
             <p><strong>Sku: </strong>{children.id}</p>
             <p><strong>Color de version: </strong>{children.versions[0].nameColor}</p>
             <p><strong>Cantidad: </strong>{children.getStock()}</p>
-            <button className="TrolleyProduct__button__remove" onClick={()=>{removeProductOnTrolley(children)}}><FontAwesomeIcon icon={faTrash} /></button>
+            <button className="TrolleyProduct__button__remove" onClick={()=>{removeProductHandle(children)}}><FontAwesomeIcon icon={faTrash} /></button>
         </div>
     )
 }
