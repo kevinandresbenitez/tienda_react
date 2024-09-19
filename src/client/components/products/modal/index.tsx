@@ -3,6 +3,7 @@ import PropTypes from 'prop-types';
 import { Product} from "../../../models/product/index.tsx";
 import './index.less';
 import Carrusel from "../../common/carrusel/index.tsx";
+import {Modal as ModalCommon} from "../../common/modal/index.tsx";
 import ColorPickerButtonGroup from "../../common/colorPickerButtonGroup/index.tsx";
 import  Button  from "../../common/button/index.tsx";
 import { useCart} from "../../../contexts/cart/useCart.tsx";
@@ -10,10 +11,10 @@ import { useCartType } from "../../../types/cart/useCartType.tsx";
 import { useNotificationType } from "../../../types/notification/useNotificationType.tsx";
 import {useNotification} from "../../../contexts/notification/index.tsx"
 
-export default function Modal({children:product,disableModal}:{children:Product,disableModal:Function}){
-    // Html elements
-    const modalOverlay = useRef<HTMLDivElement>(null);
-    const modal = useRef<HTMLDivElement>(null);
+
+
+export default function Modal({children:product,disableModal}:{children:Product,disableModal: () => void }){
+
     const inputStock = useRef<HTMLInputElement>(null);
 
     // Info elements
@@ -27,19 +28,14 @@ export default function Modal({children:product,disableModal}:{children:Product,
 
     // Filter version if the index color is selected
     if(indexVersionSelected != null ){
-        productCopy.versions = [productCopy.versions[indexVersionSelected]];            
+        productCopy.versions = [productCopy.versions[indexVersionSelected]];
+
+        //Restore stock
+        if(inputStock.current){
+            inputStock.current.value = "1";
+        }     
     }
 
-    function hiddeModal(){
-        if(modalOverlay.current && modal.current){
-            modalOverlay.current.classList.add("hidde");
-            modal.current.classList.add("hidde");
-            
-            modal.current.addEventListener("animationend",()=>{
-                disableModal();
-            })
-        }
-    };
     function handleBuyProduct(){
         
     }
@@ -51,20 +47,13 @@ export default function Modal({children:product,disableModal}:{children:Product,
         addProductToCart(productToAdd)
         addNotification({content:'Se ha agregado el producto al carrito',duration:2000,variant:'success'})
     }
-    
-    // On change stock 
-    useEffect(()=>{
-        if(inputStock.current){
-            inputStock.current.value = "1";
-        }
-    },[indexVersionSelected])
 
 
 
 
     return(
-        <div ref={modalOverlay} className="modal-overlay" onClick={()=>{hiddeModal()}}>
-            <div ref={modal} className="modal" onClick={(event)=>{event.stopPropagation()}}>
+        <ModalCommon disableModal={disableModal}>
+            
                 <div className="modal__imgs">
                     <Carrusel imgs={productCopy.getImgs()} />
                 </div>
@@ -81,7 +70,8 @@ export default function Modal({children:product,disableModal}:{children:Product,
                         <div className="modal__content__actions__colors">
                             <strong>Color</strong>
                             <ColorPickerButtonGroup onColorSelect={setIndexVersionSelected} colors={product.getColors()} />
-                        </div>          
+                        </div> 
+
                         <div className="modal__content__actions__stock">
                             <strong>Stock Disponible</strong>
                             <p>{productCopy.getStock()}</p>
@@ -103,15 +93,7 @@ export default function Modal({children:product,disableModal}:{children:Product,
                       
                     </div>
 
-                    
-
-      
                 </div>
-            </div>
-        </div>
+        </ModalCommon>
     )
 }
-
-Modal.propTypes = {
-    disableModal:PropTypes.func.isRequired
-};

@@ -1,0 +1,88 @@
+.modal-overlay {
+    width: 100vw;
+    height: 100vh;
+    left: 0;
+    top: 0;
+    position: fixed;
+    background-color: rgba(0, 0, 0, 0.26);
+    z-index: 100;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    animation: showOverlay 0.3s;
+    .modal{
+        width: 70%;
+        max-width: 950px;
+        height: 85%;
+        max-height: 600px;
+        animation: showModal 0.5s;
+        background-color: #ffffff;
+        display: flex;
+        flex-flow: row wrap;
+    }
+}
+
+.modal-overlay.hide{
+
+    .modal.hide{
+        animation: hideModal 0.5s;
+        transform: translateX(20px);
+        opacity: 0;
+    }
+}
+
+
+.modal-overlay.hide{
+    animation: hideOverlay 0.3s;
+    background-color: rgba(0, 0, 0, 0);
+}
+
+@keyframes showOverlay{
+    from{
+        background-color: rgba(0, 0, 0, 0);
+    }
+
+    to{
+        background-color: rgba(0, 0, 0, 0.26);
+    }
+}
+@keyframes showModal{
+    from{
+        transform: translateX(20px);
+        opacity: 0;
+    }
+    to{
+        transform: translateX(0px);
+        opacity: 1;
+    }
+}
+@keyframes hideOverlay{
+    from{
+        background-color: rgba(0, 0, 0, 0.26);
+    }
+
+    to{
+        background-color: rgba(0, 0, 0, 0);
+    }
+}
+
+@keyframes hideModal{
+    from{
+        transform: translateX(0px);
+        opacity: 1;
+    }
+    to{
+        transform: translateX(20px);
+        opacity: 0;
+    }
+}
+
+
+@media(max-width:1200px){
+    .modal-overlay {
+        .modal{
+            width: 90%;
+            height: 85%;
+        }
+    }
+}
