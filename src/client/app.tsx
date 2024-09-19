@@ -1,14 +1,14 @@
 import React, { Suspense }  from "react";
-import NavBar from "./components/navbar/index.tsx";
+import NavBar from "./components/navigation/navbar/index.tsx";
 import { hydrateRoot } from 'react-dom/client';
 
 //Importaciones de css y less
 import './app.less';
 import  Router  from "./router/index.tsx";
 import { BrowserRouter } from "react-router-dom";
-import PageLoader from "./components/pageLoader/index.tsx";
+import PageLoader from "./components/common/pageLoader/index.tsx";
 
-import { TrolleyProvider } from "./contexts/trolley/index.tsx";
+import {  CartProvider} from "./contexts/cart/index.tsx";
 import {NotificationProvider} from "./contexts/notification/index.tsx"
 
 export function App(){
@@ -23,13 +23,13 @@ export function App(){
       <body>
 
       <NotificationProvider>
-        <TrolleyProvider>  
+        <CartProvider>  
           <NavBar/>
           <PageLoader/>
           <div className="main">
             <Router />
           </div>
-        </TrolleyProvider>
+        </CartProvider>
       </NotificationProvider>
         
       </body>

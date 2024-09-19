@@ -1,6 +1,6 @@
 import React from "react";
 import {Product} from '../../models/product/index.tsx';
-import {Card} from '../../components/product/index.tsx';
+import {Card} from '../../components/products/index.tsx';
 import './index.less'
 export default function Home(){
 

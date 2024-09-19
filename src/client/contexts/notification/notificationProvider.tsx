@@ -1,7 +1,7 @@
 import React from "react";
 import {notificationContext} from './notificationContext.tsx'
 import  notificationHook from "./hooks/notificationHook.tsx"
-import { NotificationDisplay } from "../../components/notification/notificationDisplay.tsx";
+import { NotificationDisplay } from "../../components/notifications/notificationDisplay/index.tsx";
 
 
 /**
