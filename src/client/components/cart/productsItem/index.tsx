@@ -5,27 +5,29 @@ import { useCartType} from "../../../types/cart/index.tsx";
 import { Product } from "../../../models/product/index.tsx";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faTrash } from "@fortawesome/free-solid-svg-icons/faTrash";
+import { faArrowUpRightFromSquare } from "@fortawesome/free-solid-svg-icons/faArrowUpRightFromSquare";
 import {useNotification} from "../../../contexts/notification/index.tsx"
 import {useNotificationType} from "../../../types/notification/index.tsx"
+import { Link } from "react-router-dom";
 
 
 /**
- * `CartProductItem` displays the details of a product in the shopping cart (trolley) and allows the user to remove the product from the trolley.
+ * `CartProductItem` displays the details of a product in the shopping cart (cart) and allows the user to remove the product from the cart.
  * 
  * **Features:**
  * - Displays the product's name, SKU, color version, and stock quantity.
- * - Provides a button to remove the product from the trolley.
+ * - Provides a button to remove the product from the cart.
  * 
  * **Props:**
  * - `children` (Product): The `Product` object to display. It should include properties such as `name`, `id`, `versions`, and a method `getStock()` to retrieve the stock quantity.
  * 
  * **Returns:**
- * A `div` element styled as a product item in the trolley, including:
+ * A `div` element styled as a product item in the cart, including:
  * - Product name
  * - SKU (identifier)
  * - Color version
  * - Stock quantity
- * - A remove button to remove the product from the trolley
+ * - A remove button to remove the product from the cart
  * 
  * **Usage Example:**
  * ```tsx
@@ -53,20 +55,20 @@ import {useNotificationType} from "../../../types/notification/index.tsx"
  * ```
  * 
  * **Hooks Used:**
- * - `useCart`: Provides access to the trolley context, specifically the `removeProductOnTrolley` function.
+ * - `useCart`: Provides access to the cart context, specifically the `removeProductOncart` function.
  * 
  * **Context Requirement:**
- * - `CartProductItem` must be used within a `CartProvider` component or any component tree where `CartContext` is available. This ensures that `useTrolley` has access to the context required for its functionality.
+ * - `CartProductItem` must be used within a `CartProvider` component or any component tree where `CartContext` is available. This ensures that `usecart` has access to the context required for its functionality.
  * 
  * **Styling:**
  * - The component is styled using the CSS rules defined in `index.less`. It includes a class for the product details and a remove button.
  * 
  * **Notes:**
  * - Ensure that the `children` prop is a valid `Product` object. Passing incorrect or incomplete data may result in runtime errors.
- * - The `removeProductOnTrolley` function is called when the remove button is clicked, so make sure the trolley's state and context are properly managed.
+ * - The `removeProductOncart` function is called when the remove button is clicked, so make sure the cart's state and context are properly managed.
  * 
- * @param {Product} children - The `Product` object to be displayed in the trolley.
- * @returns A `div` element styled as a product item in the trolley, including product details and a remove button.
+ * @param {Product} children - The `Product` object to be displayed in the cart.
+ * @returns A `div` element styled as a product item in the cart, including product details and a remove button.
  */
 export function CartProductItem({children}:{children:Product}){
     const {removeProductOnCart}:useCartType = useCart();
@@ -79,12 +81,13 @@ export function CartProductItem({children}:{children:Product}){
     }
 
     return (
-        <div className="TrolleyProduct">
-            <p><strong>Nombre: </strong>{children.name}</p>
-            <p><strong>Sku: </strong>{children.id}</p>
-            <p><strong>Color de version: </strong>{children.versions[0].nameColor}</p>
-            <p><strong>Cantidad: </strong>{children.getStock()}</p>
-            <button className="TrolleyProduct__button__remove" onClick={()=>{removeProductHandle(children)}}><FontAwesomeIcon icon={faTrash} /></button>
+        <div className="cartProduct">
+            <strong className="cartProduct__title">{children.name}</strong>
+            <p className="cartProduct__sku">Sku: {children.id}</p>
+            <p className="cartProduct__version">Color de version: {children.versions[0].nameColor}</p>
+            <p className="cartProduct__count">Cantidad: {children.getStock()}</p>
+            <Link to={'/'} className="cartProduct__button__link" ><FontAwesomeIcon icon={faArrowUpRightFromSquare} /></Link>
+            <button className="cartProduct__button__remove" onClick={()=>{removeProductHandle(children)}}><FontAwesomeIcon icon={faTrash} /></button>
         </div>
     )
 }

@@ -37,7 +37,19 @@ module.exports = {
       },{
         test: /\.(css|less)$/i,
         use: 'null-loader',
-      }
+      },
+      {
+        test: /\.svg$/,
+        use: [
+            {
+                loader: 'file-loader',
+                options: {
+                    name: '[name].[hash].[ext]',
+                    outputPath: 'imgs/',
+                },
+            },
+        ],
+    },
     ],
   },
   

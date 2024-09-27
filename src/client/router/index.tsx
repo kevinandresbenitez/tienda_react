@@ -8,6 +8,7 @@ const Home = lazy(()=>{return import('../pages/home/index.tsx')});
 const About = lazy(()=>{return import('../pages/about/index.tsx')});
 const Faq = lazy(()=>{return import('../pages/faq/index.tsx')});
 const Contact = lazy(()=>{return import('../pages/contact/index.tsx')});
+const PageNotFound = lazy(()=>{return import('../pages/404/index.tsx')});
 
 export default function Router(){
     const location = useLocation();
@@ -30,7 +31,7 @@ export default function Router(){
                     <Route path="/about" element={<About/>} />
                     <Route path="/faq" element={<Faq/>} />
                     <Route path="/contact" element={<Contact/>} />
-                    <Route path="*" element={<h1>No se encontro la pagina</h1>}  />
+                    <Route path="*" element={<PageNotFound/>}  />
                 </Routes>   
             </Suspense>
         </TransitionGroup>
@@ -42,7 +43,7 @@ export default function Router(){
                 <Route path="/about" element={<About/>} />
                 <Route path="/faq" element={<Faq/>} />
                 <Route path="/contact" element={<Contact/>} />
-                <Route path="*" element={<h1>No se encontro la pagina</h1>}  />
+                <Route path="*" element={<PageNotFound/>}  />
             </Routes>   
         </Suspense>
 

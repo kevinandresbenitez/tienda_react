@@ -2,6 +2,7 @@ import React, { useRef } from 'react';
 import PropTypes from 'prop-types';
 
 import './index.less';
+import ButtonClose from '../../common/buttonClose/index.tsx';
 
 export function Modal({ children, disableModal }: { children: React.ReactNode; disableModal: () => void }) {
     // Html elements
@@ -23,6 +24,7 @@ export function Modal({ children, disableModal }: { children: React.ReactNode; d
         <div ref={modalOverlay} className="modal-overlay" onClick={hideModal}>
             <div ref={modal} className="modal" onClick={(event) => event.stopPropagation()}>
                 {children}
+                <ButtonClose onClick={hideModal} />
             </div>
         </div>
     );
