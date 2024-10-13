@@ -1,7 +1,7 @@
 import React, { useRef, useState } from "react";
 import PropTypes from 'prop-types';
 import './index.less';
-import RGBColor from "../../types/color.tsx";
+import RGBColor from "../../../types/color.tsx";
 
 /**
  * Component for rendering a color picker button group.
@@ -34,6 +34,6 @@ export default function ColorPickerButtonGroup({colors,onColorSelect}:
 }
 
 ColorPickerButtonGroup.propTypes = {
-    colors: PropTypes.arrayOf(PropTypes.string).isRequired,
+    colors: PropTypes.arrayOf(PropTypes.instanceOf(RGBColor)).isRequired,
     onColorSelect: PropTypes.func.isRequired,
 }
