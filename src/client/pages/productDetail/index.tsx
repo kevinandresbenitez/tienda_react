@@ -1,8 +1,8 @@
 import React from "react";
-import {Product} from '../../models/product/index.tsx';
-import {Card} from '../../components/products/index.tsx';
+import {Product} from '../../models/product/index.tsx'
 import { useParams } from 'react-router-dom';
 import './index.less'
+import { ProductContent} from "../../components/products/index.tsx";
 
 export default function ProductDetail(){
     const { id } = useParams();
@@ -26,8 +26,8 @@ export default function ProductDetail(){
 
     
     return(
-        <article>
-            {product ? "Se encontro el producto":"Mo se encontro el producto"}           
+        <article className="container__product">
+            {product ? <ProductContent versionContent="normal">{product}</ProductContent>:"Mo se encontro el producto"}           
         </article>
 )
 }
