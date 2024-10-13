@@ -69,6 +69,10 @@ export class Product{
         ]
     }
 
+    static getProductById(id:number):Product | null{
+        return this.getProducts()[0];
+    }
+
     /**
      * 
      * @param product 

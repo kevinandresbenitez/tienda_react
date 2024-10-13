@@ -70,24 +70,24 @@ import { Link } from "react-router-dom";
  * @param {Product} children - The `Product` object to be displayed in the cart.
  * @returns A `div` element styled as a product item in the cart, including product details and a remove button.
  */
-export function CartProductItem({children}:{children:Product}){
+export function CartProductItem({children:product}:{children:Product}){
     const {removeProductOnCart}:useCartType = useCart();
     const {addNotification}:useNotificationType = useNotification();
     
 
     function removeProductHandle(product:Product){
-        removeProductOnCart(children)
+        removeProductOnCart(product)
         addNotification({content:"Se ha eliminado el producto del carrito",duration:2000,variant:'trash'})
     }
 
     return (
         <div className="cartProduct">
-            <strong className="cartProduct__title">{children.name}</strong>
-            <p className="cartProduct__sku">Sku: {children.id}</p>
-            <p className="cartProduct__version">Color de version: {children.versions[0].nameColor}</p>
-            <p className="cartProduct__count">Cantidad: {children.getStock()}</p>
-            <Link to={'/'} className="cartProduct__button__link" ><FontAwesomeIcon icon={faArrowUpRightFromSquare} /></Link>
-            <button className="cartProduct__button__remove" onClick={()=>{removeProductHandle(children)}}><FontAwesomeIcon icon={faTrash} /></button>
+            <strong className="cartProduct__title">{product.name}</strong>
+            <p className="cartProduct__sku">Sku: {product.id}</p>
+            <p className="cartProduct__version">Color de version: {product.versions[0].nameColor}</p>
+            <p className="cartProduct__count">Cantidad: {product.getStock()}</p>
+            <Link to={`/product/${product.id}`} className="cartProduct__button__link" ><FontAwesomeIcon icon={faArrowUpRightFromSquare} /></Link>
+            <button className="cartProduct__button__remove" onClick={()=>{removeProductHandle(product)}}><FontAwesomeIcon icon={faTrash} /></button>
         </div>
     )
 }

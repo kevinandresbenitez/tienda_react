@@ -5,6 +5,7 @@ import { useState } from "react";
 import { useEffect } from "react";
 
 const Home = lazy(()=>{return import('../pages/home/index.tsx')});
+const ProductDetail = lazy(()=>{return import('../pages/productDetail/index.tsx')});
 const About = lazy(()=>{return import('../pages/about/index.tsx')});
 const Faq = lazy(()=>{return import('../pages/faq/index.tsx')});
 const Contact = lazy(()=>{return import('../pages/contact/index.tsx')});
@@ -28,6 +29,7 @@ export default function Router(){
             <Suspense fallback={<div className="fullscreen-container"></div>  }>
                 <Routes location={location} >
                     <Route path="/" element={<Home/>} />
+                    <Route path="/product/:id" element={<ProductDetail/>} />
                     <Route path="/about" element={<About/>} />
                     <Route path="/faq" element={<Faq/>} />
                     <Route path="/contact" element={<Contact/>} />
@@ -40,6 +42,7 @@ export default function Router(){
         <Suspense>
             <Routes location={location} >
                 <Route path="/" element={<Home/>} />
+                <Route path="/product/:id" element={<ProductDetail/>} />
                 <Route path="/about" element={<About/>} />
                 <Route path="/faq" element={<Faq/>} />
                 <Route path="/contact" element={<Contact/>} />

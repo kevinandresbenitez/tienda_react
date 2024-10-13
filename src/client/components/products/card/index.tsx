@@ -2,8 +2,10 @@ import React, { useState } from "react";
 import PropTypes from 'prop-types';
 import { Product } from "../../../models/product/index.tsx";
 import './index.less';
-import Modal from "../modal/index.tsx";
+import ModalProduct from "../modal/index.tsx";
 import  Button  from "../../common/button/index.tsx";
+import { Link } from 'react-router-dom';
+
 export default function Card({children}:{children:Product}){
     const product:Product = children;
     const [isModalActive,setModalStatus] = useState(false);
@@ -19,7 +21,7 @@ export default function Card({children}:{children:Product}){
 
         <div className="card">
             {/* Enable modal */}
-            {isModalActive && <Modal disableModal={disableModal}>{children}</Modal>}
+            {isModalActive && <ModalProduct disableModal={disableModal}>{children}</ModalProduct>}
 
             {/* Card Content */}
             <div className="card__imgs">
@@ -36,7 +38,9 @@ export default function Card({children}:{children:Product}){
             </div>
             
             <div className="card__buttons">
-                <Button onClick={enableModal}>Detalles</Button>
+                <Link to={`/product/${product.id}`} style={{ textDecoration: 'none' }} >
+                    <Button onClick={()=>{}}>Detalles</Button>
+                </Link>
             </div>
         </div>
     )
