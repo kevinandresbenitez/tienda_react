@@ -3,6 +3,7 @@ import {Routes, Route, BrowserRouter, useLocation} from 'react-router-dom';
 import React, { Suspense,lazy }  from "react";
 import { useState } from "react";
 import { useEffect } from "react";
+import './index.less';
 
 const Home = lazy(()=>{return import('../pages/home/index.tsx')});
 const ProductDetail = lazy(()=>{return import('../pages/productDetail/index.tsx')});
@@ -22,7 +23,7 @@ export default function Router(){
         !isHidrated ? 
         /*For the client*/
         <TransitionGroup>     
-            <CSSTransition key={location.key} classNames="fade" timeout={400}>
+            <CSSTransition key={location.key} classNames="fade" timeout={250}>
                 <div className="fullscreen-container"></div>  
             </CSSTransition>
 

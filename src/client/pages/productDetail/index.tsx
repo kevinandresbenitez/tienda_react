@@ -12,14 +12,16 @@ export default function ProductDetail(){
         if(id){
 
             if (!/^\d+$/.test(id)) {
-                throw new Error("El valor no es un número entero válido.");
+                throw new Error("El id del producto enviado por la barra de direcciones no es un número entero válido.");
             }
 
             let number = parseInt(id,10);
             product = Product.getProductById(number);
         }
     } catch (error) {
-        console.log(error)
+        if (typeof window !== "undefined") {
+            console.log(error);
+        }
     }
 
     
@@ -27,7 +29,7 @@ export default function ProductDetail(){
     
     return(
         <article className="container__product">
-            {product ? <ProductContent versionContent="normal">{product}</ProductContent>:"Mo se encontro el producto"}           
+            {product ? <ProductContent versionContent="normal">{product}</ProductContent>:"No se encontro el producto"}           
         </article>
 )
 }

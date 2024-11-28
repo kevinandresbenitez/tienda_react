@@ -5,16 +5,31 @@
     height: 100vh;
     background-color: #ffffff;
     opacity: 0;
+    z-index: 0;
   }
   
   /* Estilos para la animación de desvanecimiento */
   .fade-enter {
     opacity: 1;
+    &.fullscreen-container {
+      z-index: 1000;
+    }
+
   }
   
   .fade-enter-active {
     opacity: 0;
     transition: opacity 500ms ease-in-out; /* Animación de desvanecimiento suave */
+
+    &.fullscreen-container {      
+      z-index: 3;
+    }
+  }
+
+  .fade-enter-done{
+    &.fullscreen-container {
+      z-index: 0;
+    }
   }
   
   .fade-exit {
@@ -23,5 +38,8 @@
   
   .fade-exit-active {
     opacity: 0;
-    transition: opacity 300ms ease-in-out; /* Animación de desvanecimiento suave */
+    transition: opacity 300ms ease-in-out; /* Animación de desvanecimiento suave */    
+    &.fullscreen-container {      
+      z-index: 3;
+    }
   }
