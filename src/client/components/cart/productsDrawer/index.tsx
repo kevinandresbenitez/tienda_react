@@ -6,7 +6,7 @@ import { useCartDrawerType,useCartType} from "../../../types/cart/index.tsx";
 
 import Button from "../../common/button/index.tsx";
 import { CartProductItem } from "../productsItem/index.tsx";
-import { EmptyCart } from "../cartEmpty/index.tsx";
+import { EmptyCart } from "../emptyCart/index.tsx";
 import  CloseButton from '../../common/buttonClose/index.tsx'
 
 /**
