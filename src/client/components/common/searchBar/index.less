@@ -1,0 +1,30 @@
+.searchBar{
+    width: min-content;
+    margin: auto;
+    margin-top: 100px ;
+    margin-bottom: 20px;
+    position:relative;
+
+    .searchBar__icon{
+        position:absolute;
+        left: 10px;
+        top: 50%;
+        transform: translateY(-50%);
+    }
+
+    .searchBar__input {
+        width: 400px;
+        padding: 10px 40px;
+        border: none;
+        border-bottom: 2px solid #ccc; 
+        transition: all 0.2s ease; 
+    
+        &:focus {
+          outline: none; 
+          border-width: 0;
+          border-bottom: 2px solid #3498db;
+        }
+
+        
+      }
+}
