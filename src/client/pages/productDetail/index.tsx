@@ -1,5 +1,5 @@
 import React from "react";
-import {Product} from '../../models/product/index.tsx'
+import {Product} from '../../models/product/index.ts'
 import { useParams } from 'react-router-dom';
 import './index.less'
 import { ProductContent} from "../../components/products/index.tsx";

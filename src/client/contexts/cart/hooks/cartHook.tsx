@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import { Product } from "../../../models/product/index.tsx";
+import { Product } from "../../../models/product/index.ts";
 
 
 

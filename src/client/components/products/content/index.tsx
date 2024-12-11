@@ -1,6 +1,6 @@
 import React, { useRef, useState ,useEffect} from "react";
 import PropTypes from 'prop-types';
-import { Product} from "../../../models/product/index.tsx";
+import { Product} from "../../../models/product/index.ts";
 import './index.less';
 import Carrusel from "../../common/carrusel/index.tsx";
 import {Modal as ModalCommon} from "../../common/modal/index.tsx";

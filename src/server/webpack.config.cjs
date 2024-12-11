@@ -1,13 +1,16 @@
 const path = require("path");
 const MiniCssExtractPlugin = require('mini-css-extract-plugin');
+const Dotenv = require('dotenv-webpack');
 
 module.exports = {
   target: "node",
   mode:"development",
-  
+  plugins: [
+    new Dotenv({path:process.cwd() + "/src/server/.env"})
+  ],
 
   entry: {
-    server: "./src/server/index.tsx", 
+    server: "./src/server/index.ts", 
   },
   output: {
     filename: "index.cjs",

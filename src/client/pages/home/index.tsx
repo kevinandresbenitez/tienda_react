@@ -1,5 +1,5 @@
 import React from "react";
-import {Product} from '../../models/product/index.tsx';
+import {Product} from '../../models/product/index.ts';
 import {Card} from '../../components/products/index.tsx';
 import './index.less'
 import { SearchBar } from "../../components/common/searchBar/index.tsx";
