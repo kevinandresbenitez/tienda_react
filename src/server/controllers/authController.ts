@@ -4,10 +4,15 @@ const signIn = async (req, res) => {
     // Verify gmail
 
     // Search in DB
+    const validCredentials = false;
+
+    if(!validCredentials){
+        return res.status(401).json({ message: 'Invalid credentials' });
+    }
 
     // Generate token
     const token = ''
-    
+
     // Save cookie
     res.cookie('auth_token', token, {
         httpOnly: true,
@@ -18,7 +23,9 @@ const signIn = async (req, res) => {
     
 
 
-    res.send('singIn')
+    return res.status(200).json({ message: 'Signed in successfully' });
+
+    
 };
 
 const signUp = async (req, res) => {
