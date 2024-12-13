@@ -3,15 +3,17 @@ import path from 'path';
 import favicon from "serve-favicon";
 import { renderReactApp } from "./renderer";
 import authRoutes from './routes/authRoutes'
+import cookieParser from 'cookie-parser'
 
 //Definicion de varriables
 const app:express.Application = express();
-const PORT = process.env.PORT;
+const PORT = process.env.PORT || 8080;
 
 // Configurando express
 app.use(express.static(path.join(process.cwd(), 'dist/client')));
 app.use(favicon(path.join(process.cwd(),'src/server/public/favicon.ico')) as RequestHandler);
-
+// Configurando cookie parser
+app.use(cookieParser()); 
 
 // Rutas
 app.use('/api/auth', authRoutes);

@@ -1,4 +1,23 @@
 const signIn = async (req, res) => {
+    const { gmail, password } = req.body;
+
+    // Verify gmail
+
+    // Search in DB
+
+    // Generate token
+    const token = ''
+    // Save cookie
+    
+    res.cookie('auth_token', token, {
+        httpOnly: true,
+        secure: process.env.NODE_ENV === 'production',
+        maxAge: process.env.COOKIES_EXPIRATION, 
+        sameSite: 'Strict', 
+    });
+
+    res.json({ message: 'Autenticación exitosa' });
+
     res.send('singIn')
 };
 
