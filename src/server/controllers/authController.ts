@@ -1,4 +1,4 @@
-const signIn = async (req, res) => {
+const signIn = async (req, res) => { 
     const { gmail, password } = req.body;
 
     // Verify gmail
@@ -16,7 +16,7 @@ const signIn = async (req, res) => {
         sameSite: 'Strict', 
     });
     
-    res.json({ message: 'god' });
+
 
     res.send('singIn')
 };

@@ -12,6 +12,7 @@ const PORT = process.env.PORT || 8080;
 // Configurando express
 app.use(express.static(path.join(process.cwd(), 'dist/client')));
 app.use(favicon(path.join(process.cwd(),'src/server/public/favicon.ico')) as RequestHandler);
+app.use(express.json());
 // Configurando cookie parser
 app.use(cookieParser()); 
 
