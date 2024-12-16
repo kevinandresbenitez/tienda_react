@@ -6,7 +6,7 @@ const JWT_EXPIRATION = process.env.JWT_EXPIRATION || '1h';
 
 
 
-const generateToken = (user_id : number) => {
+const generateTokenFromUserId = (user_id : number) => {
     return jwt.sign({ id: user_id}, JWT_SECRET, { expiresIn: JWT_EXPIRATION });
 };
 
@@ -32,7 +32,7 @@ const getUserIdFromToken = (token: string): number | null => {
 
 
 export {
-    generateToken,
+    generateTokenFromUserId,
     isValidToken,
     getUserIdFromToken
 }
