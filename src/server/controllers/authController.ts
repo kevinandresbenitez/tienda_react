@@ -1,7 +1,7 @@
 const signIn = async (req, res) => { 
-    const { gmail, password } = req.body;
+    const { email, password } = req.body;
 
-    // Verify gmail
+    // Verify email
 
     // Search in DB
     const validCredentials = false;
