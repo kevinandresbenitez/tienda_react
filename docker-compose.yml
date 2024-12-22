@@ -1,6 +1,7 @@
 services:
   app:
     build: .
+    image: tienda_react-app
     ports:
       - "${PORT}:${PORT}"
     depends_on:
@@ -9,8 +10,7 @@ services:
       - .env
     volumes:
       - .:/app
-      - node_modules:/app/node_modules 
-    command: yarn run dev
+    command: sh -c "yarn install && yarn run dev"
 
   db:
     image: postgres:latest
@@ -28,4 +28,3 @@ services:
 
 volumes:
   postgres-data:
-  node_modules:
