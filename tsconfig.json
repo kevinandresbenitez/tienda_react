@@ -1,0 +1,15 @@
+{
+    "compilerOptions": {
+      "jsx": "react",
+      "module": "ES2015", 
+      "experimentalDecorators": true,
+      "emitDecoratorMetadata": true,
+      "moduleResolution": "node",
+      "strict": true,
+      "strictPropertyInitialization": false,
+      "allowImportingTsExtensions": true,
+      "esModuleInterop": true,
+      "noEmit": true,
+    }
+  }
+  

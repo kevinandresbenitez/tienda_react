@@ -1,4 +1,4 @@
-const signIn = async (req, res) => { 
+const signIn = async (req:any, res:any) => { 
     const { email, password } = req.body;
 
     // Verify email
@@ -28,11 +28,11 @@ const signIn = async (req, res) => {
     
 };
 
-const signUp = async (req, res) => {
+const signUp = async (req:any, res:any) => {
     res.send('signUp')
 };
 
-const logout = async (req, res) => {
+const logout = async (req:any, res:any) => {
     res.send('logout')
 };
 

@@ -3,8 +3,10 @@ import path from 'path';
 import favicon from "serve-favicon";
 import { renderReactApp } from "./renderer";
 import authRoutes from './routes/authRoutes'
+import productsRoutes from './routes/productRoutes'
 import cookieParser from 'cookie-parser'
 import dotenv from "dotenv";
+import { initializeDbConnection } from "./config/db/config";
 
 // import.env file
 dotenv.config();
@@ -20,13 +22,22 @@ app.use(express.json());
 // Configuring cookie parser
 app.use(cookieParser()); 
 
-// Routes
-app.use('/api/auth', authRoutes);
 
-// Serving the React app
-app.get("/*",async (req:any,res:any)=>{
-  await renderReactApp(req, res);     
+initializeDbConnection().then(()=>{
+  // Routes
+  app.use('/api/auth', authRoutes);
+  app.use('/api/products', productsRoutes);
+
+  // Serving the React app
+  app.get("/*",async (req:any,res:any)=>{
+    await renderReactApp(req, res);     
+  })
+
+
+}).catch(()=>{
+  console.log("DB Error conection")
 })
+
 
 app.listen(PORT,()=>{
     console.log("Server started on: " + PORT);

@@ -30,6 +30,10 @@ module.exports = {
               ['@babel/preset-env', { targets: 'defaults' }],
               '@babel/preset-react',
               '@babel/preset-typescript'
+            ],
+            plugins: [
+              ['@babel/plugin-proposal-decorators', { legacy: true }],
+              '@babel/plugin-proposal-class-properties'
             ]
           }
         }
@@ -54,5 +58,6 @@ module.exports = {
   
   externals: {
     express: 'express',
+    typeorm: 'commonjs typeorm' 
   },
 };
