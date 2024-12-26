@@ -7,7 +7,7 @@ export class Product{
     info:string;
     price:number;
     imgTexture:string;
-    versions:SubProducts[];
+    versions:ProductVersion[];
 
     getStock():number{
         return this.versions.reduce((a,b)=>(a + b.stock),0)
@@ -42,21 +42,21 @@ export class Product{
         product1.info = "esta es informacion";
         product1.price = 30;
         
-        const subproduct1 = new SubProducts();
+        const subproduct1 = new ProductVersion();
         subproduct1.id = 1;
         subproduct1.color = new RGBColor(255,0,0);
         subproduct1.nameColor = "Rojo";
         subproduct1.stock = 20;
         subproduct1.img = "https://static.wixstatic.com/media/45d10e_9e18a8d563fc4774a0b917d7f5e07ff6~mv2.jpg/v1/fill/w_500,h_500,al_c,q_80,usm_0.66_1.00_0.01,enc_auto/45d10e_9e18a8d563fc4774a0b917d7f5e07ff6~mv2.jpg"
         
-        const subproduct2 = new SubProducts();
+        const subproduct2 = new ProductVersion();
         subproduct2.id = 2;
         subproduct2.color = new RGBColor(0,0,255);
         subproduct2.nameColor = "Azul";
         subproduct2.stock = 4;
         subproduct2.img = "https://static.wixstatic.com/media/45d10e_9e18a8d563fc4774a0b917d7f5e07ff6~mv2.jpg/v1/fill/w_500,h_500,al_c,q_80,usm_0.66_1.00_0.01,enc_auto/45d10e_9e18a8d563fc4774a0b917d7f5e07ff6~mv2.jpg"
     
-        const subproduct3 = new SubProducts();
+        const subproduct3 = new ProductVersion();
         subproduct3.id = 3;
         subproduct3.color = new RGBColor(0,255,0);
         subproduct3.nameColor = "Verde";
@@ -88,21 +88,21 @@ export class Product{
         copy.imgTexture = product.imgTexture;
         copy.versions = [];
         product.versions.forEach((subProduct)=>{
-            copy.versions.push(SubProducts.copy(subProduct));
+            copy.versions.push(ProductVersion.copy(subProduct));
         })
         return copy;
     }
 }
 
-class SubProducts{
+class ProductVersion{
     id:number;
     nameColor:string;
     color:RGBColor;
     stock:number;
     img:string;
 
-    static copy(subProduct:SubProducts):SubProducts{
-        const copy = new SubProducts();
+    static copy(subProduct:ProductVersion):ProductVersion{
+        const copy = new ProductVersion();
         copy.id = subProduct.id;
         copy.nameColor = subProduct.nameColor;
         copy.color = subProduct.color;
