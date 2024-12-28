@@ -1,5 +1,5 @@
 // @ts-ignore
-import EmpyCartSvg from '../../../public/imgs/empty_cart.svg';
+import EmpyCartSvg from '../../../../public/imgs/empty_cart.svg';
 import './index.less'
 import React from 'react';
 

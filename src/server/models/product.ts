@@ -14,6 +14,12 @@ export class Product {
   description: string;
 
   @Column({ type: 'decimal', precision: 10, scale: 2 }) 
+  price: number;
+
+  @Column({ type: 'text', nullable: true })
+  img_texture: string | null;
+  
+  @Column({ type: 'decimal', precision: 10, scale: 2 }) 
 
   @Column({ type: 'text', nullable: true }) 
   info: string | null;

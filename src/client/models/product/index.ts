@@ -1,5 +1,3 @@
-import RGBColor from "../../types/color.tsx";
-
 export class Product{
     id:number
     name:string;
@@ -8,6 +6,7 @@ export class Product{
     price:number;
     imgTexture:string;
     versions:ProductVersion[];
+    static API_URL = 'http://localhost:8080/api/products/';
 
     getStock():number{
         return this.versions.reduce((a,b)=>(a + b.stock),0)
@@ -15,9 +14,9 @@ export class Product{
     
     /**
      * 
-     * @returns {RGBColor[]} Array of RGBColor
+     * @returns {string[]} Array of hexadecilal color from the versions
      */
-    getColors():RGBColor[]{
+    getColors():string[]{
         return this.versions.map((obj)=> obj.color);
     }
 
@@ -33,44 +32,78 @@ export class Product{
         return productsImgs;
     }
 
-    static getProducts():Product[]{
-        const product1 = new Product()
-        product1.id = 1;
-        product1.name = "Bolsillon";
-        product1.description = "Esta es una descripcion";
-        product1.imgTexture = "https://static.wixstatic.com/media/45d10e_35c84fb1d48540f1886b2ceb7a342c37~mv2_d_3500_1968_s_2.jpg/v1/fill/w_310,h_310,al_c,q_80,usm_0.66_1.00_0.01,enc_auto/45d10e_35c84fb1d48540f1886b2ceb7a342c37~mv2_d_3500_1968_s_2.jpg"
-        product1.info = "esta es informacion";
-        product1.price = 30;
-        
-        const subproduct1 = new ProductVersion();
-        subproduct1.id = 1;
-        subproduct1.color = new RGBColor(255,0,0);
-        subproduct1.nameColor = "Rojo";
-        subproduct1.stock = 20;
-        subproduct1.img = "https://static.wixstatic.com/media/45d10e_9e18a8d563fc4774a0b917d7f5e07ff6~mv2.jpg/v1/fill/w_500,h_500,al_c,q_80,usm_0.66_1.00_0.01,enc_auto/45d10e_9e18a8d563fc4774a0b917d7f5e07ff6~mv2.jpg"
-        
-        const subproduct2 = new ProductVersion();
-        subproduct2.id = 2;
-        subproduct2.color = new RGBColor(0,0,255);
-        subproduct2.nameColor = "Azul";
-        subproduct2.stock = 4;
-        subproduct2.img = "https://static.wixstatic.com/media/45d10e_9e18a8d563fc4774a0b917d7f5e07ff6~mv2.jpg/v1/fill/w_500,h_500,al_c,q_80,usm_0.66_1.00_0.01,enc_auto/45d10e_9e18a8d563fc4774a0b917d7f5e07ff6~mv2.jpg"
-    
-        const subproduct3 = new ProductVersion();
-        subproduct3.id = 3;
-        subproduct3.color = new RGBColor(0,255,0);
-        subproduct3.nameColor = "Verde";
-        subproduct3.stock = 5;
-        subproduct3.img = "https://static.wixstatic.com/media/45d10e_9e18a8d563fc4774a0b917d7f5e07ff6~mv2.jpg/v1/fill/w_500,h_500,al_c,q_80,usm_0.66_1.00_0.01,enc_auto/45d10e_9e18a8d563fc4774a0b917d7f5e07ff6~mv2.jpg"
+    static async getProducts():Promise<Product[]>{
 
-        product1.versions = [subproduct1,subproduct2,subproduct3];
-        return [
-            product1,product1,product1,product1,product1,product1,product1,product1
-        ]
+        try {
+            const response = await fetch(Product.API_URL);
+            
+            if (!response.ok) {
+                throw new Error(`Error: ${response.statusText}`);
+            }
+
+            const data = await response.json();
+            return data.map((item:any)=>{
+                const product = new Product();
+                product.id = item.id;
+                product.name = item.name;
+                product.description = item.description;
+                product.info = item.info;
+                product.price = item.price;
+                product.imgTexture = item.img_texture;
+
+                product.versions = item.versions.map((version: any) => {
+                    const productVersion = new ProductVersion();
+                    productVersion.id = version.id;
+                    productVersion.nameColor = version.color_name;
+                    productVersion.color = version.color_rgb;
+                    productVersion.stock = version.stock;
+                    productVersion.img = version.img;
+                    return productVersion;
+                });
+
+                return product;
+            })
+
+        } catch (error) {
+            console.log(error);
+            return [];
+        }        
     }
 
-    static getProductById(id:number):Product | null{
-        return this.getProducts()[0];
+    static async getProductById(id:number):Promise<Product | null>{
+        try {
+            const response = await fetch( Product.API_URL + id);
+            
+            if (!response.ok) {
+                throw new Error(`Error: ${response.statusText}`);
+            }
+
+            const item = await response.json();
+            const product = new Product();
+            product.id = item.id;
+            product.name = item.name;
+            product.description = item.description;
+            product.info = item.info;
+            product.price = item.price;
+            product.imgTexture = item.img_texture;
+
+            product.versions = item.versions.map((version: any) => {
+                const productVersion = new ProductVersion();
+                productVersion.id = version.id;
+                productVersion.nameColor = version.color_name;
+                productVersion.color = version.color_rgb;
+                productVersion.stock = version.stock;
+                productVersion.img = version.img;
+                return productVersion;
+            });
+
+                return product;
+            
+
+        } catch (error) {
+            console.log(error);
+            return null;
+        }    
     }
 
     /**
@@ -97,7 +130,7 @@ export class Product{
 class ProductVersion{
     id:number;
     nameColor:string;
-    color:RGBColor;
+    color:string;
     stock:number;
     img:string;
 

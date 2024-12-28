@@ -24,7 +24,7 @@ export default function Router(){
         /*For the client*/
         <TransitionGroup>     
             <CSSTransition key={location.key} classNames="fade" timeout={250}>
-                <div className="fullscreen-container"></div>  
+                <div className="fullscreen-container "></div>  
             </CSSTransition>
 
             <Suspense fallback={<div className="fullscreen-container"></div>  }>

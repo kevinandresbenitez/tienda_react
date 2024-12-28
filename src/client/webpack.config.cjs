@@ -66,6 +66,10 @@ module.exports = {
         ],
       },
       {
+        test: /\.css$/,
+        use: ['style-loader', 'css-loader'],
+      },
+      {
         test: /\.svg$/,
         use: [
             {
@@ -83,7 +87,7 @@ module.exports = {
 
   plugins: [
     new MiniCssExtractPlugin({
-      filename: 'styles.css', // Nombre del archivo CSS separado
+      filename: 'styles.css',
     }),
   ],
 };

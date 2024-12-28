@@ -1,7 +1,6 @@
-import React, { useRef, useState } from "react";
+import React, { useEffect, useRef, useState } from "react";
 import PropTypes from 'prop-types';
 import './index.less';
-import RGBColor from "../../../types/color.tsx";
 
 /**
  * Component for rendering a color picker button group.
@@ -9,10 +8,19 @@ import RGBColor from "../../../types/color.tsx";
  * @param onColorSelect Callback function to handle color selection.
  */
 export default function ColorPickerButtonGroup({colors,onColorSelect}:
-    {colors:RGBColor[],onColorSelect:(index: number | null) => void}){
+    {colors:string[],onColorSelect:(index: number | null) => void}){
+
+    useEffect(()=>{
+        const elements = document.querySelectorAll(".colorPicker__button")
+
+        if(elements.length == 1){
+            onClickSelectColor(elements[0] as HTMLButtonElement,0)
+        }
+
+    },[])  
 
     function onClickSelectColor(buttonElement:HTMLButtonElement,key:number){
-        const selectedElement = document.querySelectorAll(".colorPickerGroup.selected")[0]
+        const selectedElement = document.querySelectorAll(".colorPicker__button.selected")[0];
         if(selectedElement){
             selectedElement.classList.remove("selected");
         }
@@ -27,13 +35,18 @@ export default function ColorPickerButtonGroup({colors,onColorSelect}:
 
     return(
         <div className="colorPickerGroup">
-            {colors.map((color,key)=><button key={key} onClick={(event)=>{onClickSelectColor(event.target as HTMLButtonElement,key)}} style={{ backgroundColor: color.toHex() }} className={"colorPickerGroup"}></button>)}
+            {colors.map((color,key)=>
+                <button key={key} 
+                    onClick={(event)=>{onClickSelectColor(event.target as HTMLButtonElement,key)}} 
+                    style={{ backgroundColor: color }} 
+                    className={'colorPicker__button'}>
+                </button>)}
         </div>
     )
 
 }
 
 ColorPickerButtonGroup.propTypes = {
-    colors: PropTypes.arrayOf(PropTypes.instanceOf(RGBColor)).isRequired,
+    colors: PropTypes.arrayOf(PropTypes.string).isRequired,
     onColorSelect: PropTypes.func.isRequired,
 }

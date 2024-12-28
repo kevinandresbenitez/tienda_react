@@ -5,8 +5,8 @@ import { useCart,useCartDrawer } from "../../../contexts/cart/index.tsx";
 import { useCartDrawerType,useCartType} from "../../../types/cart/index.tsx";
 
 import Button from "../../common/button/index.tsx";
-import { CartProductItem } from "../productsItem/index.tsx";
-import { EmptyCart } from "../emptyCart/index.tsx";
+import { CartProductItem } from "./productsItem/index.tsx";
+import { EmptyCart } from "./emptyCart/index.tsx";
 import  CloseButton from '../../common/buttonClose/index.tsx'
 
 /**

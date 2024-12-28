@@ -1,13 +1,13 @@
 import React from "react";
 import './index.less';
-import { useCart } from "../../../contexts/cart/index.tsx";
-import { useCartType} from "../../../types/cart/index.tsx";
-import { Product } from "../../../models/product/index.tsx";
+import { useCart } from "../../../../contexts/cart/index.tsx";
+import { useCartType} from "../../../../types/cart/index.tsx";
+import { Product } from "../../../../models/product/index.tsx";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faTrash } from "@fortawesome/free-solid-svg-icons/faTrash";
 import { faArrowUpRightFromSquare } from "@fortawesome/free-solid-svg-icons/faArrowUpRightFromSquare";
-import {useNotification} from "../../../contexts/notification/index.tsx"
-import {useNotificationType} from "../../../types/notification/index.tsx"
+import {useNotification} from "../../../../contexts/notification/index.tsx"
+import {useNotificationType} from "../../../../types/notification/index.tsx"
 import { Link } from "react-router-dom";
 
 

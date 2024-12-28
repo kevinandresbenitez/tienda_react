@@ -10,7 +10,7 @@ services:
       - .env
     volumes:
       - .:/app
-    command: sh -c "yarn install && yarn run dev"
+    command: sh -c "yarn install && dockerize -wait tcp://db:${POSTGRES_PORT} -timeout 60s yarn run dev"
 
   db:
     image: postgres:latest
@@ -24,7 +24,7 @@ services:
       - ./src/server/config/db/setup.sql:/docker-entrypoint-initdb.d/setup.sql
 
     ports:
-      - "${PORT_DB}:5432"
+      - "${POSTGRES_PORT}:5432"
 
 volumes:
   postgres-data:

@@ -8,13 +8,36 @@ const getProducts = async (req:any, res:any) => {
     try{
         const productRepository = AppDataSource.getRepository(Product);
         const products = await productRepository.find({relations:{versions:true}});
-        res.json(products);
+
+        if(!products){
+            return res.status(404).json({ message: 'Products not found' });    
+        }
+
+
+        res.status(200).json(products);
 
     }catch(error){
-        res.send("error db conection")
+        res.status(500).send("error db conection")
+    }
+};
+
+const getProductsByID = async (req:any, res:any) => {
+    const productId = req.params.id;
+    
+    try{
+        const productRepository = AppDataSource.getRepository(Product);
+        const product = await productRepository.findOne({where:{id:productId},relations:{versions:true}});
+        if(!product){
+            return res.status(404).json({ message: 'Product not found' });    
+        }
+
+        res.status(200).json(product);
+
+    }catch(error){
+        res.status(500).send("error db conection")
 
     }
 };
 
 
-export default {getProducts}
+export default {getProducts,getProductsByID}
