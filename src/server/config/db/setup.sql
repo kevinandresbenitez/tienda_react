@@ -107,7 +107,7 @@ VALUES
 -- version negro
 INSERT INTO product_version (id,id_product, color_name, color_rgb, stock, img)
 VALUES
-  (7,5, 'Negro', '#000000', 50, 'https://static.wixstatic.com/media/45d10e_fcf0fc02da714ac993c176af2ae771fb~mv2_d_3500_1968_s_2.jpg/v1/fill/w_500,h_500,al_c,q_80,usm_0.66_1.00_0.01,enc_auto/45d10e_fcf0fc02da714ac993c176af2ae771fb~mv2_d_3500_1968_s_2.jpg');
+  (7,5, 'Negro', '#000000', 50, 'https://static.wixstatic.com/media/45d10e_b35e4713f3524a1d818de736bb4765b2~mv2.jpg/v1/fill/w_500,h_500,al_c,q_80,usm_0.66_1.00_0.01,enc_auto/45d10e_b35e4713f3524a1d818de736bb4765b2~mv2.jpg');
 
 -- 6
 INSERT INTO product (id ,name, description, price, info, img_texture)
@@ -122,7 +122,7 @@ VALUES
 -- 7
 INSERT INTO product (id ,name, description, price, info, img_texture)
 VALUES
-  (7,'Bolsos Elegantes', 'Bolsos de alta calidad en diferentes colores. Perfectos para cualquier ocasión.', 79.99, 'Bolsos con materiales resistentes y elegantes, disponibles en varios colores.', 'https://static.wixstatic.com/media/45d10e_45e21af15e5a4e2fa81bc324b0c51cbf~mv2.jpg/v1/fill/w_500,h_500,al_c,q_80,usm_0.66_1.00_0.01,enc_auto/45d10e_45e21af15e5a4e2fa81bc324b0c51cbf~mv2.jpg');
+  (7,'Bolsos Elegantes', 'Bolsos de alta calidad en diferentes colores. Perfectos para cualquier ocasión.', 79.99, 'Bolsos con materiales resistentes y elegantes, disponibles en varios colores.', 'https://static.wixstatic.com/media/45d10e_291e40a5e013492795a1e7b2543fd84f~mv2_d_3500_1968_s_2.jpg/v1/fill/w_453,h_453,al_c,q_80,usm_0.66_1.00_0.01,enc_auto/45d10e_291e40a5e013492795a1e7b2543fd84f~mv2_d_3500_1968_s_2.jpg');
 -- Versión multicolor
 INSERT INTO product_version (id,id_product, color_name, color_rgb, stock, img)
 VALUES
