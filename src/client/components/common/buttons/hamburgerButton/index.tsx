@@ -1,7 +1,7 @@
 import React from 'react';
 import './index.less';
 
-export default function Hamburger (props){
+export default function Hamburger (){
     return (
         <>
         <input type="checkbox"  id="hamburger__check" hidden={true} />

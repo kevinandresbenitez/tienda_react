@@ -6,8 +6,6 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faCheck ,faCircleExclamation,faTrash} from "@fortawesome/free-solid-svg-icons";
 
 
-
-
 export default function Notification({notification,closeNotification}:{notification:notificationType,closeNotification:(notification:notificationType)=> void}){
 
     const htmlNotification = useRef<HTMLDivElement>(null);

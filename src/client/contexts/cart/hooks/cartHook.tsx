@@ -115,7 +115,7 @@ export function CartHook(){
             return [];
         }
         // Parce to Products
-        let productsFromStorage = JSON.parse(products).map((product)=>{return Product.copy(product)})
+        let productsFromStorage = JSON.parse(products).map((product:Product)=>{return Product.copy(product)})
 
         return productsFromStorage
     }

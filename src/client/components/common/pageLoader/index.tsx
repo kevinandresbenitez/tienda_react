@@ -1,32 +1,37 @@
-import React,{useEffect, useState } from "react"
+import React,{useEffect, useRef, useState } from "react"
 import './index.less';
 
 export default function PageLoader(){
-    const [pageIsLoad,setPageIsLoad] = useState(false);
-
+    
     const handleLoad = ()=>{
-        setPageIsLoad(true);
+        const pageLoader:HTMLElement | null =document.querySelector('.pageloader-container');
+
+        if(pageLoader){            
+            pageLoader.style.animation = "hiddePageLoader 1s"
+            pageLoader.addEventListener("animationend",()=>{
+                pageLoader.style.display = "none"
+            }) 
+        }
+        
     }
 
-    useEffect(()=>{
-
-        if (document.readyState === "complete") {
-            setPageIsLoad(true);
-
-        } else {
-            document.addEventListener("DOMContentLoaded", handleLoad);
+    useEffect(()=>{    
+        if (document.readyState === 'complete') {
+            
+            handleLoad();
+          } else {
             window.addEventListener("load", handleLoad);
-        }
-
-
-
-        return () => {
-            document.removeEventListener("DOMContentLoaded", handleLoad);
+          }
+          
+          return () => {
             window.removeEventListener("load", handleLoad);
-        }
+          };
     },[])
+
     return(
-        pageIsLoad ? (null):(<div className="pageloader-container"><span className="loader"></span></div>)
+        <div className='pageloader-container'>
+            <span className="loader"></span>
+        </div>
     )
 
 }

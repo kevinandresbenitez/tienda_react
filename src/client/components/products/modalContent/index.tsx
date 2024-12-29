@@ -13,50 +13,6 @@ import {useNotification} from "../../../contexts/notification/index.tsx"
 
 
 
-/**
- * ProductContent Component
- * 
- * This component is responsible for displaying product information, 
- * including an image carousel, product details (name, price, SKU), 
- * and options to select color and quantity.
- * 
- * Props:
- * - children (Product): The product object to be displayed. Must be an 
- *   instance of the `Product` class.
- * - versionContent (string): Indicates the version of the content, 
- *   which can be 'lite' or 'normal'.
- * 
- * Functions:
- * - handleAddProductToTrolley: Adds the selected product to the shopping 
- *   cart.
- * - handleBuyProduct: (Function not yet implemented) Logic for 
- *   purchasing the product directly.
- * 
- * This component relies on the cart and notification context to handle 
- * the actions of adding products and displaying success messages.
- * 
- * 
- * 
- * 
- * **Usage Example:**
- * ```tsx
- * import React from 'react';
- * import { CartProvider } from './path/to/CartProvider';
- * import { CartProductDrawer } from './path/to/CartProductDrawer';
- * 
- * const App = () => {
- *   return (
- *      <NotificationProvider>
- *          <CartProvider>
- *              <ProductContent product={yourProduct} versionContent="normal" />
- *          </CartProvider>
- *      </NotificationProvider>
- *   );
- * };
- * export default App;
- * ```
- * 
- */
 export default function ModalContent({children:product,versionContent}:{children:Product,versionContent: 'lite' | 'normal'}){
 
     const inputStock = useRef<HTMLInputElement>(null);
