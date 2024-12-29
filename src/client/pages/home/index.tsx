@@ -28,8 +28,8 @@ export default function Home(){
                                 <CardContent >{product}</CardContent>
                            </Card>
                 }):
-                Array(12).fill(0).map(()=>{
-                    return <Card>
+                Array(12).fill(0).map((obj:any,key:any)=>{
+                    return <Card key={key} >
                                 <Skeleton height='400px' />
                             </Card>
                 })
