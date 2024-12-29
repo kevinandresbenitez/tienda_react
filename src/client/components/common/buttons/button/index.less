@@ -1,0 +1,45 @@
+.button{
+    width: 80%;
+    margin: auto;
+    padding: 7px 0px;
+    text-align: center;
+    border: none;
+    cursor: pointer;
+    transition: all 0.5s;
+    text-decoration: none;
+    display: block;
+    // transform: translateY(10px);
+
+
+
+    &.default{
+        color: @color-black;
+        border: 2px solid @color-black-ligth;
+        background-color: @color-secondary;
+    
+        &:hover{
+            background-color: @color-black-ligth;
+            color: @color-primary;
+        }
+    
+        &:active{
+            transition: none;
+            background-color: @color-black-active;
+        }
+    }
+    
+
+    &.filled{
+        background-color: @color-black;
+        color: @color-primary;
+
+        &:hover{
+            background-color: @color-black-hover;
+            color: @color-primary;
+        }
+
+        &:active{
+            background-color: @color-black-active;
+        }
+    }
+}

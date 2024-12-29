@@ -1,0 +1,61 @@
+.hamburger_buton{
+    width: 34px;
+    height: 34px;
+    position: relative;
+
+    display: flex;
+    justify-content: space-around;
+    align-items:center;
+    display: none;
+}
+
+
+.hamburger_buton > span{
+    top: 0;
+    left: 0;
+    bottom: 0;
+    right: 0;
+    border-radius: 3px;
+
+
+    background-color: #ffffff;
+    position: absolute;
+    cursor: pointer;
+    transition: 0.3s all;
+
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    display: flex;
+    flex-flow: column wrap;
+    justify-content:space-evenly;
+    align-items: center;
+}
+
+
+
+
+.hamburger_buton > span span{
+    width: 65%;
+    border:1px solid black;
+    transition: 0.3s all;
+}
+#hamburger__check:checked + .hamburger_buton span span{
+    position: absolute;
+}
+#hamburger__check:checked + .hamburger_buton span span:nth-child(1){
+    width: 70%;
+    transform:rotate(45deg);
+}
+#hamburger__check:checked + .hamburger_buton span span:nth-child(2){
+    opacity: 0;
+}
+#hamburger__check:checked + .hamburger_buton span span:nth-child(3){
+    width: 70%;
+    transform: rotate( -45deg);
+}
+
+@media(max-width:800px){
+
+    .hamburger_buton{
+        display: block;
+    }
+}
