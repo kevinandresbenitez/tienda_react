@@ -1,10 +1,14 @@
 import React, { useEffect, useState } from "react";
 import {Product} from '../../models/product/index.ts';
-import {Card} from '../../components/products/index.tsx';
+import {Card} from '../../components/common/card/index.tsx';
 import './index.less'
+import CardContent from "../../components/products/cardContent/index.tsx";
+import 'react-loading-skeleton/dist/skeleton.css'
+import Skeleton from "react-loading-skeleton";
+
 export default function Home(){
     const [products,setProducts] = useState<Product[]>([]);
-    
+
     useEffect(()=>{
         getProducts();
     },[])
@@ -18,8 +22,20 @@ export default function Home(){
     return(
         <>
         <article className="articles">
-            {products.map((product:any,key:any)=>{
-            return <Card key={key}>{product}</Card>})}
+            {products && products.length > 0 ? 
+                products.map((product:any,key:any)=>{
+                   return <Card key={key}>
+                                <CardContent >{product}</CardContent>
+                           </Card>
+                }):
+                Array(12).fill(0).map(()=>{
+                    return <Card>
+                                <Skeleton height='400px' />
+                            </Card>
+                })
+            }
+
+            
         </article>
         </>
 )

@@ -4,10 +4,10 @@ import { Product } from "../../../models/product/index.tsx";
 import { useCart,useCartDrawer } from "../../../contexts/cart/index.tsx";
 import { useCartDrawerType,useCartType} from "../../../types/cart/index.tsx";
 
-import Button from "../../common/button/index.tsx";
+import Button from "../../common/buttons/button/index.tsx";
 import { CartProductItem } from "./productsItem/index.tsx";
 import { EmptyCart } from "./emptyCart/index.tsx";
-import  CloseButton from '../../common/buttonClose/index.tsx'
+import  CloseButton from '../../common/buttons/buttonClose/index.tsx'
 
 /**
  * `cartDrawer` is a component that displays a drawer with the list of products currently in the shopping cart (cart).

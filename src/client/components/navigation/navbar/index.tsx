@@ -3,7 +3,7 @@ import { Link } from "react-router-dom";
 import './index.less';
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faUser } from "@fortawesome/free-solid-svg-icons";
-import Hamburger from "../../common/hamburgerButton/index.tsx";
+import Hamburger from "../../common/buttons/hamburgerButton/index.tsx";
 import { CartDrawerToggleButton } from "../../cart/drawerToggleButton/index.tsx";
 
 
