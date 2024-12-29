@@ -5,7 +5,7 @@ import './index.less';
 import Carrusel from "../../common/carrusel/index.tsx";
 import {Modal as ModalCommon} from "../../common/modal/index.tsx";
 import ColorPickerButtonGroup from "../../common/colorPickerButtonGroup/index.tsx";
-import  Button  from "../../common/button/index.tsx";
+import  Button  from "../../common/buttons/button/index.tsx";
 import { useCart} from "../../../contexts/cart/useCart.tsx";
 import { useCartType } from "../../../types/cart/useCartType.tsx";
 import { useNotificationType } from "../../../types/notification/useNotificationType.tsx";
@@ -57,7 +57,7 @@ import {useNotification} from "../../../contexts/notification/index.tsx"
  * ```
  * 
  */
-export default function ProductContent({children:product,versionContent}:{children:Product,versionContent: 'lite' | 'normal'}){
+export default function ModalContent({children:product,versionContent}:{children:Product,versionContent: 'lite' | 'normal'}){
 
     const inputStock = useRef<HTMLInputElement>(null);
 
@@ -137,7 +137,7 @@ export default function ProductContent({children:product,versionContent}:{childr
     
 }
 
-ProductContent.propTypes = {
+ModalContent.propTypes = {
     children: PropTypes.instanceOf(Product).isRequired,
     versionContent: PropTypes.oneOf(['lite', 'normal']).isRequired,
 };
