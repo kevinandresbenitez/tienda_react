@@ -2,7 +2,7 @@ import React, { useRef } from 'react';
 import PropTypes from 'prop-types';
 
 import './index.less';
-import ButtonClose from '../../common/buttonClose/index.tsx';
+import ButtonClose from '../buttons/buttonClose/index.tsx';
 
 export function Modal({ children, disableModal }: { children: React.ReactNode; disableModal: () => void }) {
     // Html elements
