@@ -1,12 +1,12 @@
 import React, { LegacyRef, useRef } from "react";
-import { notificationType} from '../../../types/notification/index.tsx'
+import { notificationItemType} from '../../../contexts/notification/index.ts'
 
 import './index.less'
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faCheck ,faCircleExclamation,faTrash} from "@fortawesome/free-solid-svg-icons";
 
 
-export default function Notification({notification,closeNotification}:{notification:notificationType,closeNotification:(notification:notificationType)=> void}){
+export default function Notification({notification,closeNotification}:{notification:notificationItemType,closeNotification:(notification:notificationItemType)=> void}){
 
     const htmlNotification = useRef<HTMLDivElement>(null);
 
