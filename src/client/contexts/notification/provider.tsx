@@ -1,10 +1,10 @@
-import React from "react";
-import {notificationContext} from './notificationContext.tsx'
-import  notificationHook from "./hooks/notificationHook.tsx"
+import React, { ReactNode } from "react";
+import {notificationContext} from './context.ts'
+import  notificationHook from "./hooks/hookNotification.ts"
 import { NotificationDisplay } from "../../components/notifications/notificationDisplay/index.tsx";
 
 
-export const NotificationProvider = ({children}:{children:any}) => {
+export const NotificationProvider = ({children}:{children:ReactNode}) => {
 
     const {notifications,addNotification,deleteNotification} = notificationHook();
 

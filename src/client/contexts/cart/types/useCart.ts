@@ -1,5 +1,6 @@
+import { Product } from "../../../models/product";
 
-import { Product } from "../../models/product";
+
 
 export interface useCartType {
     productsInStorage: Product[];

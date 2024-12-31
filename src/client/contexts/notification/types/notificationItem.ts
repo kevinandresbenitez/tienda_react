@@ -1,4 +1,4 @@
-export type notificationType = {
+export type notificationItemType = {
     content:string,
     duration:number,
     variant: 'success' | 'error' | 'trash'

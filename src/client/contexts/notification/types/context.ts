@@ -1,4 +1,4 @@
-import { useNotificationType } from "./useNotificationType";
+import { useNotificationType } from "./useNotification";
 
 export interface notificationContextType extends useNotificationType {
 

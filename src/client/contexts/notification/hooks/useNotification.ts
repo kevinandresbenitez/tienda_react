@@ -1,5 +1,5 @@
-import { useNotificationType } from "../../types/notification/useNotificationType";
-import { notificationContext } from "./notificationContext.tsx";
+import { useNotificationType } from "../types/useNotification.ts";
+import { notificationContext } from "../context.ts";
 import React from "react";
 
 

@@ -8,8 +8,8 @@ import  Router  from "./router/index.tsx";
 import { BrowserRouter } from "react-router-dom";
 import PageLoader from "./components/common/pageLoader/index.tsx";
 
-import {  CartProvider} from "./contexts/cart/index.tsx";
-import {NotificationProvider} from "./contexts/notification/index.tsx"
+import { CartProvider} from "./contexts/cart/index.ts";
+import {NotificationProvider} from "./contexts/notification/index.ts"
 
 export function App(){
     return(

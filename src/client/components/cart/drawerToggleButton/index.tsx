@@ -2,13 +2,13 @@ import React from "react";
 import "./index.less"
 import { faCartShopping, faUser } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { useCart, useCartDrawer } from "../../../contexts/cart/index.tsx";
-import {useCartType,useCartDrawerType} from "../../../types/cart/index.tsx";
+import { useCart,useCartType, useDrawer,useDrawerType } from "../../../contexts/cart/index.ts";
+
 
 
 export function CartDrawerToggleButton(){
     const {productsInStorage}:useCartType = useCart();
-    const {isDrawerEnabled,disableDrawer,enableDrawer}:useCartDrawerType = useCartDrawer();
+    const {isDrawerEnabled,disableDrawer,enableDrawer}:useDrawerType = useDrawer();
 
 
     return(

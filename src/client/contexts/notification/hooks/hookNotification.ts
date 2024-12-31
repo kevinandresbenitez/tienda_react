@@ -1,18 +1,18 @@
 import React, { useEffect } from "react";
 import { useState } from "react";
-import { notificationType } from "../../../types/notification";
+import { notificationItemType } from "../types/notificationItem";
 
 
 
 export default function NotificationHook(){
-    const [notifications,setNotifications] = useState<notificationType[]>([]);
+    const [notifications,setNotifications] = useState<notificationItemType[]>([]);
 
 
-    function addNotification(notification:notificationType){
+    function addNotification(notification:notificationItemType){
         setNotifications((prev)=>{ return [...prev,notification]})
     }
 
-    function deleteNotification(notification:notificationType){
+    function deleteNotification(notification:notificationItemType){
         setNotifications(prev => prev.filter(notificationObj => notification !== notificationObj));
     }
 

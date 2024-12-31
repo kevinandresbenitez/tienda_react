@@ -3,13 +3,10 @@ import PropTypes from 'prop-types';
 import { Product} from "../../../models/product/index.ts";
 import './index.less';
 import Carrusel from "../../common/carrusel/index.tsx";
-import {Modal as ModalCommon} from "../../common/modal/index.tsx";
 import ColorPickerButtonGroup from "../../common/colorPickerButtonGroup/index.tsx";
 import  Button  from "../../common/buttons/button/index.tsx";
-import { useCart} from "../../../contexts/cart/useCart.tsx";
-import { useCartType } from "../../../types/cart/useCartType.tsx";
-import { useNotificationType } from "../../../types/notification/useNotificationType.tsx";
-import {useNotification} from "../../../contexts/notification/index.tsx"
+import { useCart,useCartType } from "../../../contexts/cart/index.ts";
+import { useNotificationType,useNotification } from "../../../contexts/notification/index.ts";
 
 
 
