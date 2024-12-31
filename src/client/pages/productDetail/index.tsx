@@ -6,15 +6,15 @@ import Skeleton from 'react-loading-skeleton'
 import 'react-loading-skeleton/dist/skeleton.css'
 import ModalProductContent from "../../components/products/modalContent/index.tsx";
 
-export default function ProductDetail(){
+export default function ProductDetail({productData = null}:{productData:Product | null}){
     const { id } = useParams();
-    const [product,setProduct] = useState<Product | null>(null);
+    const [product,setProduct] = useState<Product | null>(productData);
 
     useEffect(()=>{        
         try {
             if(id){
                 if (!/^\d+$/.test(id)) {
-                    throw new Error("El id del producto enviado por la barra de direcciones no es un número entero válido.");
+                    throw new Error("Product id not valid");
                 }
                 let number = parseInt(id,10);
                 getProductById(number);
@@ -28,8 +28,13 @@ export default function ProductDetail(){
     },[])
 
     async function getProductById(id:number){
-        const product = await Product.getProductById(id);
-        setProduct(product);
+        try{
+            const product = await Product.getProductById(id);
+            setProduct(product);
+        }catch(error){
+            console.log("Product not found")
+        }
+        
     }
 
     

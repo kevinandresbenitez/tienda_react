@@ -1,3 +1,5 @@
+import axios from "axios";
+
 export class Product{
     id:number
     name:string;
@@ -32,53 +34,20 @@ export class Product{
         return productsImgs;
     }
 
-    static async getProducts():Promise<Product[]>{
+    /**
+     * Fetches a list of all products from the API and maps the data into Product objects.
+     * 
+     * This method sends a GET request to the API URL specified in `Product.API_URL` and retrieves all available products. 
+     * It maps each product from the response data into a `Product` object, including its related `versions`.
+     * 
+     * @returns {Promise<Product[]>} A promise that resolves to an array of `Product` objects.
+     * @throws {Error} Throws an error if the request fails or if no products are found.
+     */
+    static async getProducts():Promise<Product[]>{    
+        const response = await axios.get(Product.API_URL);
+        const data = response.data;
 
-        try {
-            const response = await fetch(Product.API_URL);
-            
-            if (!response.ok) {
-                throw new Error(`Error: ${response.statusText}`);
-            }
-
-            const data = await response.json();
-            return data.map((item:any)=>{
-                const product = new Product();
-                product.id = item.id;
-                product.name = item.name;
-                product.description = item.description;
-                product.info = item.info;
-                product.price = item.price;
-                product.imgTexture = item.img_texture;
-
-                product.versions = item.versions.map((version: any) => {
-                    const productVersion = new ProductVersion();
-                    productVersion.id = version.id;
-                    productVersion.nameColor = version.color_name;
-                    productVersion.color = version.color_rgb;
-                    productVersion.stock = version.stock;
-                    productVersion.img = version.img;
-                    return productVersion;
-                });
-
-                return product;
-            })
-
-        } catch (error) {
-            console.log(error);
-            return [];
-        }        
-    }
-
-    static async getProductById(id:number):Promise<Product | null>{
-        try {
-            const response = await fetch( Product.API_URL + id);
-            
-            if (!response.ok) {
-                throw new Error(`Error: ${response.statusText}`);
-            }
-
-            const item = await response.json();
+        return data.map((item:any)=>{
             const product = new Product();
             product.id = item.id;
             product.name = item.name;
@@ -97,13 +66,45 @@ export class Product{
                 return productVersion;
             });
 
-                return product;
-            
+            return product;
+        })
 
-        } catch (error) {
-            console.log(error);
-            return null;
-        }    
+          
+    }
+
+    /**
+     * Fetches a single product by its ID from the API and maps the data into a Product object.
+     * 
+     * This method sends a GET request to the API URL specified in `Product.API_URL` with the provided `id` as a parameter.
+     * It retrieves the product with the given `id`, and maps the product and its versions from the response data into `Product` and `ProductVersion` objects.
+     * 
+     * @param {number} id - The ID of the product to retrieve.
+     * @returns {Promise<Product>} A promise that resolves to a single `Product` object.
+     * @throws {Error} Throws an error if the request fails or if no product is found for the provided ID.
+     */
+    static async getProductById(id:number):Promise<Product>{
+        const response = await axios.get( Product.API_URL + id);
+        const item = response.data;
+        const product = new Product();
+        product.id = item.id;
+        product.name = item.name;
+        product.description = item.description;
+        product.info = item.info;
+        product.price = item.price;
+        product.imgTexture = item.img_texture;
+
+        product.versions = item.versions.map((version: any) => {
+            const productVersion = new ProductVersion();
+            productVersion.id = version.id;
+            productVersion.nameColor = version.color_name;
+            productVersion.color = version.color_rgb;
+            productVersion.stock = version.stock;
+            productVersion.img = version.img;
+            return productVersion;
+        });
+
+        return product;
+            
     }
 
     /**

@@ -9,7 +9,7 @@ export function EmptyCart(){
     return(
         <div className='emptyCart'>
             <div className='emptyCart__img'>
-                <img src={EmpyCartSvg}></img>
+                <img src={"/" + EmpyCartSvg}></img>
             </div>
             <div className='emptyCart__info'>
                 <p>No Hay productos en el carrito</p>

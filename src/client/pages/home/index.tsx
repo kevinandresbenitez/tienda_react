@@ -6,16 +6,21 @@ import CardContent from "../../components/products/cardContent/index.tsx";
 import 'react-loading-skeleton/dist/skeleton.css'
 import Skeleton from "react-loading-skeleton";
 
-export default function Home(){
-    const [products,setProducts] = useState<Product[]>([]);
+export default function Home({homeData = []}:{homeData:Product[] | null}){
+    const [products,setProducts] = useState<Product[] | null>(homeData);
 
     useEffect(()=>{
         getProducts();
     },[])
 
-    async function getProducts(){        
-        const products = await Product.getProducts(); 
-        setProducts(products);        
+    async function getProducts(){   
+        try{
+            const products = await Product.getProducts(); 
+            setProducts(products);        
+        }catch(error){
+            console.log("Products not found")
+        }
+        
     };
 
 

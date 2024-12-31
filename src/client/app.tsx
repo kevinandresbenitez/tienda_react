@@ -10,8 +10,9 @@ import PageLoader from "./components/common/pageLoader/index.tsx";
 
 import { CartProvider} from "./contexts/cart/index.ts";
 import {NotificationProvider} from "./contexts/notification/index.ts"
+import { Product } from "./models/product/index.ts";
 
-export function App(){
+export function App({homeData = null,productData = null}:{homeData:Product[] | null,productData:Product | null}){
     return(
     <html lang="es">
       <head>
@@ -27,7 +28,7 @@ export function App(){
           <NavBar/>
           <PageLoader/>
           <div className="main">
-            <Router />
+            <Router homeData={homeData} productData={productData}/>
           </div>
         </CartProvider>
       </NotificationProvider>
@@ -42,7 +43,7 @@ export function App(){
 if (typeof document !== 'undefined') {
   hydrateRoot(document, 
   <BrowserRouter>
-  <App />
+  <App homeData={null} productData={null} />
   </BrowserRouter>
   );
 }
