@@ -22,11 +22,16 @@ const getProducts = async (req:any, res:any) => {
 };
 
 const getProductsByID = async (req:any, res:any) => {
-    const productId = req.params.id;
-    
     try{
+        const productId = parseInt(req.params.id);
+
+        if(!productId && !/^\d+$/.test(req.params.id)){
+            return res.status(404).json({ message: 'Product not found' });    
+        }
+
         const productRepository = AppDataSource.getRepository(Product);
         const product = await productRepository.findOne({where:{id:productId},relations:{versions:true}});
+
         if(!product){
             return res.status(404).json({ message: 'Product not found' });    
         }
