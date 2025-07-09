@@ -1,10 +1,10 @@
 import React, { useEffect } from "react";
 import { useState } from "react";
 import { User } from "../../../models/user";
-import { useAuthHookType } from "../types/useAuthHook";
+import { useAuthType } from "../types/useAuth";
 
 
-export function useAuthHook():useAuthHookType{
+export function useAuthHook():useAuthType{
     const [userSession,setUserSession] = useState<User | null>(null)
     
     

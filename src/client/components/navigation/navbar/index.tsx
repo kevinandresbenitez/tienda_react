@@ -5,12 +5,12 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faUser, faUserPlus } from "@fortawesome/free-solid-svg-icons";
 import Hamburger from "../../common/buttons/hamburgerButton/index.tsx";
 import { CartDrawerToggleButton } from "../../cart/drawerToggleButton/index.tsx";
-import { useAuht } from "../../../contexts/auth/index.ts";
+import { useAuth } from "../../../contexts/auth/index.ts";
 
 
 export default function NavBar(){
 
-    const {isLogged} = useAuht();
+    const {isLogged} = useAuth();
     
     return(
     <div className="navbar">

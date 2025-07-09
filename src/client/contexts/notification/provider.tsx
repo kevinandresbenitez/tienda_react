@@ -1,6 +1,6 @@
 import React, { ReactNode } from "react";
 import {notificationContext} from './context.ts'
-import  notificationHook from "./hooks/hookNotification.ts"
+import  notificationHook from "./hooks/useNotificationHook.ts"
 import { NotificationDisplay } from "../../components/notifications/notificationDisplay/index.tsx";
 
 

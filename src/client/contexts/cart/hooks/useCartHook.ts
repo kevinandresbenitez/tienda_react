@@ -1,12 +1,13 @@
 import React from "react";
-import { CartContext } from "../context.tsx";
+import { CartContext } from "../context.ts";
 import { useEffect, useState } from "react";
 import { Product } from "../../../models/product/index.ts";
+import { useCartType } from "../types/useCart.ts";
 
 
 
 
-export const hookCart = () => { 
+export const hookCart = ():useCartType => { 
 
     const [productsInStorage,setProductsOnStorage] = useState<Product[]>([]) 
 

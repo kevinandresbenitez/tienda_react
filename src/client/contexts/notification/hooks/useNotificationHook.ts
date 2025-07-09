@@ -1,10 +1,11 @@
 import React, { useEffect } from "react";
 import { useState } from "react";
 import { notificationItemType } from "../types/notificationItem";
+import { useNotificationType } from "../types/useNotification";
 
 
 
-export default function NotificationHook(){
+export default function NotificationHook():useNotificationType{
     const [notifications,setNotifications] = useState<notificationItemType[]>([]);
 
 

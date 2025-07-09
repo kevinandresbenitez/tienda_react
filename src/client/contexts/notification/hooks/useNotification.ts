@@ -29,11 +29,6 @@ export const useNotification = ():useNotificationType => {
 
     }
 
-    return {
-        addNotification: context.addNotification,
-        notifications: context.notifications,
-        deleteNotification:context.deleteNotification
-
-    };
+    return context;
     
 }

@@ -1,4 +1,4 @@
-export { AuhtProvider }  from './provider.tsx';
-export { useAuht } from "./hooks/useAuth.ts";
-export { useAuthHookType } from "./types/useAuthHook.ts";
+export { AuthProvider }  from './provider.tsx';
+export { useAuth } from "./hooks/useAuth.ts";
+export { useAuthType } from "./types/useAuth.ts";
 

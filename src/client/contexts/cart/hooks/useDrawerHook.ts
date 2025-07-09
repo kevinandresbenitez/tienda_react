@@ -1,9 +1,10 @@
 
 import React from "react";
 import { useState } from "react";
+import { useDrawerType } from "../types/useDrawer";
 
 
-export const hookDrawer = () => {
+export const hookDrawer = ():useDrawerType => {
 
     const [isDrawerEnabled,setDrawer] = useState<boolean>(false);
 

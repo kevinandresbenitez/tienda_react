@@ -1,5 +1,5 @@
 import React from "react";
+import { useNotificationType } from "./types/useNotification";
 
-import {notificationContextType} from './types/context.ts'
 
-export const  notificationContext = React.createContext<notificationContextType | undefined>(undefined);
+export const  notificationContext = React.createContext<useNotificationType | undefined>(undefined);
