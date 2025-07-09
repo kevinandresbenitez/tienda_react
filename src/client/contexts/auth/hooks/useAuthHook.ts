@@ -1,17 +1,12 @@
 import React, { useEffect } from "react";
 import { useState } from "react";
 import { User } from "../../../models/user";
+import { useAuthHookType } from "../types/useAuthHook";
 
 
-export default function AuthHook(){
-
+export function useAuthHook():useAuthHookType{
     const [userSession,setUserSession] = useState<User | null>(null)
     
-    useEffect(()=>{
-        User.getUserInfo().then((dataUser)=>{setUserSession(dataUser)})
-    },[])
-
-
     
     function isLogged():boolean{
         return userSession != null;
@@ -22,5 +17,14 @@ export default function AuthHook(){
     function signUp(){}
 
     function signOut(){}
+
+
+    return{
+        userSession,
+        isLogged,
+        signIn,
+        signOut,
+        signUp
+    }
 
 }

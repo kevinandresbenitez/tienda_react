@@ -10,6 +10,7 @@ import PageLoader from "./components/common/pageLoader/index.tsx";
 
 import { CartProvider} from "./contexts/cart/index.ts";
 import {NotificationProvider} from "./contexts/notification/index.ts"
+import {AuhtProvider} from "./contexts/auth/index.ts"
 import { Product } from "./models/product/index.ts";
 
 export function App({homeData = null,productData = null}:{homeData:Product[] | null,productData:Product | null}){
@@ -23,16 +24,17 @@ export function App({homeData = null,productData = null}:{homeData:Product[] | n
       </head>
       <body>
 
-      <NotificationProvider>
-        <CartProvider>  
-          <NavBar/>
-          <PageLoader/>
-          <div className="main">
-            <Router homeData={homeData} productData={productData}/>
-          </div>
-        </CartProvider>
-      </NotificationProvider>
-        
+      <AuhtProvider>
+        <NotificationProvider>
+          <CartProvider>  
+            <NavBar/>
+            <PageLoader/>
+            <div className="main">
+              <Router homeData={homeData} productData={productData}/>
+            </div>
+          </CartProvider>
+        </NotificationProvider>
+      </AuhtProvider>
       </body>
     </html>
 
