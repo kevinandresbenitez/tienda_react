@@ -13,7 +13,7 @@ import {NotificationProvider} from "./contexts/notification/index.ts"
 import {AuthProvider} from "./contexts/auth/index.ts"
 import { Product } from "./models/product/index.ts";
 
-export function App({homeData = null,productData = null}:{homeData:Product[] | null,productData:Product | null}){
+export function App({homeData = [],productData = null}:{homeData:Product[],productData:Product | null}){
     return(
     <html lang="es">
       <head>
@@ -45,7 +45,7 @@ export function App({homeData = null,productData = null}:{homeData:Product[] | n
 if (typeof document !== 'undefined') {
   hydrateRoot(document, 
   <BrowserRouter>
-  <App homeData={null} productData={null} />
+  <App homeData={[]} productData={null} />
   </BrowserRouter>
   );
 }

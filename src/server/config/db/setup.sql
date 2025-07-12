@@ -2,10 +2,11 @@ CREATE TABLE "user"(
   id SERIAL PRIMARY KEY,
   name VARCHAR(50),
   last_name VARCHAR(50),
-  password VARCHAR(50),
-  email VARCHAR(50) UNIQUE,
-  address TEXT
+  password VARCHAR(100),
+  email VARCHAR(20) UNIQUE
 );
+/*Test password =123123123*/
+insert into "user" values(1,'Kevin','Benitez','$2b$10$5cfCdXl/K7mcoYNgcAK5C.KoG9zgRHFb2wcyD3jEPJgLI.r63ni7q','ele@gmail.com');
 
 CREATE TABLE userAdmin(
   id_user INT REFERENCES "user"(id) ON DELETE CASCADE,

@@ -11,34 +11,22 @@ export default function ProductDetail({productData = null}:{productData:Product 
     const [product,setProduct] = useState<Product | null>(productData);
 
     useEffect(()=>{        
-        try {
-            if(id){
-                if (!/^\d+$/.test(id)) {
-                    throw new Error("Product id not valid");
-                }
-                let number = parseInt(id,10);
-                getProductById(number);
-            }
-        } catch (error) {
-            if (typeof window !== "undefined") {
-                console.log(error);
+        
+        if(id && /^\d+$/.test(id)){
+            let number = parseInt(id,10);
+            getProductById(number);
+        }else{
+            if (typeof window !== 'undefined'){
+                console.error("Product id is not a valid number");
             }
         }
 
     },[])
 
     async function getProductById(id:number){
-        try{
-            const product = await Product.getProductById(id);
-            setProduct(product);
-        }catch(error){
-            console.log("Product not found")
-        }
-        
+        const product = await Product.getProductById(id);
+        setProduct(product);
     }
-
-    
-
     
     return(
         <article className="container__product">

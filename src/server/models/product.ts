@@ -16,13 +16,13 @@ export class Product {
   @Column({ type: 'decimal', precision: 10, scale: 2 }) 
   price: number;
 
-  @Column({ type: 'text', nullable: true })
-  img_texture: string | null;
+  @Column({ type: 'text'})
+  img_texture: string;
   
   @Column({ type: 'decimal', precision: 10, scale: 2 }) 
 
-  @Column({ type: 'text', nullable: true }) 
-  info: string | null;
+  @Column({ type: 'text'}) 
+  info: string;
 
   @OneToMany(() => ProductVersion,(productVersion) => productVersion.product)
   versions: ProductVersion[];

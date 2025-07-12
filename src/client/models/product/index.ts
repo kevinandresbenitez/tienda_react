@@ -1,4 +1,5 @@
 import axios from "axios";
+import type { ApiResponse, ProductDto } from '../../../shared/api-types';
 
 export class Product{
     id:number
@@ -41,13 +42,17 @@ export class Product{
      * It maps each product from the response data into a `Product` object, including its related `versions`.
      * 
      * @returns {Promise<Product[]>} A promise that resolves to an array of `Product` objects.
-     * @throws {Error} Throws an error if the request fails or if no products are found.
+     * @throws {Error} return empty list if the request fails or if no products are found.
      */
     static async getProducts():Promise<Product[]>{    
-        const response = await axios.get(Product.API_URL);
+        try{
+
+        const response = await axios.get<ApiResponse<ProductDto[]>>(Product.API_URL);
         const data = response.data;
 
-        return data.map((item:any)=>{
+        if (!data.payload) return [];
+
+        return data.payload.map((item:any)=>{
             const product = new Product();
             product.id = item.id;
             product.name = item.name;
@@ -69,6 +74,12 @@ export class Product{
             return product;
         })
 
+        }catch(e){
+            if (typeof window !== 'undefined'){
+                console.error(e);
+            }
+            return [];
+        }
           
     }
 
@@ -80,30 +91,43 @@ export class Product{
      * 
      * @param {number} id - The ID of the product to retrieve.
      * @returns {Promise<Product>} A promise that resolves to a single `Product` object.
-     * @throws {Error} Throws an error if the request fails or if no product is found for the provided ID.
+     * @throws {Error} return null if no product is found for the provided ID.
      */
-    static async getProductById(id:number):Promise<Product>{
-        const response = await axios.get( Product.API_URL + id);
-        const item = response.data;
-        const product = new Product();
-        product.id = item.id;
-        product.name = item.name;
-        product.description = item.description;
-        product.info = item.info;
-        product.price = item.price;
-        product.imgTexture = item.img_texture;
+    static async getProductById(id:number):Promise<Product | null>{
+        try{
 
-        product.versions = item.versions.map((version: any) => {
-            const productVersion = new ProductVersion();
-            productVersion.id = version.id;
-            productVersion.nameColor = version.color_name;
-            productVersion.color = version.color_rgb;
-            productVersion.stock = version.stock;
-            productVersion.img = version.img;
-            return productVersion;
-        });
+            const response = await axios.get<ApiResponse<ProductDto>>( Product.API_URL + id);
+            const item = response.data.payload;
 
-        return product;
+            if (!item) return null;
+            
+            const product = new Product();
+            product.id = item.id;
+            product.name = item.name;
+            product.description = item.description;
+            product.info = item.info;
+            product.price = item.price;
+            product.imgTexture = item.img_texture;
+    
+            product.versions = item.versions.map((version: any) => {
+                const productVersion = new ProductVersion();
+                productVersion.id = version.id;
+                productVersion.nameColor = version.color_name;
+                productVersion.color = version.color_rgb;
+                productVersion.stock = version.stock;
+                productVersion.img = version.img;
+                return productVersion;
+            });
+    
+            return product;
+
+        }catch(e){
+            if (typeof window !== 'undefined'){
+                console.error(e);
+            }
+            return null;
+        }
+ 
             
     }
 

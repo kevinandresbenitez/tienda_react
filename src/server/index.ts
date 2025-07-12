@@ -2,8 +2,8 @@ import express, {RequestHandler } from "express";
 import path from 'path';
 import favicon from "serve-favicon";
 import { renderReactApp } from "./renderer";
-import authRoutes from './routes/authRoutes'
-import productsRoutes from './routes/productRoutes'
+import authRoutes from './routes/auth.routes'
+import productsRoutes from './routes/product.routes'
 import cookieParser from 'cookie-parser'
 import dotenv from "dotenv";
 import { initializeDbConnection } from "./config/db/config";
@@ -19,6 +19,7 @@ const PORT = process.env.PORT || 8080;
 app.use(express.static(path.join(process.cwd(), 'dist/client')));
 app.use(favicon(path.join(process.cwd(),'src/server/public/favicon.ico')) as RequestHandler);
 app.use(express.json());
+app.use(express.urlencoded({extended:true}));
 // Configuring cookie parser
 app.use(cookieParser()); 
 
