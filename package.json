@@ -42,6 +42,7 @@
     "add": "^2.0.6",
     "axios": "^1.7.9",
     "bcryptjs": "^3.0.2",
+    "caniuse-lite": "^1.0.30001727",
     "cookie-parser": "^1.4.7",
     "dotenv": "^16.4.7",
     "jsonwebtoken": "^9.0.2",
@@ -62,12 +63,10 @@
     "build:client": "webpack --config ./src/client/webpack.config.cjs",
     "build:server": "webpack --config ./src/server/webpack.config.cjs",
     "serve": "node ./dist/server/index.js",
-
     "dev": "npm-run-all clean --parallel dev:client dev:server dev:nodemon",
     "dev:client": "webpack --config ./src/client/webpack.config.cjs --watch",
     "dev:server": "webpack --config ./src/server/webpack.config.cjs --watch",
     "dev:nodemon": "wait-on ./dist/server/index.cjs && nodemon ./dist/server/index.cjs",
-
     "clean": "rimraf ./dist"
   },
   "resolutions": {
