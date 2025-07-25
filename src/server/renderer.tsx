@@ -7,7 +7,7 @@ import { Product } from '../client/models/product/index.ts';
 
 export const renderReactApp = async (req: any, res: any) => {
 
-  let homeData:Product[] | null = null;
+  let homeData:Product[] = [];
   let productData:Product | null = null;
 
   // for / direction
