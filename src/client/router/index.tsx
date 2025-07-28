@@ -13,7 +13,7 @@ const Faq = lazy(()=>{return import('../pages/faq/index.tsx')});
 const Contact = lazy(()=>{return import('../pages/contact/index.tsx')});
 const PageNotFound = lazy(()=>{return import('../pages/404/index.tsx')});
 
-export default function Router({homeData,productData}:{homeData:Product[] | null,productData:Product | null}){
+export default function Router({homeData,productData}:{homeData:Product[],productData:Product | null}){
     const location = useLocation();
 
     const [isHidrated,setHidrating] = useState(true);

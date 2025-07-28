@@ -17,7 +17,7 @@ module.exports = {
 
 
 
-  mode:"production",
+  mode:"development",
   output: {
     path: path.join(process.cwd(), 'dist', 'client'),
     filename: '[name].bundle.js',
@@ -90,4 +90,9 @@ module.exports = {
       filename: 'styles.css',
     }),
   ],
+
+   watchOptions: {
+    poll: 1000,
+    ignored: /node_modules|dist|src\/server/,
+  },
 };

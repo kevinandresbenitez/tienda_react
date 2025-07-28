@@ -9,9 +9,11 @@ module.exports = {
     server: "./src/server/index.ts", 
   },
   output: {
-    filename: "index.cjs",
+    filename: "index.mjs",
     path: path.join(process.cwd(), 'dist', 'server'),
-    libraryTarget: 'commonjs'
+    libraryTarget: 'module',
+    module: true,
+    chunkFormat: "module",
   },
 
   resolve: {
@@ -47,9 +49,18 @@ module.exports = {
     },
     ],
   },
-  
-  externals: {
-    express: 'express',
-    typeorm: 'commonjs typeorm' 
+
+   experiments: {
+    outputModule: true,
   },
+
+    externals: {
+      express: 'express',
+      typeorm: 'module typeorm' 
+    },
+
+    watchOptions: {
+      poll: 1000,
+      ignored: /node_modules|dist/,
+    },
 };
