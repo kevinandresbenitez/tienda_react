@@ -1,7 +1,7 @@
 services:
   app:
-    build: .
-    image: tienda_react-app
+    image: node:18.12.0
+    working_dir: /app
     ports:
       - "${PORT}:${PORT}"
     depends_on:
@@ -10,7 +10,7 @@ services:
       - .env
     volumes:
       - .:/app
-    command: sh -c "yarn install && dockerize -wait tcp://db:${POSTGRES_PORT} -timeout 60s yarn run dev"
+    command: sh -c "yarn install && yarn run dev"
 
   db:
     image: postgres:latest
