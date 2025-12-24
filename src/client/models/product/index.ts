@@ -1,26 +1,26 @@
 import axios from "axios";
 import type { ApiResponse, ProductDto } from '../../../shared/api-types';
 
-export class Product{
-    id:number
-    name:string;
-    description:string;
-    info:string;
-    price:number;
-    imgTexture:string;
-    versions:ProductVersion[];
+export class Product {
+    id: number
+    name: string;
+    description: string;
+    info: string;
+    price: number;
+    imgTexture: string;
+    versions: ProductVersion[];
     static API_URL = 'http://localhost:8080/api/products/';
 
-    getStock():number{
-        return this.versions.reduce((a,b)=>(a + b.stock),0)
+    getStock(): number {
+        return this.versions.reduce((a, b) => (a + b.stock), 0)
     }
-    
+
     /**
      * 
      * @returns {string[]} Array of hexadecilal color from the versions
      */
-    getColors():string[]{
-        return this.versions.map((obj)=> obj.color);
+    getColors(): string[] {
+        return this.versions.map((obj) => obj.color);
     }
 
     /**
@@ -29,9 +29,9 @@ export class Product{
      * followed by more images of the different versions.
      * @returns {string[]} Array of strings representing image paths.
      */
-    getImgs():string[]{
-        const productsImgs = this.versions.map((obj)=>obj.img);
-        productsImgs.splice(1,0,this.imgTexture);
+    getImgs(): string[] {
+        const productsImgs = this.versions.map((obj) => obj.img);
+        productsImgs.splice(1, 0, this.imgTexture);
         return productsImgs;
     }
 
@@ -44,43 +44,43 @@ export class Product{
      * @returns {Promise<Product[]>} A promise that resolves to an array of `Product` objects.
      * @throws {Error} return empty list if the request fails or if no products are found.
      */
-    static async getProducts():Promise<Product[]>{    
-        try{
+    static async getProducts(): Promise<Product[]> {
+        try {
 
-        const response = await axios.get<ApiResponse<ProductDto[]>>(Product.API_URL);
-        const data = response.data;
+            const response = await axios.get<ApiResponse<ProductDto[]>>(Product.API_URL);
+            const data = response.data;
 
-        if (!data.payload) return [];
+            if (!data.payload) return [];
 
-        return data.payload.map((item:any)=>{
-            const product = new Product();
-            product.id = item.id;
-            product.name = item.name;
-            product.description = item.description;
-            product.info = item.info;
-            product.price = item.price;
-            product.imgTexture = item.img_texture;
+            return data.payload.map((item: any) => {
+                const product = new Product();
+                product.id = item.id;
+                product.name = item.name;
+                product.description = item.description;
+                product.info = item.info;
+                product.price = item.price;
+                product.imgTexture = item.img_texture;
 
-            product.versions = item.versions.map((version: any) => {
-                const productVersion = new ProductVersion();
-                productVersion.id = version.id;
-                productVersion.nameColor = version.color_name;
-                productVersion.color = version.color_rgb;
-                productVersion.stock = version.stock;
-                productVersion.img = version.img;
-                return productVersion;
-            });
+                product.versions = item.versions.map((version: any) => {
+                    const productVersion = new ProductVersion();
+                    productVersion.id = version.id;
+                    productVersion.nameColor = version.color_name;
+                    productVersion.color = version.color_rgb;
+                    productVersion.stock = version.stock;
+                    productVersion.img = version.img;
+                    return productVersion;
+                });
 
-            return product;
-        })
+                return product;
+            })
 
-        }catch(e){
-            if (typeof window !== 'undefined'){
+        } catch (e) {
+            if (typeof window !== 'undefined') {
                 console.error(e);
             }
             return [];
         }
-          
+
     }
 
     /**
@@ -93,14 +93,14 @@ export class Product{
      * @returns {Promise<Product>} A promise that resolves to a single `Product` object.
      * @throws {Error} return null if no product is found for the provided ID.
      */
-    static async getProductById(id:number):Promise<Product | null>{
-        try{
+    static async getProductById(id: number): Promise<Product | null> {
+        try {
 
-            const response = await axios.get<ApiResponse<ProductDto>>( Product.API_URL + id);
+            const response = await axios.get<ApiResponse<ProductDto>>(Product.API_URL + id);
             const item = response.data.payload;
 
             if (!item) return null;
-            
+
             const product = new Product();
             product.id = item.id;
             product.name = item.name;
@@ -108,7 +108,7 @@ export class Product{
             product.info = item.info;
             product.price = item.price;
             product.imgTexture = item.img_texture;
-    
+
             product.versions = item.versions.map((version: any) => {
                 const productVersion = new ProductVersion();
                 productVersion.id = version.id;
@@ -118,17 +118,17 @@ export class Product{
                 productVersion.img = version.img;
                 return productVersion;
             });
-    
+
             return product;
 
-        }catch(e){
-            if (typeof window !== 'undefined'){
+        } catch (e) {
+            if (typeof window !== 'undefined') {
                 console.error(e);
             }
             return null;
         }
- 
-            
+
+
     }
 
     /**
@@ -136,38 +136,41 @@ export class Product{
      * @param product 
      * @returns a copy of the product
      */
-    static copy(product:Product):Product{
+    static copy(product: Product): Product {
         const copy = new Product();
-        copy.id = product.id;
-        copy.name = product.name;
-        copy.description = product.description;
-        copy.info = product.info;
-        copy.price = product.price;
-        copy.imgTexture = product.imgTexture;
+        Object.assign(copy, product);
         copy.versions = [];
-        product.versions.forEach((subProduct)=>{
+        product.versions.forEach((subProduct) => {
             copy.versions.push(ProductVersion.copy(subProduct));
         })
         return copy;
     }
+    static hydrate(data: any): Product {
+        const instance = new Product();
+        Object.assign(instance, data);
+        if (instance.versions) {
+            instance.versions = instance.versions.map(v => ProductVersion.hydrate(v));
+        }
+        return instance;
+    }
 }
 
-class ProductVersion{
-    id:number;
-    nameColor:string;
-    color:string;
-    stock:number;
-    img:string;
+class ProductVersion {
+    id: number;
+    nameColor: string;
+    color: string;
+    stock: number;
+    img: string;
 
-    static copy(subProduct:ProductVersion):ProductVersion{
+    static copy(subProduct: ProductVersion): ProductVersion {
         const copy = new ProductVersion();
-        copy.id = subProduct.id;
-        copy.nameColor = subProduct.nameColor;
-        copy.color = subProduct.color;
-        copy.stock = subProduct.stock;
-        copy.img = subProduct.img;
-
+        Object.assign(copy, subProduct);
         return copy
 
+    }
+    static hydrate(data: any): ProductVersion {
+        const instance = new ProductVersion();
+        Object.assign(instance, data);
+        return instance;
     }
 }
