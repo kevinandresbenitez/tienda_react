@@ -1,31 +1,34 @@
-// Vars
-@color-black: rgb(37, 37, 37);
-@color-black-hover: #999997;
-@color-black-active: #464643;
-@color-black-ligth: rgb(110, 105, 105);
 
-@color-primary:#ffffff;
-@color-secondary:@color-primary;
+// Paleta de Colores 
+@palette-cream:      #F9F4EE; 
+@palette-beige-100:  #E8E5DC;
+@palette-beige-200:  #D8D0BD;
+@palette-coffee:     #433A35; 
 
-// Vars fonts
-@font-xs: 10px;        
-@font-small: 12px;     
-@font-medium: 16px;    
-@font-large: 18px;     
-@font-xl: 20px;        
-@font-xxl: 24px;       
-@font-xxxl: 30px; 
+// Fuentes 
+@font-family-garamond: 'Eb Garamond', serif;
+@font-family-alegreya: 'Alegreya Sans SC', sans-serif;
 
+// Colores de Marca 
+@brand-primary:      @palette-cream;
+@brand-secondary:    @palette-beige-200;
+@brand-accent:       @palette-beige-100;
+@brand-dark:         @palette-coffee;
 
+// Colores de Estructura 
+@ui-background:      @palette-cream;      
+@ui-text-main:       @palette-coffee;     
+@ui-text-muted:      lighten(@palette-coffee, 20%); 
+@ui-border:          @palette-beige-200;
 
-.font-face-primary{
-  font-family: "Playfair Display", serif;
-  font-optical-sizing: auto;
-  font-style: normal;
-}
+// Tipografía Funcional
+@font-heading:       @font-family-garamond; 
+@font-body:          @font-family-alegreya; 
 
-.font-face-secondary{
-  font-family: "Quicksand", sans-serif;
-  font-optical-sizing: auto;
-  font-style: normal;
-}
+// Tamaños 
+@text-xs:   0.75rem;  
+@text-sm:   0.875rem; 
+@text-base: 1rem;     
+@text-lg:   1.125rem; 
+@text-xl:   1.25rem;  
+@text-2xl:  1.5rem;   

@@ -1,4 +1,3 @@
-@import url('../../../vars.less');
 
 .cartDrawer{
     width: 20dvw;
@@ -7,7 +6,7 @@
     right: 0;
     position: fixed;
     z-index: 4;
-    background-color: @color-primary;
+    background-color: @ui-background;
     box-shadow: -4px 2px 4px rgba(0, 0, 0, 0.1);
     display: flex;
     flex-flow: column nowrap;
@@ -17,15 +16,15 @@
     .cart__info{
         padding: 20px;
         .cart__info__title{
-            color: @color-black;
-            font-size: @font-large;
-            .font-face-primary;
+            color: @ui-text-main;
+            font-size: @text-xl;
+            font-family: @font-heading;
         }
 
         .cart__info__text{
-            color: @color-black-ligth;
-            font-size: @font-medium;
-            .font-face-secondary
+            color: @ui-text-muted;
+            font-size: @text-base;
+            font-family: @font-body;
         }
         
     }

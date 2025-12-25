@@ -40,7 +40,7 @@ export default function CardContent({children}:{children:Product}){
             
             <div className="card__buttons">
                 <Link to={`/product/${product.id}`} style={{ textDecoration: 'none' }} >
-                    <Button onClick={()=>{}}>Detalles</Button>
+                    <Button size="full" onClick={()=>{}}>Detalles</Button>
                 </Link>
             </div>
         </>

@@ -16,22 +16,22 @@
     width: calc(35% - 40px);
     padding: 20px;
     height: calc(100% - 40px);
-    background-color: @color-primary;
+    background-color: @brand-primary;
 
     .product__content__info__details {
         .product__content__info_name {
-            font-size: @font-xxl;
+            font-size: @text-2xl;
             font-weight: bold;
-            color: @color-black-ligth;
+            color: @ui-text-muted;
         }
 
         .product__content__info_price {
-            font-size: @font-xl;
-            color: @color-black-ligth;
+            font-size: @text-xl;
+            color: @ui-text-muted;
         }
 
         .product__content__info_sku {
-            font-size: @font-small;
+            font-size: @text-sm;
             color: #c2b2b2;
             font-weight: bold;
         }
@@ -43,14 +43,14 @@
         gap: 20px;
 
         .product__content__actions__colors {
-            font-size: @font-medium;
+            font-size: @text-base;
             display: flex;
             flex-flow: column wrap;
             gap: 10px;
         }
 
         .product__content__actions__stock {
-            font-size: @font-medium;
+            font-size: @text-base;
             display: flex;
             flex-flow: column wrap;
             gap: 10px;
@@ -88,7 +88,7 @@
             }
 
             .product__content__actions__stock {
-                font-size: @font-medium;
+                font-size: @text-base;
                 display: flex;
                 flex-flow: column wrap;
                 gap: 10px;
@@ -97,6 +97,10 @@
             .product__content__actions__buttons {
                 width: 100%;
                 margin-top: 10px;
+                display: flex;
+                gap: 10px;
+                flex-flow: column wrap;
+                align-items: center;
 
                 & > .button {
                     margin: 10px auto;

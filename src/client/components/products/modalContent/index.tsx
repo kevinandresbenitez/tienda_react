@@ -78,7 +78,7 @@ export default function ModalContent({children:product,versionContent}:{children
 
                         <div className="product__content__actions__buttons">
                             <Button onClick={handleAddProductToTrolley}>Agregar al carrito</Button>
-                            <Button style="filled" onClick={handleBuyProduct}>Comprar</Button>
+                            <Button onClick={handleBuyProduct}  variant="secondary">Comprar</Button>
                         </div>
                     </div>
                 </div>

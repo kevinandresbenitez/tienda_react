@@ -1,6 +1,4 @@
-.button{
-    width: 80%;
-    margin: auto;
+.btn{
     padding: 7px 0px;
     text-align: center;
     border: none;
@@ -8,38 +6,47 @@
     transition: all 0.5s;
     text-decoration: none;
     display: block;
-    // transform: translateY(10px);
 
 
 
-    &.default{
-        color: @color-black;
-        border: 2px solid @color-black-ligth;
-        background-color: @color-secondary;
+    &.btn-primary{
+        color: @ui-text-main;
+        background-color: @brand-secondary;
     
         &:hover{
-            background-color: @color-black-ligth;
-            color: @color-primary;
+            background-color: fade(@brand-secondary,70%);
+            color: @ui-text-main;
         }
     
         &:active{
             transition: none;
-            background-color: @color-black-active;
+            background-color: fade(@brand-secondary,85%);
         }
     }
     
-
-    &.filled{
-        background-color: @color-black;
-        color: @color-primary;
+    
+    &.btn-secondary{
+        background-color: @brand-dark;
+        color: @brand-primary;
 
         &:hover{
-            background-color: @color-black-hover;
-            color: @color-primary;
+            background-color: fade(@brand-dark,70%);
+            color: @brand-primary;
         }
 
         &:active{
-            background-color: @color-black-active;
+            background-color: fade(@brand-dark,80%);
         }
+
+    } 
+
+    &.btn-medium{
+        width: 80%;
+    }
+
+
+    &.btn-full{
+        width: 100%;
+        height:150%;
     }
 }

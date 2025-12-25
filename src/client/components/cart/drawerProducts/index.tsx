@@ -32,7 +32,7 @@ export function CartProductDrawer(){
                 </div>
 
                 <div className="cartDrawer__actions">
-                    <Button onClick={()=>{}}>Comprar</Button>
+                    <Button variant="secondary" size="medium" onClick={()=>{}}>Comprar</Button>
                 </div>
                 </>
             ):<EmptyCart/>}

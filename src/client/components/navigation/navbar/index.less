@@ -4,9 +4,9 @@
     width: 100vw;
     height: 80px;
     z-index: 100;
-    background-color: @color-primary;
-    .font-face-primary;
-    font-size:@font-medium;
+    background-color: @palette-cream;
+    font-family: @font-body;
+    font-size:@text-base;
     box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.1);
 
     display: flex;
@@ -16,21 +16,21 @@
 
 .navbar a {
     text-decoration: none;
-    color: @color-black;
+    color: @ui-text-main;
 }
 
 .navbar a:hover {
-    color: @color-black-hover;
+    color: darken(@ui-text-main,5%);
     transition: all 0.4s;
 }
 
 .navbar__logo{
     :nth-child(1){
-        font-size: @font-xxxl;
+        font-size: @text-2xl;
         font-weight: 600;
     }
     :nth-child(2){
-        font-size: @font-small;
+        font-size: @text-sm;
         font-weight: 500;
     }
 
@@ -39,7 +39,7 @@
 }
 
 .navbar__links{
-    background-color:@color-primary;
+    background-color:@ui-background;
     a{
         margin: 10px;        
     }
