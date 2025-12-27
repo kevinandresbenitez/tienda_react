@@ -14,7 +14,7 @@ export function NotificationDisplay({notifications,deleteNotification}:{notifica
 
     return(
         <div className="notification__container">
-            {notifications.map((notificationObj)=> <Notification notification={notificationObj}  closeNotification={closeNotificationHandle} />)}
+            {notifications.map((notificationObj,key)=> <Notification key={key} notification={notificationObj}  closeNotification={closeNotificationHandle} />)}
         </div>
         )
 }

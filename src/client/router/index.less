@@ -6,9 +6,10 @@
     background-color: @ui-background;
     opacity: 0;
     z-index: 0;
+    pointer-events: none;
   }
   
-  /* Estilos para la animación de desvanecimiento */
+
   .fade-enter {
     opacity: 1;
     &.fullscreen-container {
@@ -19,7 +20,7 @@
   
   .fade-enter-active {
     opacity: 0;
-    transition: opacity 500ms ease-in-out; /* Animación de desvanecimiento suave */
+    transition: opacity 500ms ease-in-out; 
 
     &.fullscreen-container {      
       z-index: 3;
@@ -38,7 +39,7 @@
   
   .fade-exit-active {
     opacity: 0;
-    transition: opacity 300ms ease-in-out; /* Animación de desvanecimiento suave */    
+    transition: opacity 300ms ease-in-out;   
     &.fullscreen-container {      
       z-index: 3;
     }

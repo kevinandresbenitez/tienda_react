@@ -26,8 +26,8 @@ export function CartProductDrawer(){
                 </div>
 
                 <div className="cartDrawer__products">
-                    {productsInStorage.map((product:Product)=>{
-                        return <CartProductItem>{product}</CartProductItem>
+                    {productsInStorage.map((product:Product,key)=>{
+                        return <CartProductItem key={key}>{product}</CartProductItem>
                     })}
                 </div>
 

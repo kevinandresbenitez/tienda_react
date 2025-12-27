@@ -24,7 +24,7 @@ export default function Home() {
 
 
     return (
-        <>
+        
             <article className="articles">
                 {products && products.length > 0 ?
                     products.map((product: any, key: any) => {
@@ -41,6 +41,6 @@ export default function Home() {
 
 
             </article>
-        </>
+        
     )
 }

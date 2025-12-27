@@ -40,10 +40,31 @@
 
     } 
 
+    &.btn-outline{
+        background-color: transparent;
+        border: 2px solid @brand-dark;
+        color: @ui-text-main;
+
+        &:hover{
+            background-color: fade(@brand-secondary,40%);
+            color: @ui-text-main;
+        }
+
+        &:active{
+            background-color: fade(@brand-secondary,70%);
+            color: @ui-text-main;
+        }
+    }
+
+
     &.btn-medium{
         width: 80%;
     }
 
+    &.btn-large{
+        width: 80%;
+        height: 3rem;
+    }
 
     &.btn-full{
         width: 100%;

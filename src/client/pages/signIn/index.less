@@ -1,0 +1,50 @@
+.sign-in-page{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: calc(100vh - 80px);
+    background-color: @ui-background;
+}
+
+.sign-in-form{
+    width: 400px;
+    min-height: 300px;
+    display: flex;
+    justify-content: space-evenly;
+    align-items: center;
+    flex-flow: column wrap;
+    gap: 20px;
+    background-color: #F9F4EE;
+    border: 1px solid @ui-border;
+    padding: 40px;
+
+    &__title{
+        font-family: @font-body;
+        font-weight: 400;
+        font-size: @text-3xl;
+        color: @ui-text-main;
+        margin-bottom: 10px;
+    }
+
+    &__inputs{
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        flex-flow: column wrap;
+        gap: 15px;
+        width: 100%;
+    }
+
+    &__actions{
+        display: flex;
+        gap: 10px;
+        flex-flow: column wrap;
+        justify-content: space-between;
+        align-items: center;
+        width: 100%;
+    }
+}
+
+
+
+    

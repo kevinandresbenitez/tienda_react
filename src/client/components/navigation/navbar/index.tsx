@@ -31,7 +31,7 @@ export default function NavBar(){
         <div className="navbar__actions">
             {!isLogged() && 
                 <>
-                    <Link to="/login" className="navbar__actions__link"> <FontAwesomeIcon icon={faUser} /><p>Iniciar Sesion</p></Link>
+                    <Link to="/signIn" className="navbar__actions__link"> <FontAwesomeIcon icon={faUser} /><p>Iniciar Sesion</p></Link>
                     <Link to="/signUp" className="navbar__actions__link"> <FontAwesomeIcon icon={faUserPlus} /><p>Registrarse</p></Link>
                 </>
             }

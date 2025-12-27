@@ -10,6 +10,8 @@ const ProductDetail = lazy(() => { return import('../pages/productDetail/index.t
 const About = lazy(() => { return import('../pages/about/index.tsx') });
 const Faq = lazy(() => { return import('../pages/faq/index.tsx') });
 const Contact = lazy(() => { return import('../pages/contact/index.tsx') });
+const SignIn = lazy(() => { return import('../pages/signIn/index.tsx') });
+const SignUp = lazy(() => { return import('../pages/signUp/index.tsx') });
 const PageNotFound = lazy(() => { return import('../pages/404/index.tsx') });
 
 export default function Router() {
@@ -34,6 +36,8 @@ export default function Router() {
                         <Route path="/about" element={<About />} />
                         <Route path="/faq" element={<Faq />} />
                         <Route path="/contact" element={<Contact />} />
+                        <Route path="/signIn" element={<SignIn />} />
+                        <Route path="/signUp" element={<SignUp />} />
                         <Route path="*" element={<PageNotFound />} />
                     </Routes>
                 </Suspense>
@@ -47,6 +51,8 @@ export default function Router() {
                     <Route path="/about" element={<About />} />
                     <Route path="/faq" element={<Faq />} />
                     <Route path="/contact" element={<Contact />} />
+                    <Route path="/signIn" element={<SignIn />} />
+                    <Route path="/signUp" element={<SignUp />} />
                     <Route path="*" element={<PageNotFound />} />
                 </Routes>
             </Suspense>
