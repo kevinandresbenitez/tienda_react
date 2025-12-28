@@ -50,7 +50,7 @@ export default function SignIn() {
                 <div className="sign-in-form__actions">
                     <Button variant="outline" size="large" type="submit" onClick={() => { }} >Iniciar Sesion</Button>
                     <div className="sign-in-form__register">
-                        <span>¿No tienes cuenta? <Link to="signUp">Registrarse</Link> </span>
+                        <span>¿No tienes cuenta? <Link to="/signUp">Registrarse</Link> </span>
                     </div>
                 </div>
             </form>
