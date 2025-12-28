@@ -3,12 +3,12 @@ import PropTypes from 'prop-types';
 import './index.less'
 
 
-type buttonType ={
+type buttonType = {
     children: React.ReactNode,
-    onClick: ()=>void, 
-    variant?: "primary" | "secondary" | "outline", 
+    onClick: (...args: any[]) => any,
+    variant?: "primary" | "secondary" | "outline",
     size?: "small" | "medium" | "large" | "full",
-    type?: "button" | "submit" | "reset", 
+    type?: "button" | "submit" | "reset",
 }
 /**
  * Un componente de botón reutilizable.
@@ -17,9 +17,9 @@ type buttonType ={
  * @param {React.ReactNode} props.children - Contenido que se mostrará dentro del botón.
  * @returns {JSX.Element} - Un elemento de botón con las propiedades especificadas y la clase css "button"
  */
-export default function Button({children, onClick,type = "button" , variant="primary" , size="medium"}:buttonType){
-    return(
-        <button  className={`btn btn-${variant} btn-${size} btn-${type}`} onClick={ ()=>{ onClick()} }>{children}</button>
+export default function Button({ children, onClick, type = "button", variant = "primary", size = "medium" }: buttonType) {
+    return (
+        <button type={type} className={`btn btn-${variant} btn-${size} btn-${type}`} onClick={onClick}>{children}</button>
     )
 }
 

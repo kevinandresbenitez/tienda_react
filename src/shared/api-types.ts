@@ -3,13 +3,13 @@ export interface ApiResponse<Type = undefined> {
     payload?: Type;
 }
 
-export interface userDto{
+export interface userDto {
     id: number;
-    name:string;
+    name: string;
     email: string;
 };
 
-export interface ProductDto{
+export interface ProductDto {
     id: number;
     name: string;
     description: string;
@@ -25,4 +25,9 @@ export interface ProductVersionDto {
     color_rgb: string;
     stock: number;
     img: string | null;
+}
+
+export interface LoginRequestDto {
+    email: string;
+    password: string;
 }
