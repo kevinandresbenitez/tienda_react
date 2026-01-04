@@ -1,5 +1,6 @@
 const path = require("path");
-const MiniCssExtractPlugin = require('mini-css-extract-plugin');
+const NodemonPlugin = require('nodemon-webpack-plugin');
+const nodeExternals = require('webpack-node-externals');
 
 module.exports = {
   target: "node",
@@ -14,6 +15,7 @@ module.exports = {
     libraryTarget: 'module',
     module: true,
     chunkFormat: "module",
+    clean:false
   },
 
   resolve: {
@@ -54,13 +56,26 @@ module.exports = {
     outputModule: true,
   },
 
-    externals: {
-      express: 'express',
-      typeorm: 'module typeorm' 
-    },
+  externals: [
+      nodeExternals({
+        importType: 'module',
+        allowlist: [/\.(css|less|scss|sass)$/],
+      }),
+    ],
 
     watchOptions: {
       poll: 1000,
       ignored: /node_modules|dist/,
     },
+
+    plugins:[
+      new NodemonPlugin({
+      script: './dist/server/index.mjs',
+      watch: path.resolve('./dist/server'),
+      legacyWatch: true,
+      ext: 'js,mjs,json',
+      delay: 50, 
+      verbose: false
+      }),
+    ]
 };

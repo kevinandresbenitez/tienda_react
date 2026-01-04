@@ -4,13 +4,15 @@ services:
     working_dir: /app
     ports:
       - "${PORT}:${PORT}"
+      - "35729:35729"
     depends_on:
       - db
     env_file:
       - .env
     volumes:
       - .:/app
-    command: sh -c "yarn install && yarn run dev"
+      - /app/node_modules
+    command: sleep infinity
 
   db:
     image: postgres:16
