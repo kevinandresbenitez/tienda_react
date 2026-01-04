@@ -57,10 +57,10 @@
     "typeorm": "^0.3.20"
   },
   "scripts": {
-    "build": "npm-run-all --parallel build:client build:server serve",
-    "build:client": "webpack --config ./src/client/webpack.config.cjs",
-    "build:server": "webpack --config ./src/server/webpack.config.cjs",
-    "serve": "node ./dist/server/index.mjs",
+    "build": "npm-run-all --parallel build:client build:server",
+    "build:client": "webpack --config ./src/client/webpack.config.cjs --mode production",
+    "build:server": "webpack --config ./src/server/webpack.config.cjs --mode production",
+
     "dev": "npm-run-all --parallel dev:client dev:server",
     "dev:client": "webpack --config ./src/client/webpack.config.cjs --watch",
     "dev:server": "webpack --config ./src/server/webpack.config.cjs --watch"
