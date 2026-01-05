@@ -20,13 +20,27 @@ export function CartProductItem({children:product}:{children:Product}){
     }
 
     return (
-        <div className="cartProduct">
-            <strong className="cartProduct__title">{product.name}</strong>
-            <p className="cartProduct__sku">Sku: {product.id}</p>
-            <p className="cartProduct__version">Color de version: {product.versions[0].nameColor}</p>
-            <p className="cartProduct__count">Cantidad: {product.getStock()}</p>
-            <Link to={`/product/${product.id}`} className="cartProduct__button__link" ><FontAwesomeIcon icon={faArrowUpRightFromSquare} /></Link>
-            <button className="cartProduct__button__remove" onClick={()=>{removeProductHandle(product)}}><FontAwesomeIcon icon={faTrash} /></button>
+        <div className="cart_product">
+
+
+            <div className="cart_product__info">
+                <div className="cart_product__info__img">
+                    <img src={product.versions[0].img} alt={product.name} className="cart_product__img"/>
+                </div>
+
+                <div className="cart_product__info__text">
+                    <strong className="cart_product__title">{product.name}</strong>
+                    <p className="cart_product__sku">Sku: {product.id}</p>
+                    <p className="cart_product__version">{product.versions[0].nameColor}</p>
+                    <p className="cart_product__count">Cantidad: {product.getStock()}</p>
+                </div>
+
+            </div>
+
+            <div className="cart_product__actions">
+                <Link to={`/product/${product.id}`} className="cart_product__button" ><FontAwesomeIcon icon={faArrowUpRightFromSquare} /></Link>
+                <button className="cart_product__button" onClick={()=>{removeProductHandle(product)}}><FontAwesomeIcon icon={faTrash} /></button>
+            </div>
         </div>
     )
 }

@@ -76,6 +76,8 @@ export default function ModalContent({children:product,versionContent}:{children
                             <input type="number" defaultValue={1} ref={inputStock} min="1" max={productCopy.getStock()} />
                         </div>
 
+                        {versionContent === 'normal' && <div>{product.description}</div>}
+
                         <div className="product__content__actions__buttons">
                             <Button onClick={handleAddProductToTrolley}>Agregar al carrito</Button>
                             <Button onClick={handleBuyProduct}  variant="secondary">Comprar</Button>

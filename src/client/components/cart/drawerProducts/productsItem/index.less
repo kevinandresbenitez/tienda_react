@@ -1,65 +1,72 @@
-.cartProduct{
+.cart_product{
     width: calc(100% - 32px);
-    
     border: 1px solid #ccc;
     border-radius: 0.5rem;
     position: relative;
+    padding: 5px;
+    display: flex;
+    flex-flow: row wrap;
+    justify-content: space-around;
 
-    padding: 15px;
-    .cartProduct__button__remove{        
-        box-shadow: 0 0 1px rgba(0, 0, 0, 0.8);
-        border-radius: 5px;
-        position: absolute;
-        right: 20px;
-        top: 50%;
-        transform: translateY(-50%);
-        background-color: @brand-secondary;
-        text-decoration: none;
-        outline: none;
-        border: none;
-        width: 30px;
-        height: 30px;
-        cursor: pointer;
 
-        transition: all 0.3s;
-        &:hover{
-            color: fade(@brand-dark,70%);
-        }
-    }
-
-    .cartProduct__button__link{        
-        box-shadow: 0 0 1px rgba(0, 0, 0, 0.8);
-        border-radius: 5px;
-        position: absolute;
-        right: 60px;
-        top: 50%;
-        transform: translateY(-50%);
-        background-color: @brand-secondary;
-        text-decoration: none;
-        outline: none;
-        border: none;
-        width: 30px;
-        height: 30px;
-        cursor: pointer;
+    & .cart_product__info{
         display: flex;
-        justify-content: center;
+        justify-content: space-around;
         align-items: center;
-        transition: all 0.3s;
-        &:hover{
-            color: fade(@brand-dark,70%);
-        }
+        gap: 10px;
     }
-    .cartProduct__title{
+    
+    & .cart_product__info__text{
+        padding-top: 10px;
+    }
+
+    & .cart_product__img{
+        width: 80px;
+        height: 80px;
+        object-fit: contain;
+    } 
+
+    & .cart_product__title{
         color: @ui-text-main;
         font-family: @font-heading;
     }
 
-    .cartProduct__sku,.cartProduct__version , .cartProduct__count{
+    & .cart_product__sku,.cart_product__version , .cart_product__count{
         color: @ui-text-muted;
-        font-size:  @text-base;
+        font-size:  @text-sm;
         font-family: @font-body;
     }
-    
+
+
+    & .cart_product__actions{
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        flex-flow: column wrap;
+        gap: 10px;
+
+    }
+
+    & .cart_product__button{        
+        border-radius: 5px;
+        background-color: @brand-secondary;
+        text-decoration: none;
+        outline: none;
+        border: none;
+        width: 30px;
+        height: 30px;
+        cursor: pointer;
+
+        transition: all 0.3s;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        &:hover{
+            color: fade(@brand-dark,70%);
+        }
+    }
+
+
 }
 
 
