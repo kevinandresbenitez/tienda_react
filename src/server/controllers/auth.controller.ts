@@ -78,7 +78,7 @@ const signIn = async (req:any, res:any) => {
         res.cookie('auth_token', token, {
             httpOnly: true,
             secure: process.env.NODE_ENV === 'production',
-            maxAge: process.env.COOKIES_EXPIRATION, 
+            maxAge: Number(process.env.COOKIES_EXPIRATION), 
             sameSite: 'Strict', 
         });
         
@@ -98,8 +98,23 @@ const signUp = async (req:any, res:any) => {
     res.send('signUp')
 };
 
-const logout = async (req:any, res:any) => {
-    res.send('logout')
+const logOut = async (req:any, res:any) => {
+    
+    res.clearCookie('auth_token', {
+        httpOnly: true,
+        sameSite: 'strict'
+    });
+    
+    return res.status(200).json({ message: "Logged out successfully" } satisfies ApiResponse);
 };
 
-export default {signIn,signUp,logout}
+const getProfile = async (req:any, res:any) => {
+    const userDto = req.user;
+
+    return res.status(200).json({
+        message: "User authenticated",
+        payload: userDto
+    }) satisfies ApiResponse;
+};
+
+export default {signIn,signUp,logOut,getProfile}

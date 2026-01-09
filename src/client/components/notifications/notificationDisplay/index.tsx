@@ -1,6 +1,5 @@
 import React from "react";
-import { notificationItemType} from '../../../contexts/notification/index.tsx'
-import { useNotification} from '../../../contexts/notification/index.tsx'
+import { notificationItemType } from '../../../contexts/notification/index.tsx'
 import Notification from '../notificationItem/index.tsx';
 import './index.less'
 

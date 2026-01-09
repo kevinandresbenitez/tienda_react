@@ -10,9 +10,9 @@ import PageLoader from "./components/common/pageLoader/index.tsx";
 
 import { CartProvider } from "./contexts/cart/index.ts";
 import { NotificationProvider } from "./contexts/notification/index.ts"
-import { AuthProvider } from "./contexts/auth/index.ts"
 import { Product } from "./models/product/index.ts";
 import { DataProvider, useInitialData } from "./contexts/initialData/index.tsx";
+import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 
 declare global {
   interface Window {
@@ -22,6 +22,7 @@ declare global {
     };
   }
 }
+const queryClient = new QueryClient();
 
 export function App() {
   return (
@@ -34,7 +35,7 @@ export function App() {
       </head>
       <body>
 
-        <AuthProvider>
+        <QueryClientProvider client={queryClient}>
           <NotificationProvider>
             <CartProvider>
               <NavBar />
@@ -44,7 +45,7 @@ export function App() {
               </div>
             </CartProvider>
           </NotificationProvider>
-        </AuthProvider>
+        </QueryClientProvider>
       </body>
     </html>
 

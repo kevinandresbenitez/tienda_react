@@ -1,4 +1,4 @@
-import React, { LegacyRef, useRef } from "react";
+import React, { LegacyRef, useRef, useEffect } from "react";
 import { notificationItemType} from '../../../contexts/notification/index.ts'
 
 import './index.less'
@@ -10,15 +10,26 @@ export default function Notification({notification,closeNotification}:{notificat
 
     const htmlNotification = useRef<HTMLDivElement>(null);
 
-    setTimeout(()=>{
-        if(htmlNotification.current){
-            htmlNotification.current.classList.add('hiddeNotification');
-            htmlNotification.current.addEventListener("animationend",()=>{ 
-                closeNotification(notification)
-            })
+    useEffect(()=>{
+        const el = htmlNotification.current;
+        if (!el) return;
+
+        const onAnimationEnd = () => closeNotification(notification);
+
+        const t = setTimeout(()=>{
+            if(el){
+                el.classList.add('hiddeNotification');
+                el.addEventListener('animationend', onAnimationEnd);
+            }
+        }, notification.duration);
+
+        return ()=>{
+            clearTimeout(t);
+            if(el){
+                el.removeEventListener('animationend', onAnimationEnd);
+            }
         }
-        
-    },notification.duration)
+    }, [notification.duration]);
 
     return(
         <div className="notification" ref={htmlNotification}>

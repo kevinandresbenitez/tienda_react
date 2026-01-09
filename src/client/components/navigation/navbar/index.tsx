@@ -5,12 +5,12 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faUser, faUserPlus } from "@fortawesome/free-solid-svg-icons";
 import Hamburger from "../../common/buttons/hamburgerButton/index.tsx";
 import { CartDrawerToggleButton } from "../../cart/drawerToggleButton/index.tsx";
-import { useAuth } from "../../../contexts/auth/index.ts";
+import { useAuthHook } from "../../../hooks/useAuthHook.ts";
 
 
 export default function NavBar(){
 
-    const {isLogged} = useAuth();
+    const {isLogged,logOut} = useAuthHook();
     
     return(
     <div className="navbar">
@@ -29,12 +29,13 @@ export default function NavBar(){
             <Link to="/contact">Contacto</Link>
         </nav>
         <div className="navbar__actions">
-            {!isLogged() && 
+            {!isLogged && 
                 <>
                     <Link to="/signIn" className="navbar__actions__link"> <FontAwesomeIcon icon={faUser} /><p>Iniciar Sesion</p></Link>
                     <Link to="/signUp" className="navbar__actions__link"> <FontAwesomeIcon icon={faUserPlus} /><p>Registrarse</p></Link>
                 </>
             }
+            {isLogged && <Link to="/signIn" onClick={logOut} className="navbar__actions__link"> <FontAwesomeIcon icon={faUser} /><p>Cerrar sesion</p></Link>}
             <CartDrawerToggleButton />
         </div>
         

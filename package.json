@@ -40,6 +40,7 @@
     "@fortawesome/fontawesome-svg-core": "^6.5.2",
     "@fortawesome/free-solid-svg-icons": "^6.5.2",
     "@fortawesome/react-fontawesome": "^0.2.0",
+    "@tanstack/react-query": "^5.90.16",
     "@types/node": "^22.10.2",
     "axios": "^1.7.9",
     "bcryptjs": "^3.0.2",
@@ -60,7 +61,6 @@
     "build": "npm-run-all --parallel build:client build:server",
     "build:client": "webpack --config ./src/client/webpack.config.cjs --mode production",
     "build:server": "webpack --config ./src/server/webpack.config.cjs --mode production",
-
     "dev": "npm-run-all --parallel dev:client dev:server",
     "dev:client": "webpack --config ./src/client/webpack.config.cjs --watch",
     "dev:server": "webpack --config ./src/server/webpack.config.cjs --watch"

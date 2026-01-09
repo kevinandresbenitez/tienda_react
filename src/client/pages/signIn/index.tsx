@@ -6,11 +6,13 @@ import Button from "../../components/common/buttons/button/index.tsx";
 import InputField from "../../components/common/inputField/index.tsx";
 import { User } from "../../models/user/index.ts";
 import { useNotificationType, useNotification } from "../../contexts/notification/index.ts";
+import { useAuthHook } from "../../hooks/useAuthHook.ts";
 
 export default function SignIn() {
 
     const formRef = useRef<HTMLFormElement>(null);
     const { addNotification }: useNotificationType = useNotification();
+    const { signIn,userSession } = useAuthHook();
 
     const handleSubmit = async (event: React.FormEvent<HTMLFormElement>) => {
         event.preventDefault();
@@ -18,23 +20,14 @@ export default function SignIn() {
         const email = formData.get('email') as string;
         const password = formData.get('password') as string;
 
-        const response = await User.signIn(email, password);
-
-        if (response) {
-
-            if (response.user) {
-                addNotification({ variant: 'success', content: response.message, duration: 3000 });
-                console.log(response.user);
-                console.log(response.message);
-            } else {
-                addNotification({ variant: 'error', content: response.message, duration: 3000 });
-                console.log(response.message);
-            }
-
+        try{
+            const response = await signIn({email,password});
+            addNotification({ variant: 'success', content: response.message, duration: 3000 });
         }
-
-
-
+        catch(e:any){
+            const message = e.response?.data?.message || "Error al iniciar sesión";
+            addNotification({ variant: 'error', content: message, duration: 3000 });
+        }
     }
     return (
 
