@@ -7,13 +7,11 @@ export const verifySession = (req: any, res: any, next: any) => {
         return res.status(401).json({ message: "Token inválid" });
     }
 
-
     const decoded = verifyToken(token);
-
     if (!decoded) {
         return res.status(401).json({ message: "Token inválid" });
     }
-    req.user = decoded; 
+    
     next();
 
 };

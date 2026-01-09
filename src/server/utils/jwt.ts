@@ -14,3 +14,11 @@ export const verifyToken = (token: string) => {
     return null;
   }
 };
+
+export const decodeToken = (token: string) => {
+  try {
+    return jwt.verify(token, SECRET);
+  } catch (e) {
+    return null;
+  }
+};

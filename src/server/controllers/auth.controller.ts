@@ -1,7 +1,7 @@
 import { AppDataSource } from "../config/db/config";
 import { User } from "../models/user";
 import { comparePassword, hashPassword } from "../utils/bcrypt";
-import { generateToken } from "../utils/jwt";
+import { decodeToken, generateToken } from "../utils/jwt";
 import {ApiResponse,userDto } from "../../shared/api-types"
 
 /**
@@ -109,11 +109,13 @@ const logOut = async (req:any, res:any) => {
 };
 
 const getProfile = async (req:any, res:any) => {
-    const userDto = req.user;
+    const token = req.cookies.auth_token;
+    const decodedToken = decodeToken(token);
+
 
     return res.status(200).json({
         message: "User authenticated",
-        payload: userDto
+        payload: decodedToken
     }) satisfies ApiResponse;
 };
 
